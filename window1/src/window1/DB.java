@@ -33,11 +33,26 @@ public class DB {
 		}
 	}
 
+	protected boolean insertMember(String id, String passwd, String email, String name, int question, String answer) {
+
+		try {
+			String sql = "insert into member values(" + id + ", " + passwd + ", " + email + ", " + name + ", "
+					+ question + ", " + answer + ");";
+
+			boolean isSuccess;
+			isSuccess = stmt.execute(sql);
+		} catch (SQLException e) {
+			System.err.println("Error : Insert Member");
+		}
+
+		return isSuccess;
+	}
+
 	protected void closeDB() {
 		try {
 			if (conn != null)
 				conn.close();
-		} catch(SQLException e)	{
+		} catch (SQLException e) {
 			System.err.println("Error : DB Close");
 		}
 	}
