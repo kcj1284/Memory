@@ -24,6 +24,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 public class Login extends JFrame {
+	DB db = new DB();
+	int index = -1;
 
 	private String id;
 	private String pw;
@@ -127,8 +129,7 @@ public class Login extends JFrame {
 	 * 유저 정보를 불러와서 이에 해당하는 계정이 있으면 로그인을 하는 메소드
 	 */
 	private void login(){
-		//		DB.getDBInfo(); // 유저 정보 갱신
-
+		db.getMember();
 		id = tf_id.getText().toString();
 		pw = new String(tf_pw.getPassword());
 		if(id.length() == 0){
@@ -140,17 +141,16 @@ public class Login extends JFrame {
 			return;
 		}
 
-		/*		if(DB.isPWCorrect(id, pw, false)){
-		DB.userIndex = DB.tempIndex;
-		DB.homeIndex = DB.tempIndex;
-		Frame.frame_home.setVisible(true); // 홈화면 띄움
-		Frame.frame_popup.setVisible(true); // 팝업 띄움
-		tf_id.setText("");
-		tf_pw.setText("");
-		Frame.frame_login.setVisible(false); // 로그인화면 끔
-		return;
-	}
-		 */
-		JOptionPane.showMessageDialog(Frame.frame_login, "아이디 또는 비밀번호가 일치하지 않습니다.", "오류", JOptionPane.ERROR_MESSAGE);
+		if((index = db.isPWCorrect(id, pw)) != -1){
+			Data.userIndex = index;
+			Frame.frame_home.setVisible(true); // 홈화면 띄움
+			Frame.frame_popup.setVisible(true); // 팝업 띄움
+			tf_id.setText("");
+			tf_pw.setText("");
+			Frame.frame_login.setVisible(false); // 로그인화면 끔
+			return;
+		} else{
+			JOptionPane.showMessageDialog(Frame.frame_login, "아이디 또는 비밀번호가 일치하지 않습니다.", "오류", JOptionPane.ERROR_MESSAGE);
+		}
 	}
 } 
