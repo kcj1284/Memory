@@ -82,4 +82,15 @@ public class DB {
          System.err.println("Error : DB Close");
       }
    }
+   
+   public int isPWCorrect(String id, String pw){
+	   int i;
+	   for(i=0; i<Data.member_vector.size(); i++){
+		   if(Data.member_vector.elementAt(i).id.equals(id) && Data.member_vector.elementAt(i).pw.equals(pw)){
+			   return i; // 아이디 비번이 일치하면 로그인한 유저 인덱스 반환
+		   }
+	   }
+	   System.out.println(Data.member_vector.size());
+	   return -1; // 존재하지 않을 경우 -1 반환
+   }
 }
