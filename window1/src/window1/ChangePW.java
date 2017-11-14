@@ -40,7 +40,7 @@ public class ChangePW extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				String pw = new String(tf_pw.getPassword());
 				String pwCheck = new String(tf_pwCheck.getPassword());
-				
+
 				if(pw.length() < 4 || pw.length() > 12){ // 비밀번호의 길이가 짧거나 길면
 					JOptionPane.showMessageDialog(Frame.frame_join, "비밀번호는 4~12자의 영문, 숫자만 사용 가능합니다.", "오류", JOptionPane.ERROR_MESSAGE);
 					return;
@@ -57,7 +57,7 @@ public class ChangePW extends JFrame {
 				}
 				changePW(pw);
 				JOptionPane.showMessageDialog(Frame.frame_join, "비밀번호가 성공적으로 변경되었습니다.", "비밀번호 변경 완료", JOptionPane.INFORMATION_MESSAGE);
-	            Frame.frame_changePW.setVisible(false);
+				Frame.frame_changePW.setVisible(false);
 			}
 		});
 		btn_change.setIcon(new ImageIcon("rsc\\icon\\btn_change.PNG"));

@@ -36,12 +36,12 @@ public class FindIDPW extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel lb_background = new JLabel("");
 		lb_background.setIcon(new ImageIcon("rsc\\IDPWFind.png"));
 		lb_background.setBounds(0, 0, 400, 514);
 		contentPane.add(lb_background);
-		
+
 		tf_findid_email = new JTextField();
 		tf_findid_email.setBackground(new Color(102, 211, 222));
 		tf_findid_email.setForeground(Color.WHITE);
@@ -49,7 +49,7 @@ public class FindIDPW extends JFrame {
 		tf_findid_email.setBounds(135, 95, 215, 24);
 		contentPane.add(tf_findid_email);
 		tf_findid_email.setColumns(10);
-		
+
 		tf_findid_name = new JTextField();
 		tf_findid_name.setBackground(new Color(102, 211, 222));
 		tf_findid_name.setForeground(Color.WHITE);
@@ -57,7 +57,7 @@ public class FindIDPW extends JFrame {
 		tf_findid_name.setBounds(135, 136, 146, 24);
 		contentPane.add(tf_findid_name);
 		tf_findid_name.setColumns(10);
-		
+
 		tf_findpw_id = new JTextField();
 		tf_findpw_id.setBackground(new Color(102, 211, 222));
 		tf_findpw_id.setForeground(Color.WHITE);
@@ -65,7 +65,7 @@ public class FindIDPW extends JFrame {
 		tf_findpw_id.setBounds(135, 330, 144, 24);
 		contentPane.add(tf_findpw_id);
 		tf_findpw_id.setColumns(10);
-		
+
 		tf_findpw_email = new JTextField();
 		tf_findpw_email.setBackground(new Color(102, 211, 222));
 		tf_findpw_email.setForeground(Color.WHITE);
@@ -74,7 +74,7 @@ public class FindIDPW extends JFrame {
 		tf_findpw_email.setBounds(135, 372, 215, 24);
 		contentPane.add(tf_findpw_email);
 		contentPane.add(lb_background);
-		
+
 		JButton btn_findID = new JButton("");
 		btn_findID.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -87,7 +87,7 @@ public class FindIDPW extends JFrame {
 		btn_findID.setBorderPainted(false);
 		btn_findID.setBounds(127, 196, 165, 35);
 		contentPane.add(btn_findID);
-		
+
 		JButton btn_findPW = new JButton("");
 		btn_findPW.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -101,7 +101,7 @@ public class FindIDPW extends JFrame {
 		btn_findPW.setBounds(127, 468, 165, 35);
 		contentPane.add(btn_findPW);
 	}
-	
+
 	/**
 	 * 이메일과 이름을 입력받아서 이에 일치하는 아이디를 메시지로 띄워주는 메소드
 	 */
@@ -117,7 +117,7 @@ public class FindIDPW extends JFrame {
 			JOptionPane.showMessageDialog(Frame.frame_join, "일치하는 계정이 존재하지 않습니다.", "오류", JOptionPane.ERROR_MESSAGE);
 		}
 	}
-	
+
 	/**
 	 * 아이디, 이메일, 이름을 받아서 이에 일치하는 본인확인 질문을 띄워주는 메소드
 	 */
