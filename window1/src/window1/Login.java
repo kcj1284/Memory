@@ -86,8 +86,9 @@ public class Login extends JFrame {
 		btn_join.setBounds(530, 442, 97, 97);
 		btn_join.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Frame.frame_join.reset();
-				Frame.frame_join.setVisible(true);
+				Join join = new Join();
+				join.reset();
+				join.setVisible(true);
 			}
 		});
 		contentPane.add(btn_join);
@@ -143,14 +144,14 @@ public class Login extends JFrame {
 		/*		if(DB.isPWCorrect(id, pw, false)){
 			DB.userIndex = DB.tempIndex;
 			DB.homeIndex = DB.tempIndex;
-			Frame.frame_home.setVisible(true); // 홈화면 띄움
-			Frame.frame_popup.setVisible(true); // 팝업 띄움
+			new Home().setVisible(true); // 홈화면 띄움
+			new Popup().setVisible(true); // 팝업 띄움
 			tf_id.setText("");
 			tf_pw.setText("");
 			Frame.frame_login.setVisible(false); // 로그인화면 끔
 			return;
 		}
 		 */
-		JOptionPane.showMessageDialog(Frame.frame_login, "아이디 또는 비밀번호가 일치하지 않습니다.", "오류", JOptionPane.ERROR_MESSAGE);
+		JOptionPane.showMessageDialog(new Login(), "아이디 또는 비밀번호가 일치하지 않습니다.", "오류", JOptionPane.ERROR_MESSAGE);
 	}
 }
