@@ -19,7 +19,7 @@ public class Home extends JFrame {
 	 */
 	public Home() {
 		
-		setTitle("Main");
+		setTitle("Home");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(300, 200, 1000, 600);
 		contentPane = new JPanel();
