@@ -16,7 +16,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 /**
- * @author 손휘진
+ * @author 김찬중
  * 비밀번호를 찾을 때 사용되는 GUI창
  */
 @SuppressWarnings("serial")

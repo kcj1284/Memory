@@ -46,7 +46,7 @@ public class Home extends JFrame {
 		element[2] = "ÇÐ°ú";
 		element[3] = "¹øÈ£";
 		JComboBox cb_type = new JComboBox(element);
-		cb_type.setBounds(325, 10, 99, 44);
+		cb_type.setBounds(307, 12, 99, 44);
 		cb_type.setBackground(new Color(114, 172, 69));
 		contentPane.add(cb_type);
 		cb_type.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
@@ -58,7 +58,7 @@ public class Home extends JFrame {
 		btn_AddPerson.setIcon(new ImageIcon("rsc\\icon\\btn_AddPerson.png"));
 		btn_AddPerson.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 12));
 		btn_AddPerson.setBackground(Color.WHITE);
-		btn_AddPerson.setBounds(32, 10, 123, 91);
+		btn_AddPerson.setBounds(3, 10, 144, 97);
 		btn_AddPerson.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Frame.frame_addperson.setVisible(true);
@@ -71,7 +71,7 @@ public class Home extends JFrame {
 		btn_AddGroup.setIcon(new ImageIcon("rsc\\icon\\btn_AddGroup.png"));
 		btn_AddGroup.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 12));
 		btn_AddGroup.setBackground(Color.WHITE);
-		btn_AddGroup.setBounds(156, 10, 144, 97);
+		btn_AddGroup.setBounds(157, 10, 144, 97);
 		btn_AddGroup.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Frame.frame_addgroup.setVisible(true);
@@ -80,23 +80,21 @@ public class Home extends JFrame {
 		contentPane.add(btn_AddGroup);
 		
 		tf_search = new JTextField();
-		tf_search.setBounds(424, 10, 426, 44);
+		tf_search.setBounds(406, 12, 426, 44);
 		contentPane.add(tf_search);
 		tf_search.setColumns(10);
 		
 		JButton btn_search = new JButton("");
 		btn_search.setBorderPainted(false);
 		btn_search.setIcon(new ImageIcon("rsc\\icon\\btn_search.jpg"));
-		btn_search.setBounds(851, 12, 123, 42);
+		btn_search.setBounds(833, 13, 123, 42);
 		contentPane.add(btn_search);
 	
 		JLabel lb_background = new JLabel(new ImageIcon("rsc\\Home.jpg"));
 		lb_background.setBackground(Color.WHITE);
 		lb_background.setBounds(0, 0, 1642, 800);
 		contentPane.add(lb_background);
-		
-	
-		
+				
 		
 	}
 }
