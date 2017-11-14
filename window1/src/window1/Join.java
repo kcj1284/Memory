@@ -39,7 +39,7 @@ public class Join extends JFrame {
 
 	private String id, pw, pwCheck, email, name, pwAnswer;
 	private int pwQuestion;
-	
+
 	public Join() {
 		setResizable(false);
 		setIconImage(Toolkit.getDefaultToolkit().getImage("rsc\\logo_icon.png"));
@@ -49,7 +49,7 @@ public class Join extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);		
-		
+
 		tf_id = new JTextField();
 		tf_id.setBackground(new Color(114, 172, 69));
 		tf_id.setFont(new Font("맑은 고딕", Font.PLAIN, 15));
@@ -73,7 +73,7 @@ public class Join extends JFrame {
 		tf_name.setColumns(10);
 		tf_name.setBounds(144, 295, 145, 24);
 		contentPane.add(tf_name);
-		
+
 		tf_pwAnswer = new JTextField();
 		tf_pwAnswer.setBackground(new Color(114, 172, 69));
 		tf_pwAnswer.setFont(new Font("맑은 고딕", Font.PLAIN, 15));
@@ -81,7 +81,7 @@ public class Join extends JFrame {
 		tf_pwAnswer.setColumns(10);
 		tf_pwAnswer.setBounds(144, 378, 145, 24);
 		contentPane.add(tf_pwAnswer);
-		
+
 		tf_pw = new JPasswordField();
 		tf_pw.setBackground(new Color(114, 172, 69));
 		tf_pw.setFont(new Font("맑은 고딕", Font.PLAIN, 15));
@@ -95,7 +95,7 @@ public class Join extends JFrame {
 		tf_pwCheck.setForeground(Color.WHITE);
 		tf_pwCheck.setBounds(144, 214, 145, 24);
 		contentPane.add(tf_pwCheck);
-		
+
 		JButton btn_join = new JButton("");
 		btn_join.setIcon(new ImageIcon("rsc\\icon\\btn_post.PNG"));
 		btn_join.setBorderPainted(false);
@@ -107,7 +107,7 @@ public class Join extends JFrame {
 		btn_join.setFont(new Font("맑은 고딕", Font.PLAIN, 15));
 		btn_join.setBounds(125, 455, 167, 35);
 		contentPane.add(btn_join);
-		
+
 		cb_pwQuestion = new JComboBox<String>();
 		cb_pwQuestion.setFont(new Font("맑은 고딕", Font.PLAIN, 15));
 		cb_pwQuestion.setForeground(Color.WHITE);
@@ -120,7 +120,7 @@ public class Join extends JFrame {
 		cb_pwQuestion.addItem("나의 아버지의 성함은?");
 		cb_pwQuestion.setBounds(144, 336, 217, 24);
 		contentPane.add(cb_pwQuestion);
-		
+
 		try{
 			JLabel lb_background = new JLabel(new ImageIcon(ImageIO.read(new File("rsc\\join.png"))));
 			lb_background.setBackground(Color.WHITE);
@@ -131,9 +131,11 @@ public class Join extends JFrame {
 			s.printStackTrace();
 		}
 	}
-		public void join(){
-			DB.getDBInfo();
-			
+	public void join(){
+		DB db = new DB();
+		if(!db.getMember()){
+			System.out.println("오류");
+		} else{
 			id = tf_id.getText();
 			pw = String.valueOf(tf_pw.getPassword());
 			pwCheck = String.valueOf(tf_pwCheck.getPassword());
@@ -153,8 +155,8 @@ public class Join extends JFrame {
 					return;
 				}
 			}
-			for(int i = 0; i < DB.userInfo_vector.size(); i++){
-				if(DB.userInfo_vector.get(i).id.equals(id)){ // 아이디가 중복되면
+			for(int i = 0; i < Data.member_vector.size(); i++){
+				if(Data.member_vector.get(i).id.equals(id)){ // 아이디가 중복되면
 					JOptionPane.showMessageDialog(Frame.frame_join, "이미 존재하는 아이디입니다.", "오류", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
@@ -183,7 +185,7 @@ public class Join extends JFrame {
 				if(c == '@') AtNum++;
 				if(c == '.') DotNum++;
 			}
-			if(AtNum != 1 || DotNum != 1 || email.length() <= 5){
+			if(AtNum != 1 || DotNum != 1){
 				JOptionPane.showMessageDialog(Frame.frame_join, "올바른 형식의 이메일이 아닙니다.", "오류", JOptionPane.ERROR_MESSAGE);
 				return;
 			}
@@ -197,37 +199,25 @@ public class Join extends JFrame {
 
 			///////////// pwAnswer ///////////////
 			if(pwAnswer.length() == 0){
-			JOptionPane.showMessageDialog(Frame.frame_join, "비밀번호 찾기 답을 입력해주세요.", "오류", JOptionPane.ERROR_MESSAGE);
-			return;
-		}
+				JOptionPane.showMessageDialog(Frame.frame_join, "비밀번호 찾기 답을 입력해주세요.", "오류", JOptionPane.ERROR_MESSAGE);
+				return;
+			}
 
 			///////////// DB에 데이터 입력 ///////////////
-			DB.insertUserInfo(getTrimmedUserInfo());
-			DB.getDBInfo();
+			db.insertMember(id, pw, email, name, pwQuestion, pwAnswer);
+			db.getMember();
 			JOptionPane.showMessageDialog(Frame.frame_join, "회원가입이 정상적으로 완료되었습니다.", "회원가입 완료", JOptionPane.INFORMATION_MESSAGE);
 			Frame.frame_join.setVisible(false);
 		}
-		/**
-		 * 사용자가 입력한 정보를 id|pw|email|name|pwQuestion|pwAnswer||||||| 형식으로 만들어서 반환한다.
-		 * @return
-		 */
-		private String getTrimmedUserInfo(){
-			StringBuilder sb = new StringBuilder("");
-			sb.append(id + "|");
-			sb.append(pw + "|");
-			sb.append(email + "|");
-			sb.append(name + "|");
-			sb.append(pwQuestion + "|");
-			sb.append(pwAnswer + "|||||||");
-			return sb.toString();
-		}
-		void reset(){
-			tf_id.setText("");
-			tf_pw.setText("");
-			tf_pwCheck.setText("");
-			tf_email.setText("");
-			tf_name.setText("");
-			cb_pwQuestion.setSelectedIndex(0);
-			tf_pwAnswer.setText("");
-		}
 	}
+	
+	void reset(){
+		tf_id.setText("");
+		tf_pw.setText("");
+		tf_pwCheck.setText("");
+		tf_email.setText("");
+		tf_name.setText("");
+		cb_pwQuestion.setSelectedIndex(0);
+		tf_pwAnswer.setText("");
+	}
+}
