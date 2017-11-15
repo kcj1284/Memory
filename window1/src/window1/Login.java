@@ -40,7 +40,7 @@ public class Login extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Frame.frame_home.setVisible(true);
+					Frame.frame_login.setVisible(true);
 					//					DB.connectDB();
 				} catch (Exception e) {
 					e.printStackTrace();
