@@ -5,7 +5,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+/**
+ * mysql로 회원 정보를 전송하는 Class
+ */ 
 public class DB {
    private static String DB_ID = "root";
    private static String DB_PASSWORD = "0238";

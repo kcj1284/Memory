@@ -6,7 +6,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
+/**
+ * @author 김찬중
+ * Home에서 인물을 추가하는 Class
+ */
 public class AddPerson extends JFrame {
 
 	private JPanel contentPane;

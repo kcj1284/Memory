@@ -10,7 +10,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
+/**
+ * @author ±èÂùÁß
+ * ÆË¾÷Ã¢
+ */
 public class Popup extends JFrame {
 
 	private JPanel contentPane;

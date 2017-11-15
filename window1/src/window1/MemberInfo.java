@@ -1,5 +1,8 @@
 package window1;
 
+/**
+ * 회원가입에 사용된 정보
+ */
 
 public class MemberInfo {
    String id, pw, email, name, pwAnswer;

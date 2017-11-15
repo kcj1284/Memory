@@ -22,7 +22,10 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
+/**
+ * @author 김찬중
+ * Login을 하는 Class
+ */
 public class Login extends JFrame {
 	DB db = new DB();
 	int index = -1;
@@ -40,7 +43,7 @@ public class Login extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Frame.frame_home.setVisible(true);
+					Frame.frame_login.setVisible(true);
 					//					DB.connectDB();
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -97,7 +100,9 @@ public class Login extends JFrame {
 		tf_pw.setFont(new Font("맑은 고딕", Font.PLAIN, 12));
 		tf_pw.setBounds(170, 494, 250, 45);
 		contentPane.add(tf_pw);
-
+		/**
+		 * 엔터키를 누르면 로그인이 된다.
+		 */ 
 		class Listener implements ActionListener, KeyListener{
 			public void actionPerformed(ActionEvent arg0) {
 				login();
@@ -128,6 +133,7 @@ public class Login extends JFrame {
 	/**
 	 * 유저 정보를 불러와서 이에 해당하는 계정이 있으면 로그인을 하는 메소드
 	 */
+	
 	private void login(){
 		db.getMember();
 		id = tf_id.getText().toString();
@@ -143,11 +149,11 @@ public class Login extends JFrame {
 
 		if((index = db.isPWCorrect(id, pw)) != -1){
 			Data.userIndex = index;
-			Frame.frame_home.setVisible(true); // 홈화면 띄움
-			Frame.frame_popup.setVisible(true); // 팝업 띄움
+			Frame.frame_home.setVisible(true); 
+			Frame.frame_popup.setVisible(true); 
 			tf_id.setText("");
 			tf_pw.setText("");
-			Frame.frame_login.setVisible(false); // 로그인화면 끔
+			Frame.frame_login.setVisible(false); 
 			return;
 		} else{
 			JOptionPane.showMessageDialog(Frame.frame_login, "아이디 또는 비밀번호가 일치하지 않습니다.", "오류", JOptionPane.ERROR_MESSAGE);

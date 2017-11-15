@@ -20,7 +20,10 @@ import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextField;
-
+/**
+ * @author 김찬중
+ * 프로그램의 메인화면
+ */
 public class Home extends JFrame {
 
 	private JPanel contentPane;
@@ -79,7 +82,6 @@ public class Home extends JFrame {
 			}
 		});
 		contentPane.add(btn_AddGroup);
-		
 		tf_search = new JTextField();
 		tf_search.setBounds(406, 12, 426, 44);
 		contentPane.add(tf_search);

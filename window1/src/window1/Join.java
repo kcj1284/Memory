@@ -25,7 +25,10 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.awt.event.ActionEvent;
-
+/**
+ * @author 김찬중
+ * 회원가입을 하는 Class
+ */
 public class Join extends JFrame {
 
 	private JPanel contentPane;
