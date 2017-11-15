@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class DB {
-   private static String DB_ID = "memory";
+   private static String DB_ID = "root";
    private static String DB_PASSWORD = "0238";
    private static String DB_NAME = "memory";
    private static String DB_IP = "localhost";
