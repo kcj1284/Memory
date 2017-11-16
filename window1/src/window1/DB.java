@@ -9,7 +9,7 @@ import java.sql.SQLException;
  * mysql로 회원 정보를 전송하는 Class
  */ 
 public class DB {
-   private static String DB_ID = "root";
+   private static String DB_ID = "memory";
    private static String DB_PASSWORD = "0238";
    private static String DB_NAME = "memory";
    private static String DB_IP = "localhost";
