@@ -29,13 +29,12 @@ public class AddGroup extends JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage("rsc\\logo_icon.png"));
 		setTitle("AddGroup");
 		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setBounds(100, 100, 500, 368);
 
 		JButton btn_Add = new JButton("");
 		btn_Add.setBorderPainted(false);
 		btn_Add.setIcon(new ImageIcon("rsc\\icon\\btn_add.png"));
-		btn_Add.setBounds(177, 282, 126, 51);
+		btn_Add.setBounds(186, 276, 116, 45);
 		btn_Add.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Frame.frame_addgroup.setVisible(false);
@@ -46,7 +45,7 @@ public class AddGroup extends JFrame {
 
 		JLabel lb_background = new JLabel(new ImageIcon("rsc\\Addgroup.png"));
 		lb_background.setBackground(Color.WHITE);
-		lb_background.setBounds(100, 100, 500, 368);
+		lb_background.setBounds(0, 0, 500, 373);
 		contentPane.add(lb_background);
 		setContentPane(contentPane);
 
