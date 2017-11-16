@@ -28,10 +28,10 @@ public class Popup extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
-		setBounds(50, 30, 900, 482);
+		setBounds(300, 150, 900, 482);
 		JLabel lb_background = new JLabel(new ImageIcon("rsc\\Popup.png"));
 		lb_background.setBackground(Color.WHITE);
-		lb_background.setBounds(0, 0, 900, 482);
+		lb_background.setBounds(300, 150, 900, 482);
 		contentPane.add(lb_background);
 		setContentPane(contentPane);
 	}

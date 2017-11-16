@@ -107,7 +107,6 @@ public class Join extends JFrame {
 				join();
 			}
 		});
-		btn_join.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 15));
 		btn_join.setBounds(125, 455, 167, 35);
 		contentPane.add(btn_join);
 
@@ -213,7 +212,7 @@ public class Join extends JFrame {
 			Frame.frame_join.setVisible(false);
 		}
 	}
-	
+
 	void reset(){
 		tf_id.setText("");
 		tf_pw.setText("");

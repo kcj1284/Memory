@@ -37,13 +37,15 @@ public class Login extends JFrame {
 	private JPasswordField tf_pw;
 
 	/**
+	 * @author 김찬중
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Frame.frame_login.setVisible(true);
+					Frame.frame_login
+					.setVisible(true);
 					//					DB.connectDB();
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -52,6 +54,7 @@ public class Login extends JFrame {
 		});
 	}
 	/**
+	 * @author 김찬중
 	 * Create the frame.
 	 */ 
 	public Login() {
@@ -78,16 +81,12 @@ public class Login extends JFrame {
 		JButton btn_login = new JButton("");
 		btn_login.setBorderPainted(false);
 		btn_login.setIcon(new ImageIcon("rsc\\icon\\btn_login.png"));
-		btn_login.setFont(new Font("맑은 고딕", Font.PLAIN, 12));
-		btn_login.setBackground(Color.WHITE);
 		btn_login.setBounds(425, 442, 97, 97);
 		contentPane.add(btn_login);
 
 		JButton btn_join = new JButton("");
 		btn_join.setBorderPainted(false);
 		btn_join.setIcon(new ImageIcon("rsc\\icon\\btn_join.png"));
-		btn_join.setFont(new Font("맑은 고딕", Font.PLAIN, 12));
-		btn_join.setBackground(Color.WHITE);
 		btn_join.setBounds(530, 442, 97, 97);
 		btn_join.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -100,9 +99,7 @@ public class Login extends JFrame {
 		tf_pw.setFont(new Font("맑은 고딕", Font.PLAIN, 12));
 		tf_pw.setBounds(170, 494, 250, 45);
 		contentPane.add(tf_pw);
-		/**
-		 * 엔터키를 누르면 로그인이 된다.
-		 */ 
+		
 		class Listener implements ActionListener, KeyListener{
 			public void actionPerformed(ActionEvent arg0) {
 				login();
@@ -131,6 +128,7 @@ public class Login extends JFrame {
 	}
 
 	/**
+	 * @author 김찬중
 	 * 유저 정보를 불러와서 이에 해당하는 계정이 있으면 로그인을 하는 메소드
 	 */
 	

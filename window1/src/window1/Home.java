@@ -55,13 +55,11 @@ public class Home extends JFrame {
 		contentPane.add(cb_type);
 		cb_type.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
 		cb_type.setForeground(Color.WHITE);
-		
-		
+
+
 		JButton btn_AddPerson = new JButton("");
 		btn_AddPerson.setBorderPainted(false);
 		btn_AddPerson.setIcon(new ImageIcon("rsc\\icon\\btn_AddPerson.png"));
-		btn_AddPerson.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 12));
-		btn_AddPerson.setBackground(Color.WHITE);
 		btn_AddPerson.setBounds(3, 10, 144, 97);
 		btn_AddPerson.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -69,12 +67,10 @@ public class Home extends JFrame {
 			}
 		});
 		contentPane.add(btn_AddPerson);
-	
+
 		JButton btn_AddGroup = new JButton("");
 		btn_AddGroup.setBorderPainted(false);
 		btn_AddGroup.setIcon(new ImageIcon("rsc\\icon\\btn_AddGroup.png"));
-		btn_AddGroup.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 12));
-		btn_AddGroup.setBackground(Color.WHITE);
 		btn_AddGroup.setBounds(157, 10, 144, 97);
 		btn_AddGroup.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -86,18 +82,31 @@ public class Home extends JFrame {
 		tf_search.setBounds(406, 12, 426, 44);
 		contentPane.add(tf_search);
 		tf_search.setColumns(10);
-		
+
 		JButton btn_search = new JButton("");
 		btn_search.setBorderPainted(false);
 		btn_search.setIcon(new ImageIcon("rsc\\icon\\btn_search.jpg"));
 		btn_search.setBounds(833, 13, 123, 42);
 		contentPane.add(btn_search);
-	
+
+		JButton btn_logout = new JButton("");
+		btn_logout.setBorderPainted(false);
+		btn_logout.setIcon(new ImageIcon("rsc\\icon\\btn_logout.png"));
+		btn_logout.setBounds(1500, 13, 123, 42);
+		contentPane.add(btn_logout);
+		btn_logout.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Frame.frame_login.setVisible(true);
+				Frame.frame_home.setVisible(false);
+				Frame.frame_popup.setVisible(false); 
+			}
+		});
+
 		JLabel lb_background = new JLabel(new ImageIcon("rsc\\Home.jpg"));
 		lb_background.setBackground(Color.WHITE);
 		lb_background.setBounds(0, 0, 1642, 800);
 		contentPane.add(lb_background);
-				
-		
+
+
 	}
 }
