@@ -24,22 +24,6 @@ public class AddPerson extends JFrame {
 	private JPanel contentPane;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AddPerson frame = new AddPerson();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the frame.
 	 */
 	public AddPerson() {
@@ -55,12 +39,13 @@ public class AddPerson extends JFrame {
 		JButton btn_close = new JButton("");
 		btn_close.setBorderPainted(false);
 		btn_close.setIcon(new ImageIcon("rsc\\icon\\btn_close.png"));
-		btn_close.setBounds(157, 10, 144, 97);
+		btn_close.setBounds(330, 120, 144, 97);
 		btn_close.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Frame.frame_addperson.setVisible(false);
 			}
 		});
+		contentPane.add(btn_close);
 
 		JLabel lb_background = new JLabel(new ImageIcon("rsc\\Addperson.png"));
 		lb_background.setBackground(Color.WHITE);

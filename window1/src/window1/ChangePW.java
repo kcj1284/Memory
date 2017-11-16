@@ -91,10 +91,10 @@ public class ChangePW extends JFrame {
 	 * 찾기를 시도한 계정의 비밀번호를 변경
 	 * @param pw 변경할 비밀번호
 	 */
-/*	private void changePW(String pw){
+	private void changePW(String pw){
 		String id = DB.userInfo_vector.get(DB.userIndex).id;
 		DB.inputQuery("update user set pw = password('" + pw + "') where id = '" + id + "'");
 		DB.getDBInfo();
 	}
-	*/
+	
 }

@@ -40,13 +40,13 @@ public class Login extends JFrame {
 	 * @author ±èÂùÁß
 	 * Launch the application.
 	 */
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					Frame.frame_login
 					.setVisible(true);
-					//					DB.connectDB();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -54,7 +54,6 @@ public class Login extends JFrame {
 		});
 	}
 	/**
-	 * @author ±èÂùÁß
 	 * Create the frame.
 	 */ 
 	public Login() {
@@ -73,7 +72,7 @@ public class Login extends JFrame {
 
 
 		tf_id = new JTextField();
-		tf_id.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 12));
+		tf_id.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 25));
 		tf_id.setBounds(170, 442, 250, 45);
 		contentPane.add(tf_id);
 		tf_id.setColumns(10);
@@ -95,8 +94,9 @@ public class Login extends JFrame {
 			}
 		});
 		contentPane.add(btn_join);
+		
 		tf_pw = new JPasswordField();
-		tf_pw.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 12));
+		tf_pw.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 25));
 		tf_pw.setBounds(170, 494, 250, 45);
 		contentPane.add(tf_pw);
 		
