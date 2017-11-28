@@ -8,14 +8,16 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
 /**
- * @author 김찬중
- * Home에서 인물을 추가하는 Class
+ * @author 김찬중 Home에서 인물을 추가하는 Class
  */
 public class AddPerson extends JFrame {
 
@@ -25,14 +27,14 @@ public class AddPerson extends JFrame {
 	private JTextField tf_mail;
 	private JTextField tf_major;
 	private JTextField tf_stid;
-	private JTextField tf_date;
 	private JTextField tf_group;
 	private JTextField tf_sns;
 	private JTextField tf_hash;
+	JComboBox<String> cb_day,cb_month;
+
+	private String name, num, mail, major, stid, group, sns, hash;
+	private int day,month;
 	
-	/**
-	 * Create the frame.
-	 */
 	public AddPerson() {
 
 		setResizable(false);
@@ -49,7 +51,7 @@ public class AddPerson extends JFrame {
 		tf_name.setColumns(10);
 		tf_name.setBounds(185, 70, 170, 40);
 		contentPane.add(tf_name);
-		
+
 		tf_num = new JTextField();
 		tf_num.setBackground(Color.LIGHT_GRAY);
 		tf_num.setFont(new Font("맑은 고딕", Font.PLAIN, 25));
@@ -57,7 +59,7 @@ public class AddPerson extends JFrame {
 		tf_num.setColumns(15);
 		tf_num.setBounds(170, 180, 200, 40);
 		contentPane.add(tf_num);
-		
+
 		tf_mail = new JTextField();
 		tf_mail.setBackground(Color.LIGHT_GRAY);
 		tf_mail.setFont(new Font("맑은 고딕", Font.PLAIN, 25));
@@ -65,7 +67,7 @@ public class AddPerson extends JFrame {
 		tf_mail.setColumns(10);
 		tf_mail.setBounds(170, 240, 200, 40);
 		contentPane.add(tf_mail);
-		
+
 		tf_major = new JTextField();
 		tf_major.setBackground(Color.LIGHT_GRAY);
 		tf_major.setFont(new Font("맑은 고딕", Font.PLAIN, 25));
@@ -73,7 +75,7 @@ public class AddPerson extends JFrame {
 		tf_major.setColumns(10);
 		tf_major.setBounds(170, 300, 200, 40);
 		contentPane.add(tf_major);
-		
+
 		tf_stid = new JTextField();
 		tf_stid.setBackground(Color.LIGHT_GRAY);
 		tf_stid.setFont(new Font("맑은 고딕", Font.PLAIN, 25));
@@ -82,14 +84,6 @@ public class AddPerson extends JFrame {
 		tf_stid.setBounds(170, 360, 200, 40);
 		contentPane.add(tf_stid);
 
-		tf_date = new JTextField();
-		tf_date.setBackground(Color.LIGHT_GRAY);
-		tf_date.setFont(new Font("맑은 고딕", Font.PLAIN, 25));
-		tf_date.setForeground(Color.WHITE);
-		tf_date.setColumns(10);
-		tf_date.setBounds(170, 420, 200, 40);
-		contentPane.add(tf_date);
-		
 		tf_group = new JTextField();
 		tf_group.setBackground(Color.LIGHT_GRAY);
 		tf_group.setFont(new Font("맑은 고딕", Font.PLAIN, 25));
@@ -114,6 +108,20 @@ public class AddPerson extends JFrame {
 		tf_hash.setBounds(170, 600, 200, 40);
 		contentPane.add(tf_hash);
 		
+		cb_month = new JComboBox<String>();
+		cb_month.setFont(new Font("맑은 고딕", Font.PLAIN, 25));
+		cb_month.setForeground(Color.WHITE);
+		cb_month.addItem("1");
+		cb_month.setBounds(170, 420, 95, 40);
+		contentPane.add(cb_month);
+		
+		cb_day = new JComboBox<String>();
+		cb_day.setFont(new Font("맑은 고딕", Font.PLAIN, 25));
+		cb_day.setForeground(Color.WHITE);
+		cb_day.addItem("1");
+		cb_day.setBounds(275, 420, 95, 40);
+		contentPane.add(cb_day);
+
 		JButton btn_save = new JButton("");
 		btn_save.setBorderPainted(false);
 		btn_save.setIcon(new ImageIcon("rsc\\icon\\btn_save.png"));
@@ -125,7 +133,7 @@ public class AddPerson extends JFrame {
 		});
 		contentPane.setLayout(null);
 		contentPane.add(btn_save);
-		
+
 		JButton btn_close = new JButton("");
 		btn_close.setBorderPainted(false);
 		btn_close.setIcon(new ImageIcon("rsc\\icon\\btn_close.png"));
@@ -145,5 +153,82 @@ public class AddPerson extends JFrame {
 		setContentPane(contentPane);
 
 	}
+
+	public void AddPerson() {
+		DB db = new DB();
+
+		name = tf_name.getText();
+		num = tf_num.getText();
+		mail = tf_mail.getText();
+		major = tf_major.getText();
+		stid = tf_stid.getText();
+		group = tf_group.getText();
+		sns = tf_sns.getText();
+		hash = tf_hash.getText();
+		month = cb_month.getSelectedIndex();
+		day = cb_day.getSelectedIndex();
+		
+		///////////// name ///////////////
+		if (name.length() < 4 || name.length() > 12) { // 아이디의 길이가 짧거나 길면
+			JOptionPane.showMessageDialog(Frame.frame_addperson, "이름은 2~6자의 한글만 사용 가능합니다.", "오류",
+					JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		///////////// num ///////////////
+		if (num.length() != 11) { // 번호의 길이가 11이 아니면
+			JOptionPane.showMessageDialog(Frame.frame_addperson, "번호는 숫자만 사용 가능합니다.", "오류", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		for (char c : num.toCharArray()) {
+			if (!Character.isDigit(c)) { // 숫자가 아니면
+				JOptionPane.showMessageDialog(Frame.frame_addperson, "번호는 숫자만 사용 가능합니다.", "오류",
+						JOptionPane.ERROR_MESSAGE);
+				return;
+			}
+		}
+		///////////// email ///////////////
+		int AtNum = 0, DotNum = 0; // @이랑 .의 개수
+
+		for (char c : mail.toCharArray()) {
+			if (c == '@')
+				AtNum++;
+			if (c == '.')
+				DotNum++;
+		}
+		if (AtNum != 1 || DotNum != 1) {
+			JOptionPane.showMessageDialog(Frame.frame_addperson, "올바른 형식의 이메일이 아닙니다.", "오류", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		///////////// stid ///////////////
+		if (stid.length() != 6) { // 학번의 길이가 6이 아니면
+			JOptionPane.showMessageDialog(Frame.frame_addperson, "학번은 6자리 숫자만 사용 가능합니다.", "오류", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		for (char c : stid.toCharArray()) {
+			if (!Character.isDigit(c)) { // 숫자가 아니면
+				JOptionPane.showMessageDialog(Frame.frame_addperson, "학번은 숫자만 사용 가능합니다.", "오류",
+						JOptionPane.ERROR_MESSAGE);
+				return;
+			}
+		}
+		/* DB연결해 주세요.
+		db.insertMember(name, num, mail, major, stid, month, day, group, sns, hash);
+		db.getMember();
+		JOptionPane.showMessageDialog(Frame.frame_addperson, "민울이 정상적으로 추가 되었습니다.", "인물추가 완료", JOptionPane.INFORMATION_MESSAGE);
+		Frame.frame_join.setVisible(false);
+		*/
+	}
+	void reset(){
+		tf_name.setText("");
+		tf_num.setText("");
+		tf_mail.setText("");
+		tf_major.setText("");
+		tf_stid.setText("");
+		tf_group.setText("");
+		tf_sns.setText("");
+		tf_hash.setText("");
+		cb_month.setSelectedIndex(0);
+		cb_day.setSelectedIndex(0);
+		}
 
 }
