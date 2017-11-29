@@ -30,9 +30,9 @@ public class Login extends JFrame {
 	DB db = new DB();
 	int index = -1;
 
+	private JPanel contentPane;
 	private String id;
 	private String pw;
-	private JPanel contentPane;
 	private JTextField tf_id;
 	private JPasswordField tf_pw;
 
@@ -69,8 +69,7 @@ public class Login extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-
-
+		
 		tf_id = new JTextField();
 		tf_id.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 25));
 		tf_id.setBounds(170, 442, 250, 45);
@@ -94,6 +93,17 @@ public class Login extends JFrame {
 			}
 		});
 		contentPane.add(btn_join);
+		
+		JButton btn_find = new JButton("");
+		btn_find.setBorderPainted(false);
+		btn_find.setIcon(new ImageIcon("rsc\\icon\\btn_join.png"));
+		btn_find.setBounds(170, 551, 150, 51);
+		btn_find.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Frame.frame_findIDPW.setVisible(true);
+			}
+		});
+		contentPane.add(btn_find);
 		
 		tf_pw = new JPasswordField();
 		tf_pw.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 25));
@@ -120,6 +130,7 @@ public class Login extends JFrame {
 		btn_login.addActionListener(listener);
 		tf_id.addActionListener(listener);
 		tf_pw.addActionListener(listener);
+		
 
 		JLabel lb_background = new JLabel(new ImageIcon("rsc\\Login.jpg"));
 		lb_background.setBackground(Color.WHITE);

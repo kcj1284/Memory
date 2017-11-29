@@ -158,6 +158,7 @@ public class AddPerson extends JFrame {
 	}
 
 	public void AddPerson() {
+		
 		DB db = new DB();
 
 		name = tf_name.getText();
@@ -214,8 +215,9 @@ public class AddPerson extends JFrame {
 				return;
 			}
 		}
+		
 		/* DB연결해 주세요.
-		db.insertMember(name, num, mail, major, stid, month, day, group, sns, hash);
+		db.insert(name, num, mail, major, stid, month, day, group, sns, hash);
 		db.getMember();
 		JOptionPane.showMessageDialog(Frame.frame_addperson, "민울이 정상적으로 추가 되었습니다.", "인물추가 완료", JOptionPane.INFORMATION_MESSAGE);
 		Frame.frame_join.setVisible(false);
