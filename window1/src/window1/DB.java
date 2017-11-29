@@ -150,8 +150,7 @@ public class DB {
 		}
 		return isSuccess;
 	}
-
-	public boolean deleteaddress
+	
 	
 	protected void closeDB() {
 		try {
