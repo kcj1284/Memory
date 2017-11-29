@@ -172,14 +172,14 @@ public class DB {
 		return -1; // 존재하지 않을 경우 -1 반환
 	}
 	
-	public int findid(String email, String name){
+	/*public int findid(String email, String name){
 		int i;
 		for(i=0; i<Data.member_vector.size(); i++){
 			if(Data.member_vector.elementAt(i).email.equals(email) && Data.member_vector.elementAt(i).name.equals(name)){
 				return i;
 			}
 		}
-	}
+	}*/
 
 
 }
