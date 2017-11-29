@@ -18,7 +18,7 @@ public class DB {
 	Connection conn;
 	PreparedStatement stmt;
 	ResultSet rs;
-
+ 
 	public DB() {
 		connectDB();
 	}
