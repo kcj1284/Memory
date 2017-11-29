@@ -31,7 +31,6 @@ public class AddPerson extends JFrame {
 	private JTextField tf_group;
 	private JTextField tf_hash;
 	private JCheckBox cb_man;
-	private JCheckBox cb_man;
 	JComboBox<String> cb_day,cb_month;
 
 	private String name, num, mail, major, stid, group, sns, hash;
@@ -118,24 +117,12 @@ public class AddPerson extends JFrame {
 		cb_day.setBounds(275, 420, 95, 40);
 		contentPane.add(cb_day);
 
-		JButton btn_save = new JButton("");
-		btn_save.setBorderPainted(false);
-		btn_save.setIcon(new ImageIcon("rsc\\icon\\btn_save.png"));
-		btn_save.setBounds(162, 694, 110, 46);
-		btn_save.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Frame.frame_addperson.setVisible(false);
-			}
-		});
-		contentPane.setLayout(null);
-		contentPane.add(btn_save);
-		
 		cb_man = new JCheckBox("³²ÀÚ",ch_man);
 		cb_man.setFont(new Font("±¼¸²", Font.PLAIN, 20));
 		cb_man.setBounds(170, 538, 96, 45);
 		contentPane.add(cb_man);
 		
-		cb_man = new JCheckBox("¿©ÀÚ",ch_man);
+		cb_man = new JCheckBox("¿©ÀÚ",!ch_man);
 		cb_man.setFont(new Font("±¼¸²", Font.PLAIN, 20));
 		cb_man.setBounds(272, 538, 96, 45);
 		contentPane.add(cb_man);
@@ -152,6 +139,19 @@ public class AddPerson extends JFrame {
 		contentPane.setLayout(null);
 		contentPane.add(btn_close);
 
+		JButton btn_save = new JButton("");
+		btn_save.setBorderPainted(false);
+		btn_save.setIcon(new ImageIcon("rsc\\icon\\btn_save.png"));
+		btn_save.setBounds(162, 694, 110, 46);
+		btn_save.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Frame.frame_addperson.setVisible(false);
+			}
+		});
+		
+		contentPane.setLayout(null);
+		contentPane.add(btn_save);
+		
 		JLabel lb_background = new JLabel(new ImageIcon("rsc\\Addperson.png"));
 		lb_background.setBackground(Color.WHITE);
 		lb_background.setBounds(5, 5, 382, 730);
