@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -30,6 +31,7 @@ public class AddPerson extends JFrame {
 	private JTextField tf_group;
 	private JTextField tf_sns;
 	private JTextField tf_hash;
+	private JCheckBox[] ch_sex = new JCheckBox[2];
 	JComboBox<String> cb_day,cb_month;
 
 	private String name, num, mail, major, stid, group, sns, hash;
@@ -44,6 +46,10 @@ public class AddPerson extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setBounds(310, 115, 398, 775);
 
+		String[] ch_sex = {"³²ÀÚ","¿©ÀÚ"};
+		//ch_sex.setBounds(50,50,10,10);
+		
+		
 		tf_name = new JTextField();
 		tf_name.setBackground(Color.LIGHT_GRAY);
 		tf_name.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 25));
