@@ -60,6 +60,7 @@ public class ChangePW extends JFrame {
 				Frame.frame_changePW.setVisible(false);
 			}
 		});
+		
 		btn_change.setIcon(new ImageIcon("rsc\\icon\\btn_change.PNG"));
 		btn_change.setBounds(123, 203, 165, 33);
 		btn_change.setBorderPainted(false);
@@ -91,8 +92,9 @@ public class ChangePW extends JFrame {
 	 * 찾기를 시도한 계정의 비밀번호를 변경
 	 * @param pw 변경할 비밀번호
 	 */
+	
 	private void changePW(String pw){
-		String id = DB.userInfo_vector.get(DB.userIndex).id;
+		String id = DB.member_vector.get(DB.userIndex).id;
 		DB.inputQuery("update user set pw = password('" + pw + "') where id = '" + id + "'");
 		DB.getDBInfo();
 	}

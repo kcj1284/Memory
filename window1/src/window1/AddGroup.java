@@ -2,6 +2,7 @@ package window1;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,16 +11,20 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JTextField;
 
 /**
- * @author 김찬중
- * Home에서 그룹을 추가하는 Class
+ * @author 김찬중 Home에서 그룹을 추가하는 Class
  */
 public class AddGroup extends JFrame {
 
 	private JPanel contentPane;
+	private JTextField tf_groupadd;
+
+	private String groupadd;
 
 	/**
 	 * Create the frame.
@@ -30,7 +35,16 @@ public class AddGroup extends JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage("rsc\\logo_icon.png"));
 		setTitle("AddGroup");
 		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setBounds(100, 100, 500, 368);
+
+		tf_groupadd = new JTextField();
+		tf_groupadd.setBackground(Color.LIGHT_GRAY);
+		tf_groupadd.setFont(new Font("맑은 고딕", Font.PLAIN, 25));
+		tf_groupadd.setForeground(Color.WHITE);
+		tf_groupadd.setColumns(10);
+		tf_groupadd.setBounds(119, 173, 170, 35);
+		contentPane.add(tf_groupadd);
 
 		JButton btn_Add = new JButton("");
 		btn_Add.setBorderPainted(false);
@@ -50,6 +64,26 @@ public class AddGroup extends JFrame {
 		contentPane.add(lb_background);
 		setContentPane(contentPane);
 
+	}
+
+	public void AddPerson() {
+
+		DB db = new DB();
+
+		groupadd = tf_groupadd.getText();
+
+	}
+
+	/*
+	 * DB연결해 주세요. db.insertadress(name, num, mail, major, stid, month, day, group,
+	 * sns, hash); db.getMember();
+	 * JOptionPane.showMessageDialog(Frame.frame_addperson, "민울이 정상적으로 추가 되었습니다.",
+	 * "인물추가 완료", JOptionPane.INFORMATION_MESSAGE);
+	 * Frame.frame_join.setVisible(false);
+	 */
+
+	void reset() {
+		tf_groupadd.setText("");
 	}
 
 }
