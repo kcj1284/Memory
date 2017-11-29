@@ -18,7 +18,7 @@ public class DB {
 	Connection conn;
 	PreparedStatement stmt;
 	ResultSet rs;
-
+ 
 	public DB() {
 		connectDB();
 	}
@@ -84,6 +84,40 @@ public class DB {
 		}
 		return isSuccess;
 	}
+	
+	public boolean searchaddress(String inputText){
+		boolean isSuccess = false;
+		try {
+			AddressInfo m;
+			Data.address_vector.removeAllElements();
+			stmt = conn.prepareStatement("select * from address"); // 쿼리문 전송
+			rs = stmt.executeQuery();
+
+			while (rs.next()) { // result set이 더 있을 경우
+				m = new AddressInfo();
+				m.name = rs.getString("name");
+				m.phone = rs.getString("phone");
+				m.email = rs.getString("email");
+				m.major = rs.getString("major");
+				m.code = Integer.parseInt(rs.getString("code"));
+				m.birthday = rs.getString("birthday");
+				m.groupname = rs.getString("groupname");
+				m.snsAddress = rs.getString("snsAddress");
+				m.hash = rs.getString("hash");
+				m.gender = rs.getString("gender");
+				
+
+				System.out.println(rs.getString("name") + "\t" + rs.getString("phone") + "\t" + rs.getString("email") + "\t"
+						+ rs.getString("major") + "\t" + rs.getInt("code") + rs.getString("birthday") + "\t" + rs.getString("groupname") + "\t"
+						+rs.getString("snsAddress") + "\t" + rs.getString("hash") + "\t" +rs.getString("gender") );
+				Data.address_vector.addElement(m); // 벡터에 유저 정보 추가
+			}
+			isSuccess = true;
+		} catch (SQLException e) {
+
+		}
+		return isSuccess;
+	}
 
 	public boolean insertaddress(String name,String phone,String email,String major,int code,String birthday,String groupname,String snsAddress,String hash,String gender) {
 		boolean isSuccess = false;
@@ -117,6 +151,8 @@ public class DB {
 		return isSuccess;
 	}
 
+	public boolean deleteaddress
+	
 	protected void closeDB() {
 		try {
 			if (conn != null)
@@ -135,6 +171,15 @@ public class DB {
 		}
 		System.out.println(Data.member_vector.size());
 		return -1; // 존재하지 않을 경우 -1 반환
+	}
+	
+	public int findid(String email, String name){
+		int i;
+		for(i=0; i<Data.member_vector.size(); i++){
+			if(Data.member_vector.elementAt(i).email.equals(email) && Data.member_vector.elementAt(i).name.equals(name)){
+				return i;
+			}
+		}
 	}
 
 
