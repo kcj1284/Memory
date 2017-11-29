@@ -29,14 +29,15 @@ public class AddPerson extends JFrame {
 	private JTextField tf_major;
 	private JTextField tf_stid;
 	private JTextField tf_group;
-	private JTextField tf_sns;
 	private JTextField tf_hash;
-	private JCheckBox[] ch_sex = new JCheckBox[2];
-	String[] sex = {"³²ÀÚ","¿©ÀÚ"};
+	private JCheckBox cb_man;
+	private JCheckBox cb_man;
 	JComboBox<String> cb_day,cb_month;
 
 	private String name, num, mail, major, stid, group, sns, hash;
 	private int day,month;
+	
+	boolean ch_man = true;
 	
 	public AddPerson() {
 
@@ -95,14 +96,6 @@ public class AddPerson extends JFrame {
 		tf_group.setBounds(170, 480, 200, 40);
 		contentPane.add(tf_group);
 
-		tf_sns = new JTextField();
-		tf_sns.setBackground(Color.LIGHT_GRAY);
-		tf_sns.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 25));
-		tf_sns.setForeground(Color.WHITE);
-		tf_sns.setColumns(10);
-		tf_sns.setBounds(170, 540, 200, 40);
-		contentPane.add(tf_sns);
-
 		tf_hash = new JTextField();
 		tf_hash.setBackground(Color.LIGHT_GRAY);
 		tf_hash.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 25));
@@ -136,7 +129,17 @@ public class AddPerson extends JFrame {
 		});
 		contentPane.setLayout(null);
 		contentPane.add(btn_save);
-
+		
+		cb_man = new JCheckBox("³²ÀÚ",ch_man);
+		cb_man.setFont(new Font("±¼¸²", Font.PLAIN, 20));
+		cb_man.setBounds(170, 538, 96, 45);
+		contentPane.add(cb_man);
+		
+		cb_man = new JCheckBox("¿©ÀÚ",ch_man);
+		cb_man.setFont(new Font("±¼¸²", Font.PLAIN, 20));
+		cb_man.setBounds(272, 538, 96, 45);
+		contentPane.add(cb_man);
+		
 		JButton btn_close = new JButton("");
 		btn_close.setBorderPainted(false);
 		btn_close.setIcon(new ImageIcon("rsc\\icon\\btn_close.png"));
@@ -167,10 +170,10 @@ public class AddPerson extends JFrame {
 		major = tf_major.getText();
 		stid = tf_stid.getText();
 		group = tf_group.getText();
-		sns = tf_sns.getText();
 		hash = tf_hash.getText();
 		month = cb_month.getSelectedIndex();
 		day = cb_day.getSelectedIndex();
+		
 		
 		///////////// name ///////////////
 		if (name.length() < 4 || name.length() > 12) { // ¾ÆÀÌµðÀÇ ±æÀÌ°¡ Âª°Å³ª ±æ¸é
@@ -230,10 +233,9 @@ public class AddPerson extends JFrame {
 		tf_major.setText("");
 		tf_stid.setText("");
 		tf_group.setText("");
-		tf_sns.setText("");
 		tf_hash.setText("");
 		cb_month.setSelectedIndex(0);
 		cb_day.setSelectedIndex(0);
+		
 		}
-
 }

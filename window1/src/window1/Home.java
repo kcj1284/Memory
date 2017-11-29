@@ -56,7 +56,6 @@ public class Home extends JFrame {
 		cb_type.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
 		cb_type.setForeground(Color.WHITE);
 
-
 		JButton btn_AddPerson = new JButton("");
 		btn_AddPerson.setBorderPainted(false);
 		btn_AddPerson.setIcon(new ImageIcon("rsc\\icon\\btn_AddPerson.png"));
