@@ -27,7 +27,7 @@ public class DB {
 		try {
 			String url = "jdbc:sqlite:resource/memory.db";
 			conn = DriverManager.getConnection(url);
-	
+
 		} catch (SQLException e) {
 			System.err.println("Error : DB Connect - Driver Manager");
 		}
@@ -65,35 +65,58 @@ public class DB {
 
 	protected boolean insertMember(String id, String passwd, String email, String name, int question, String answer) {
 		boolean isSuccess = false;
+		String sql = "insert into member(id, pw, email, name, pwQuestion, pwAnswer) values(?, ?, ?, ?, ?, ?)";
 		try {
 			/*String sql = "insert into member values(\'" + id + "\', \'" + passwd + "\', \'" + email + "\', \'" + name
 					+ "\', " + question + ", \'" + answer + "\');";*/
-			String sql = "insert into member(id, pw, email, name, pwQuestion, pwAnswer) values('root22', 'root', 'root@naver.com', 'root', 1, 'answer')";
-			isSuccess = stmt.execute(sql);
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, id);
+			stmt.setString(2, passwd);
+			stmt.setString(3, email);
+			stmt.setString(4, name);
+			stmt.setInt(5, question );
+			stmt.setString(6, answer);
+			stmt.executeUpdate();
+			isSuccess = true;
+			/*isSuccess = stmt.execute(sql);*/
 		} catch (SQLException e) {
 			System.err.println("Error : Insert Member");
 		}
 		return isSuccess;
 	}
 
-	 public boolean insertaddress(String name,String phone,String email,String major,int code,String birthday,String groupname,String snsAddress,String hash,String gender) {
-		   boolean isSuccess = false;
-		      try {
-		    	  MemberInfo m;
-					Data.member_vector.removeAllElements();
+	public boolean insertaddress(String name,String phone,String email,String major,int code,String birthday,String groupname,String snsAddress,String hash,String gender) {
+		boolean isSuccess = false;
+		String sql = "insert into address(name,phone,email,major,code,birthday,groupname,snsAddress,hash,gender) values(?,?,?,?,?,?,?,?,?,?)";
+		try {
 
-					stmt = conn.prepareStatement("insert into address(name) values('kangmin')"); 
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, name);
+			stmt.setString(2, phone);
+			stmt.setString(3, email);
+			stmt.setString(4, major);
+			stmt.setInt(5, code);
+			stmt.setString(6, birthday);
+			stmt.setString(7, groupname);
+			stmt.setString(8, snsAddress);
+			stmt.setString(9, hash);
+			stmt.setString(10, gender);
+			stmt.executeUpdate(sql);
+			isSuccess = true;
+			/*	  MemberInfo m;
+					Data.member_vector.removeAllElements();*/
+
+					/*stmt = conn.prepareStatement("insert into address(name) values('kangmin')"); 
 		         String sql = "insert into address values(\'" + "kangmin" + "\', \'" + phone + "\', \'" + email + "\', \'" + major + "\', "
-		               + code + ", \'" + birthday + "\', \'" + groupname + "\', \'" + snsAddress + "\', \'" + hash + "\', \'" + gender + "\');";
+		               + code + ", \'" + birthday + "\', \'" + groupname + "\', \'" + snsAddress + "\', \'" + hash + "\', \'" + gender + "\');";*/
 
-		         isSuccess = stmt.execute(sql);
-		      } catch (SQLException e) {
-		         System.err.println("Error : Insert Member");
-		      }
-		      System.out.println("success");
-		      return isSuccess;
-		   }
-	
+
+		} catch (SQLException e) {
+			System.err.println("Error : Insert Member");
+		}
+		return isSuccess;
+	}
+
 	protected void closeDB() {
 		try {
 			if (conn != null)
@@ -104,15 +127,15 @@ public class DB {
 	}
 
 	public int isPWCorrect(String id, String pw){
-	   int i;
-	   for(i=0; i<Data.member_vector.size(); i++){
-		   if(Data.member_vector.elementAt(i).id.equals(id) && Data.member_vector.elementAt(i).pw.equals(pw)){
-			   return i; // 아이디 비번이 일치하면 로그인한 유저 인덱스 반환
-		   }
-	   }
-	   System.out.println(Data.member_vector.size());
-	   return -1; // 존재하지 않을 경우 -1 반환
-   }
+		int i;
+		for(i=0; i<Data.member_vector.size(); i++){
+			if(Data.member_vector.elementAt(i).id.equals(id) && Data.member_vector.elementAt(i).pw.equals(pw)){
+				return i; // 아이디 비번이 일치하면 로그인한 유저 인덱스 반환
+			}
+		}
+		System.out.println(Data.member_vector.size());
+		return -1; // 존재하지 않을 경우 -1 반환
+	}
 
-	
+
 }
