@@ -32,6 +32,7 @@ public class AddPerson extends JFrame {
 	private JTextField tf_sns;
 	private JTextField tf_hash;
 	private JCheckBox[] ch_sex = new JCheckBox[2];
+	String[] sex = {"害切","食切"};
 	JComboBox<String> cb_day,cb_month;
 
 	private String name, num, mail, major, stid, group, sns, hash;
@@ -45,10 +46,6 @@ public class AddPerson extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setBounds(310, 115, 398, 775);
-
-		String[] ch_sex = {"害切","食切"};
-		//ch_sex.setBounds(50,50,10,10);
-		
 		
 		tf_name = new JTextField();
 		tf_name.setBackground(Color.LIGHT_GRAY);
