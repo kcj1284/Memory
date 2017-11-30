@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JRadioButton;
 
 /**
  * @author 김찬중 Home에서 인물을 추가하는 Class
@@ -30,13 +31,11 @@ public class AddPerson extends JFrame {
 	private JTextField tf_stid;
 	private JTextField tf_group;
 	private JTextField tf_hash;
-	private JCheckBox cb_man;
 	JComboBox<String> cb_day,cb_month;
 
 	private String name, num, mail, major, stid, group, sns, hash;
 	private int day,month;
-	
-	boolean ch_man = true;
+	private JRadioButton rd_sex;
 	
 	public AddPerson() {
 
@@ -116,16 +115,6 @@ public class AddPerson extends JFrame {
 		cb_day.addItem("1");
 		cb_day.setBounds(275, 420, 95, 40);
 		contentPane.add(cb_day);
-
-		cb_man = new JCheckBox("남자",ch_man);
-		cb_man.setFont(new Font("굴림", Font.PLAIN, 20));
-		cb_man.setBounds(170, 538, 96, 45);
-		contentPane.add(cb_man);
-		
-		cb_man = new JCheckBox("여자",!ch_man);
-		cb_man.setFont(new Font("굴림", Font.PLAIN, 20));
-		cb_man.setBounds(272, 538, 96, 45);
-		contentPane.add(cb_man);
 		
 		JButton btn_close = new JButton("");
 		btn_close.setBorderPainted(false);
@@ -138,7 +127,22 @@ public class AddPerson extends JFrame {
 		});
 		contentPane.setLayout(null);
 		contentPane.add(btn_close);
+		
+		rd_sex = new JRadioButton();
+		rd_sex.setBounds(170, 539, 200, 40);
+		contentPane.add(rd_sex);
 
+		 
+	/*	      buttonPanel = new JPanel();
+		      group = new ButtonGroup();
+
+		      addRadioButton("남자", 8);
+		      addRadioButton("여자", 12);
+		      
+		      contentPane.add(buttonPanel, BorderLayout.SOUTH);
+		   }
+
+		*/
 		JButton btn_save = new JButton("");
 		btn_save.setBorderPainted(false);
 		btn_save.setIcon(new ImageIcon("rsc\\icon\\btn_save.png"));
@@ -173,7 +177,6 @@ public class AddPerson extends JFrame {
 		hash = tf_hash.getText();
 		month = cb_month.getSelectedIndex();
 		day = cb_day.getSelectedIndex();
-		
 		
 		///////////// name ///////////////
 		if (name.length() < 4 || name.length() > 12) { // 아이디의 길이가 짧거나 길면

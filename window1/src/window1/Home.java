@@ -20,6 +20,9 @@ import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextField;
+import javax.swing.JTable;
+import javax.swing.JTextArea;
+import javax.swing.JScrollPane;
 /**
  * @author 김찬중
  * 프로그램의 메인화면
@@ -28,6 +31,7 @@ public class Home extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField tf_search;
+	private JTable table;
 
 	/**
 	 * Create the frame.
@@ -100,6 +104,14 @@ public class Home extends JFrame {
 				Frame.frame_popup.setVisible(false); 
 			}
 		});
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(307, 133, 1197, 640);
+		contentPane.add(scrollPane);
+		
+		table = new JTable();
+		table.setForeground(Color.WHITE);
+		scrollPane.setViewportView(table);
 
 		JLabel lb_background = new JLabel(new ImageIcon("rsc\\Home.jpg"));
 		lb_background.setBackground(Color.WHITE);
