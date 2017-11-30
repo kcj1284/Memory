@@ -4,10 +4,11 @@ public class AddressInfo {
 
 	String name,phone,email,major,birthday,groupname,snsAddress,hash,gender;
 	int code;
+	int rowid;
 
 	public AddressInfo(){};
 
-	public AddressInfo(String name,String phone,String email,String major,int code,String birthday,String groupname,String snsAddress,String hash,String gender){
+	public AddressInfo(String name,String phone,String email,String major,int code,String birthday,String groupname,String snsAddress,String hash,String gender,int rowid){
 		this.name = name;
 		this.phone = phone;
 		this.email = email;
@@ -18,6 +19,7 @@ public class AddressInfo {
 		this.snsAddress = snsAddress;
 		this.hash = hash;
 		this.gender = gender;
+		this.rowid = rowid;
 	}
 
 }

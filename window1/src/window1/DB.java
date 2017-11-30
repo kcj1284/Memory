@@ -1,6 +1,7 @@
 package window1;
 
 import java.sql.*;
+import java.util.Vector;
 
 /**
  * mysql로 회원 정보를 전송하는 Class
@@ -85,12 +86,12 @@ public class DB {
 		return isSuccess;
 	}
 	
-	public boolean searchaddress(String inputText){
+	public boolean searchaddress(){
 		boolean isSuccess = false;
 		try {
 			AddressInfo m;
 			Data.address_vector.removeAllElements();
-			stmt = conn.prepareStatement("select * from address"); // 쿼리문 전송
+			stmt = conn.prepareStatement("select rowid,* from address"); // 쿼리문 전송
 			rs = stmt.executeQuery();
 
 			while (rs.next()) { // result set이 더 있을 경우
@@ -105,6 +106,8 @@ public class DB {
 				m.snsAddress = rs.getString("snsAddress");
 				m.hash = rs.getString("hash");
 				m.gender = rs.getString("gender");
+				m.rowid = rs.getInt("rowid");
+			
 				
 
 				System.out.println(rs.getString("name") + "\t" + rs.getString("phone") + "\t" + rs.getString("email") + "\t"
@@ -114,11 +117,214 @@ public class DB {
 			}
 			isSuccess = true;
 		} catch (SQLException e) {
-
+				System.err.println("Error : Can't serch\n");
+				System.out.println(e.getMessage());
+				isSuccess = false;
 		}
 		return isSuccess;
 	}
 
+	public boolean searchname(String name){
+		boolean isSuccess = false;
+		try {
+			AddressInfo m;
+			Data.address_vector.removeAllElements();
+			stmt = conn.prepareStatement("select rowid,* from address WHERE name like ?"); // 쿼리문 전송
+			stmt.setString(1, '%'+name+'%');
+			
+			rs = stmt.executeQuery();
+
+			while (rs.next()) { // result set이 더 있을 경우
+				m = new AddressInfo();
+				m.name = rs.getString("name");
+				m.phone = rs.getString("phone");
+				m.email = rs.getString("email");
+				m.major = rs.getString("major");
+				m.code = Integer.parseInt(rs.getString("code"));
+				m.birthday = rs.getString("birthday");
+				m.groupname = rs.getString("groupname");
+				m.snsAddress = rs.getString("snsAddress");
+				m.hash = rs.getString("hash");
+				m.gender = rs.getString("gender");
+				m.rowid = rs.getInt("rowid");
+			
+				
+
+				System.out.println(rs.getString("name") + "\t" + rs.getString("phone") + "\t" + rs.getString("email") + "\t"
+						+ rs.getString("major") + "\t" + rs.getInt("code") + rs.getString("birthday") + "\t" + rs.getString("groupname") + "\t"
+						+rs.getString("snsAddress") + "\t" + rs.getString("hash") + "\t" +rs.getString("gender") );
+				Data.address_vector.addElement(m); // 벡터에 유저 정보 추가
+			}
+			isSuccess = true;
+		} catch (SQLException e) {
+			System.err.println("Error : Can't name\n");
+			System.out.println(e.getMessage());
+			isSuccess = false;
+		}
+		return isSuccess;
+	}
+	
+	public boolean searchcode(int code){
+		boolean isSuccess = false;
+		try {
+			AddressInfo m;
+			Data.address_vector.removeAllElements();
+			stmt = conn.prepareStatement("select rowid,* from address WHERE code like ?"); // 쿼리문 전송
+			stmt.setInt(1, '%'+code+'%');
+			
+			rs = stmt.executeQuery();
+
+			while (rs.next()) { // result set이 더 있을 경우
+				m = new AddressInfo();
+				m.name = rs.getString("name");
+				m.phone = rs.getString("phone");
+				m.email = rs.getString("email");
+				m.major = rs.getString("major");
+				m.code = Integer.parseInt(rs.getString("code"));
+				m.birthday = rs.getString("birthday");
+				m.groupname = rs.getString("groupname");
+				m.snsAddress = rs.getString("snsAddress");
+				m.hash = rs.getString("hash");
+				m.gender = rs.getString("gender");
+				m.rowid = rs.getInt("rowid");
+			
+				
+
+				System.out.println(rs.getString("name") + "\t" + rs.getString("phone") + "\t" + rs.getString("email") + "\t"
+						+ rs.getString("major") + "\t" + rs.getInt("code") + rs.getString("birthday") + "\t" + rs.getString("groupname") + "\t"
+						+rs.getString("snsAddress") + "\t" + rs.getString("hash") + "\t" +rs.getString("gender") );
+				Data.address_vector.addElement(m); // 벡터에 유저 정보 추가
+			}
+			isSuccess = true;
+		} catch (SQLException e) {
+			System.err.println("Error : Can't code\n");
+			System.out.println(e.getMessage());
+			isSuccess = false;
+		}
+		return isSuccess;
+	}
+	
+	public boolean searchmajor(String major){
+		boolean isSuccess = false;
+		try {
+			AddressInfo m;
+			Data.address_vector.removeAllElements();
+			stmt = conn.prepareStatement("select rowid,* from address WHERE major like ?"); // 쿼리문 전송
+			stmt.setString(1, '%'+major+'%');
+			
+			rs = stmt.executeQuery();
+
+			while (rs.next()) { // result set이 더 있을 경우
+				m = new AddressInfo();
+				m.name = rs.getString("name");
+				m.phone = rs.getString("phone");
+				m.email = rs.getString("email");
+				m.major = rs.getString("major");
+				m.code = Integer.parseInt(rs.getString("code"));
+				m.birthday = rs.getString("birthday");
+				m.groupname = rs.getString("groupname");
+				m.snsAddress = rs.getString("snsAddress");
+				m.hash = rs.getString("hash");
+				m.gender = rs.getString("gender");
+				m.rowid = rs.getInt("rowid");
+			
+				
+
+				System.out.println(rs.getString("name") + "\t" + rs.getString("phone") + "\t" + rs.getString("email") + "\t"
+						+ rs.getString("major") + "\t" + rs.getInt("code") + rs.getString("birthday") + "\t" + rs.getString("groupname") + "\t"
+						+rs.getString("snsAddress") + "\t" + rs.getString("hash") + "\t" +rs.getString("gender") );
+				Data.address_vector.addElement(m); // 벡터에 유저 정보 추가
+			}
+			isSuccess = true;
+		} catch (SQLException e) {
+			System.err.println("Error : Can't major\n");
+			System.out.println(e.getMessage());
+			isSuccess = false;
+
+		}
+		return isSuccess;
+	}
+	
+	public boolean searchphone(String phone){
+		boolean isSuccess = false;
+		try {
+			AddressInfo m;
+			Data.address_vector.removeAllElements();
+			stmt = conn.prepareStatement("select rowid,* from address WHERE phone like ?"); // 쿼리문 전송
+			stmt.setString(1, '%'+phone+'%');
+			
+			rs = stmt.executeQuery();
+
+			while (rs.next()) { // result set이 더 있을 경우
+				m = new AddressInfo();
+				m.name = rs.getString("name");
+				m.phone = rs.getString("phone");
+				m.email = rs.getString("email");
+				m.major = rs.getString("major");
+				m.code = Integer.parseInt(rs.getString("code"));
+				m.birthday = rs.getString("birthday");
+				m.groupname = rs.getString("groupname");
+				m.snsAddress = rs.getString("snsAddress");
+				m.hash = rs.getString("hash");
+				m.gender = rs.getString("gender");
+				m.rowid = rs.getInt("rowid");
+			
+				
+
+				System.out.println(rs.getString("name") + "\t" + rs.getString("phone") + "\t" + rs.getString("email") + "\t"
+						+ rs.getString("major") + "\t" + rs.getInt("code") + rs.getString("birthday") + "\t" + rs.getString("groupname") + "\t"
+						+rs.getString("snsAddress") + "\t" + rs.getString("hash") + "\t" +rs.getString("gender") );
+				Data.address_vector.addElement(m); // 벡터에 유저 정보 추가
+			}
+			isSuccess = true;
+		} catch (SQLException e) {
+			System.err.println("Error : Can't phone\n");
+			System.out.println(e.getMessage());
+			isSuccess = false;
+		}
+		return isSuccess;
+	}
+	
+	public boolean searchhash(String hash){
+		boolean isSuccess = false;
+		try {
+			AddressInfo m;
+			Data.address_vector.removeAllElements();
+			stmt = conn.prepareStatement("select rowid,* from address WHERE hash like ?"); // 쿼리문 전송
+			stmt.setString(1, '%'+hash+'%');
+			
+			rs = stmt.executeQuery();
+
+			while (rs.next()) { // result set이 더 있을 경우
+				m = new AddressInfo();
+				m.name = rs.getString("name");
+				m.phone = rs.getString("phone");
+				m.email = rs.getString("email");
+				m.major = rs.getString("major");
+				m.code = Integer.parseInt(rs.getString("code"));
+				m.birthday = rs.getString("birthday");
+				m.groupname = rs.getString("groupname");
+				m.snsAddress = rs.getString("snsAddress");
+				m.hash = rs.getString("hash");
+				m.gender = rs.getString("gender");
+				m.rowid = rs.getInt("rowid");
+			
+				
+
+				System.out.println(rs.getString("name") + "\t" + rs.getString("phone") + "\t" + rs.getString("email") + "\t"
+						+ rs.getString("major") + "\t" + rs.getInt("code") + rs.getString("birthday") + "\t" + rs.getString("groupname") + "\t"
+						+rs.getString("snsAddress") + "\t" + rs.getString("hash") + "\t" +rs.getString("gender") );
+				Data.address_vector.addElement(m); // 벡터에 유저 정보 추가
+			}
+			isSuccess = true;
+		} catch (SQLException e) {
+			System.err.println("Error : Can't hash\n");
+			System.out.println(e.getMessage());
+			isSuccess = false;
+		}
+		return isSuccess;
+	}
+	
 	public boolean insertaddress(String name,String phone,String email,String major,int code,String birthday,String groupname,String snsAddress,String hash,String gender) {
 		boolean isSuccess = false;
 		String sql = "insert into address(name,phone,email,major,code,birthday,groupname,snsAddress,hash,gender) values(?,?,?,?,?,?,?,?,?,?)";
@@ -151,6 +357,138 @@ public class DB {
 		return isSuccess;
 	}
 	
+	public boolean deleteAddress(String phone){
+		
+		boolean isSuccess = true;
+		String sql = "DELETE FROM address WHERE phone = ?";
+		try{
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, phone);
+			System.out.println(sql);
+			
+			stmt.executeUpdate();
+		} catch (SQLException e){
+			System.out.println("Error : Can't delete\n");
+			System.out.println(e.getMessage());
+			isSuccess = false;
+		}
+		return isSuccess;
+	}
+	
+	public boolean updateaddress(String name,String phone,String email,String major,int code,String birthday,String groupname,String snsAddress,String hash,String gender,int rowid){
+		boolean isSuccess = false;
+		String sql = "UPDATE address SET name=?,phone=?,email=?,major=?,code=?,birthday=?,groupname=?,snsAddress=?,hash=?,gender=?,rowid=? WHERE rowid=?";
+		try{
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, name);
+			stmt.setString(2, phone);
+			stmt.setString(3, email);
+			stmt.setString(4, major);
+			stmt.setInt(5, code);
+			stmt.setString(6, birthday);
+			stmt.setString(7, groupname);
+			stmt.setString(8, snsAddress);
+			stmt.setString(9, hash);
+			stmt.setString(10, gender);
+			stmt.setInt(11, rowid);
+			stmt.executeUpdate(sql);
+			isSuccess = true;
+		}catch (SQLException e) {
+			System.err.println("Error : Update address");
+			System.out.println(e.getMessage());
+			isSuccess = false;
+		}
+		return isSuccess;
+	}
+	
+	public int accountgender(){
+		int gender=0;
+		try {
+			Statement stmt = conn.createStatement();// 쿼리문 전송
+			gender=(int)(stmt.executeUpdate("select count(*) from address WHERE gender=남")/stmt.executeUpdate("select count(*) from address")*100);
+			
+				System.out.println(gender);
+			
+		} catch (SQLException e) {
+			System.err.println("Error : Don't account gender");
+			System.out.println(e.getMessage());
+		}
+		return gender;
+	}
+	
+	
+	
+	public Vector<String> group(){
+		try {
+			stmt = conn.prepareStatement("select * from groupname"); // 쿼리문 전송
+			rs = stmt.executeQuery();
+
+			while (rs.next()) { // result set이 더 있을 경우
+				String m=rs.getString("groupname");
+				System.out.println(rs.getString("groupname"));
+				Data.groupname_vector.addElement(m); // 벡터에 유저 정보 추가
+			}	
+		} catch (SQLException e) {
+				System.err.println("Error : Can't serch\n");
+				System.out.println(e.getMessage());
+		}
+		return null;
+		
+	}
+	
+	public boolean insertgroup(String groupname) {
+		boolean isSuccess = false;
+		String sql = "insert into groupname values(?)";
+		try {
+
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, groupname);
+			stmt.executeUpdate(sql);
+			isSuccess = true;
+
+		} catch (SQLException e) {
+			System.err.println("Error : Insert Member");
+		}
+		return isSuccess;
+	}
+	
+	public boolean searchgroup(){
+		boolean isSuccess = false;
+		try {
+			AddressInfo m;
+			Data.address_vector.removeAllElements();
+			stmt = conn.prepareStatement("select rowid,* from address WHERE groupname=?"); // 쿼리문 전송
+			rs = stmt.executeQuery();
+
+			while (rs.next()) { // result set이 더 있을 경우
+				m = new AddressInfo();
+				m.name = rs.getString("name");
+				m.phone = rs.getString("phone");
+				m.email = rs.getString("email");
+				m.major = rs.getString("major");
+				m.code = Integer.parseInt(rs.getString("code"));
+				m.birthday = rs.getString("birthday");
+				m.groupname = rs.getString("groupname");
+				m.snsAddress = rs.getString("snsAddress");
+				m.hash = rs.getString("hash");
+				m.gender = rs.getString("gender");
+				m.rowid = rs.getInt("rowid");
+			
+				
+
+				System.out.println(rs.getString("name") + "\t" + rs.getString("phone") + "\t" + rs.getString("email") + "\t"
+						+ rs.getString("major") + "\t" + rs.getInt("code") + rs.getString("birthday") + "\t" + rs.getString("groupname") + "\t"
+						+rs.getString("snsAddress") + "\t" + rs.getString("hash") + "\t" +rs.getString("gender") );
+				Data.address_vector.addElement(m); // 벡터에 유저 정보 추가
+			}
+			isSuccess = true;
+		} catch (SQLException e) {
+				System.err.println("Error : Can't serch groupname\n");
+				System.out.println(e.getMessage());
+				isSuccess = false;
+		}
+		return isSuccess;
+	}
 	
 	protected void closeDB() {
 		try {
@@ -161,6 +499,7 @@ public class DB {
 		}
 	}
 
+	
 	public int isPWCorrect(String id, String pw){
 		int i;
 		for(i=0; i<Data.member_vector.size(); i++){
@@ -172,14 +511,16 @@ public class DB {
 		return -1; // 존재하지 않을 경우 -1 반환
 	}
 	
-	/*public int findid(String email, String name){
+	public String findid(String email, String name){
 		int i;
-		for(i=0; i<Data.member_vector.size(); i++){
-			if(Data.member_vector.elementAt(i).email.equals(email) && Data.member_vector.elementAt(i).name.equals(name)){
-				return i;
+		String id="kkm";
+		for(i=0; i<Data.address_vector.size(); i++){
+			if(Data.address_vector.elementAt(i).email.equals(email) && Data.address_vector.elementAt(i).name.equals(name)){
+				
 			}
 		}
-	}*/
+		return id;
+	}
 
 
 }
