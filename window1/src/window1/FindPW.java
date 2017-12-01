@@ -62,7 +62,7 @@ public class FindPW extends JFrame {
 		btn_submit.setBorderPainted(false);
 		btn_submit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				findPW2(DB.userInfo_vector.get(DB.userIndex).id);
+				findPW2(Data.member_vector.get(Data.userIndex).id);
 			}
 		});
 		btn_submit.setIcon(new ImageIcon("rsc\\icon\\btn_submit.PNG"));
@@ -75,17 +75,18 @@ public class FindPW extends JFrame {
 	 * 본인확인 질문에 대한 답이 맞는 경우 비밀번호 변경창을 띄워주는 메소드
 	 * @param id 비밀번호를 변경할 id
 	 */
+	
 	void findPW2(String id){
 		String pwAnswer = tf_pwAnswer.getText();
 		int i;
-		for(i = 0; i < DB.userInfo_vector.size(); i++){
-			if(DB.userInfo_vector.get(i).id.equals(id) && DB.isPWCorrect(id, pwAnswer, true)){
+		for(i = 0; i < Data.member_vector.size(); i++){
+			if(Data.member_vector.get(i).id.equals(id) && DB.isPWCorrect(id, pwAnswer, true)){
 				Frame.frame_changePW.setVisible(true);
 				Frame.frame_findPW.setVisible(false);
 				break;
 			}
 		}
-		if(i == DB.userInfo_vector.size()){
+		if(i == Data.member_vector.size()){
 			JOptionPane.showMessageDialog(Frame.frame_join, "비밀번호 확인 답이 일치하지 않습니다.", "오류", JOptionPane.ERROR_MESSAGE);
 		}
 	}

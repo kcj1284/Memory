@@ -6,17 +6,17 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JRadioButton;
 
 /**
  * @author 김찬중 Home에서 인물을 추가하는 Class
@@ -33,9 +33,9 @@ public class AddPerson extends JFrame {
 	private JTextField tf_hash;
 	JComboBox<String> cb_day,cb_month;
 
-	private String name, num, mail, major, stid, group, sns, hash;
+	private String name, num, mail, major, stid, sns, hash;
+	ButtonGroup group;
 	private int day,month;
-	private JRadioButton rd_sex;
 	
 	public AddPerson() {
 
@@ -45,6 +45,18 @@ public class AddPerson extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setBounds(310, 115, 398, 775);
+		
+		group = new ButtonGroup();
+		JRadioButton btn1 = new JRadioButton("남자");
+		btn1.setSize(95, 40);
+		btn1.setLocation(170, 539);
+		JRadioButton btn2 = new JRadioButton("여자");
+		btn2.setSize(75, 40);
+		btn2.setLocation(271, 544);
+		group.add(btn1);
+		group.add(btn2);
+		contentPane.add(btn1);
+		contentPane.add(btn2);
 		
 		tf_name = new JTextField();
 		tf_name.setBackground(Color.LIGHT_GRAY);
@@ -127,22 +139,7 @@ public class AddPerson extends JFrame {
 		});
 		contentPane.setLayout(null);
 		contentPane.add(btn_close);
-		
-		rd_sex = new JRadioButton();
-		rd_sex.setBounds(170, 539, 200, 40);
-		contentPane.add(rd_sex);
 
-		 
-	/*	      buttonPanel = new JPanel();
-		      group = new ButtonGroup();
-
-		      addRadioButton("남자", 8);
-		      addRadioButton("여자", 12);
-		      
-		      contentPane.add(buttonPanel, BorderLayout.SOUTH);
-		   }
-
-		*/
 		JButton btn_save = new JButton("");
 		btn_save.setBorderPainted(false);
 		btn_save.setIcon(new ImageIcon("rsc\\icon\\btn_save.png"));
@@ -173,7 +170,6 @@ public class AddPerson extends JFrame {
 		mail = tf_mail.getText();
 		major = tf_major.getText();
 		stid = tf_stid.getText();
-		group = tf_group.getText();
 		hash = tf_hash.getText();
 		month = cb_month.getSelectedIndex();
 		day = cb_day.getSelectedIndex();
@@ -222,8 +218,8 @@ public class AddPerson extends JFrame {
 			}
 		}
 		
-		/* DB연결해 주세요.
-		db.insert(name, num, mail, major, stid, month, day, group, sns, hash);
+		/*
+		db.insert(name, num, mail, major, stid, month, day, group, hash);
 		db.getMember();
 		JOptionPane.showMessageDialog(Frame.frame_addperson, "민울이 정상적으로 추가 되었습니다.", "인물추가 완료", JOptionPane.INFORMATION_MESSAGE);
 		Frame.frame_join.setVisible(false);

@@ -107,13 +107,13 @@ public class FindIDPW extends JFrame {
 	 */
 	private void findID(String email, String name){
 		int i;
-		for(i = 0; i < DB.userInfo_vector.size(); i++){
-			if(DB.userInfo_vector.get(i).email.equals(email) && DB.userInfo_vector.get(i).name.equals(name)){
-				JOptionPane.showMessageDialog(Frame.frame_join, "아이디는 " + DB.userInfo_vector.get(i).id + "입니다.", "아이디 찾기", JOptionPane.INFORMATION_MESSAGE);
+		for(i = 0; i < Data.member_vector.size(); i++){
+			if(Data.member_vector.get(i).email.equals(email) && Data.member_vector.get(i).name.equals(name)){
+				JOptionPane.showMessageDialog(Frame.frame_join, "아이디는 " + Data.member_vector.get(i).id + "입니다.", "아이디 찾기", JOptionPane.INFORMATION_MESSAGE);
 				break;
 			}
 		}
-		if(i == DB.userInfo_vector.size()){
+		if(i == Data.member_vector.size()){
 			JOptionPane.showMessageDialog(Frame.frame_join, "일치하는 계정이 존재하지 않습니다.", "오류", JOptionPane.ERROR_MESSAGE);
 		}
 	}
@@ -123,10 +123,10 @@ public class FindIDPW extends JFrame {
 	 */
 	private void findPW(String id, String email){
 		int i;
-		for(i = 0; i < DB.userInfo_vector.size(); i++){
-			if(DB.userInfo_vector.get(i).id.equals(id) && DB.userInfo_vector.get(i).email.equals(email)){
+		for(i = 0; i < Data.member_vector.size(); i++){
+			if(Data.member_vector.get(i).id.equals(id) && Data.member_vector.get(i).email.equals(email)){
 				String pwAnswer = "";
-				switch(DB.userInfo_vector.get(i).pwQuestion){
+				switch(Data.member_vector.get(i).pwQuestion){
 				case 0:
 					pwAnswer = "나의 장래희망은?";
 					break;
@@ -146,15 +146,22 @@ public class FindIDPW extends JFrame {
 					pwAnswer = "나의 아버지의 성함은?";
 					break;
 				}
-				DB.userIndex = i;
+				Data.userIndex = i;
 				Frame.frame_findPW.setVisible(true);
 				Frame.frame_findPW.lb_pwQuestion.setText(pwAnswer);
 				Frame.frame_findIDPW.setVisible(false);
 				break;
 			}
 		}
-		if(i == DB.userInfo_vector.size()){
+		if(i == Data.member_vector.size()){
 			JOptionPane.showMessageDialog(Frame.frame_join, "일치하는 계정이 존재하지 않습니다.", "오류", JOptionPane.ERROR_MESSAGE);
 		}
 	}
+	void reset(){
+		tf_findid_email.setText("");
+		tf_findid_name.setText("");
+		tf_findpw_id.setText("");
+		tf_findpw_email.setText("");
+		
+		}
 }
