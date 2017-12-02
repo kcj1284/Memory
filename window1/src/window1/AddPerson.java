@@ -19,7 +19,8 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 /**
- * @author 김찬중 Home에서 인물을 추가하는 Class
+ * @author 김찬중
+ *  Home에서 인물을 추가하는 Class
  */
 public class AddPerson extends JFrame {
 
@@ -114,10 +115,13 @@ public class AddPerson extends JFrame {
 		tf_hash.setBounds(170, 600, 200, 40);
 		contentPane.add(tf_hash);
 		
-		cb_month = new JComboBox<String>();
+		String[] month = new String[12];
+		for(int k=0;k<12;k++) {
+			month[k] = "k+1";
+				};
+		JComboBox cb_month = new JComboBox(month);
 		cb_month.setFont(new Font("맑은 고딕", Font.PLAIN, 25));
 		cb_month.setForeground(Color.WHITE);
-		cb_month.addItem("1");
 		cb_month.setBounds(170, 420, 95, 40);
 		contentPane.add(cb_month);
 		
