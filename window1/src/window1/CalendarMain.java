@@ -84,7 +84,7 @@ import javax.swing.*;
  					month = new Integer(btn.getText()).intValue();
  					pl_3.init();
  					pl_3.shift_day(year, month, 1);
- 					setSize(500, 00);
+ 					setSize(500, 500);
  					cd.first(contentpane);
  				}
  			});

@@ -13,8 +13,8 @@ import javax.swing.*;
  	URL url_r = getClass().getResource("rright.png");
  	URL url_l = getClass().getResource("lleft.png");
  	
- 	ImageIcon right = new ImageIcon(url_r);
- 	ImageIcon left = new ImageIcon(url_l);
+ 	//ImageIcon right = new ImageIcon(url_r);
+ 	//ImageIcon left = new ImageIcon(url_l);
  	JButton btn_left = new JButton();	// 왼쪽
  	JButton btn_right = new JButton();	// 오른쪽
  	
@@ -44,7 +44,7 @@ import javax.swing.*;
  	
  	void makeGUI(int year){
  		this.year = year;
- 		min = year  (year % 10);
+ 		min = year - (year % 10);
  		for(int i = 0 ; i < 12 ; i++) {
  			btn_year[i] = new JButton((min + i) + "");
  			btn_year[i].setBorderPainted(true);
@@ -60,7 +60,7 @@ import javax.swing.*;
  	
  	public void btn_Update() {
  		this.year = year;
- 		min = year  (year % 10);
+ 		min = year - (year % 10);
  		for(int i = 0 ; i < 12 ; i++) {
  			btn_year[i].setText((min + i) + "");
  			if((min + i) == Calendar.getInstance().get(Calendar.YEAR))  // 올해라면
@@ -84,13 +84,13 @@ import javax.swing.*;
  		btn_left.addActionListener(new btnListener());
  		btn_left.setBackground(mainWhite);
  		btn_left.setBorderPainted(false);
- 		btn_left.setIcon(left);
+ 		//btn_left.setIcon(left);
  		
  		btn_right.setBounds(442, 6, 30, 30);
  		btn_right.addActionListener(new btnListener());
  		btn_right.setBackground(mainWhite);
  		btn_right.setBorderPainted(false);
- 		btn_right.setIcon(right);
+ 		//btn_right.setIcon(right);
  		
  		pl_top.add(btn_left);
  		pl_top.add(btn_right);
@@ -112,7 +112,7 @@ import javax.swing.*;
  		public void actionPerformed(ActionEvent e) {
  			int tmp;
  			if(e.getSource() == btn_right) tmp = min+12;
- 			else tmp = min12;
+ 			else tmp = min-12;
  			for (int i = 0; i < 12; i++) {
  				btn_year[i].setText((tmp + i) + "");
  				if((tmp + i) == Calendar.getInstance().get(Calendar.YEAR))  // 올해라면

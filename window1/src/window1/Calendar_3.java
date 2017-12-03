@@ -26,7 +26,7 @@ import javax.swing.*;
  	int tmp_year = cal.get(Calendar.YEAR);
  	int tmp_month = cal.get(Calendar.MONTH);
  	int tmp_date = cal.get(Calendar.DATE);
- 	int mon_fir = tmp.get(Calendar.DAY_OF_WEEK)  1; // 변경날짜의 시작 요일
+ 	int mon_fir = tmp.get(Calendar.DAY_OF_WEEK) - 1; // 변경날짜의 시작 요일
  	int mon_last = cal.getActualMaximum(Calendar.DATE); // 변경된 달의 총일수
  
  	/// 상단 패널 ///
@@ -64,7 +64,7 @@ import javax.swing.*;
  
  	Calendar_3() {
  		tmp.set(Calendar.DATE, 1);
- 		mon_fir = tmp.get(Calendar.DAY_OF_WEEK)  1;
+ 		mon_fir = tmp.get(Calendar.DAY_OF_WEEK) - 1;
  
  		for (int i = 0; i < 9; i++) {
  			isapi[i] = false;
@@ -88,10 +88,10 @@ import javax.swing.*;
  
  	void setapi(int tmp_year) {
  		if (tmp_year >= 2014 && tmp_year <= 2022)
- 			if (!isapi[tmp_year  2014]) {
+ 			if (!isapi[tmp_year - 2014]) {
  			}
  		if (tmp_year >= 2014 && tmp_year <= 2022)
- 			isapi[tmp_year  2014] = true;
+ 			isapi[tmp_year - 2014] = true;
  	}
  
  	void init() { // 필요한 변수들 초기화
@@ -101,10 +101,10 @@ import javax.swing.*;
  		//// 변경된 임시 시간 ///
  		tmp = Calendar.getInstance();
  		tmp_year = cal.get(Calendar.YEAR);
- 		tmp_month = cal.get(Calendar.MONTH)  1;
+ 		tmp_month = cal.get(Calendar.MONTH) - 1;
  		tmp_date = cal.get(Calendar.DATE);
  
- 		mon_fir = tmp.get(Calendar.DAY_OF_WEEK)  1; // 변경날짜의 시작 요일
+ 		mon_fir = tmp.get(Calendar.DAY_OF_WEEK) - 1; // 변경날짜의 시작 요일
  		mon_last = cal.getActualMaximum(Calendar.DATE); // 변경된 달의 총일수
  	}
  
@@ -161,7 +161,7 @@ import javax.swing.*;
  			if (i >= mon_fir && i < mon_last + mon_fir) { // mon_fir > 현재 년 월에
  															// 해당하는 1일의 요일,
  															// last는 총 일수
- 				btn_day[i] = new JButton(new Integer(i  mon_fir + 1).toString()); // 1일부터
+ 				btn_day[i] = new JButton(new Integer(i - mon_fir + 1).toString()); // 1일부터
  																					// 생성
  				pl_day.add(btn_day[i]);
  			} else {
@@ -170,7 +170,7 @@ import javax.swing.*;
  				pl_day.add(btn_day[i]);
  			}
  			btn_day[i].setBorderPainted(false); // 외곽선 지우기
- 			if ((i  mon_fir + 1) == cal.get(Calendar.DATE)) { // 오늘 날짜에 해당하는
+ 			if ((i - mon_fir + 1) == cal.get(Calendar.DATE)) { // 오늘 날짜에 해당하는
  																// 버튼은
  				btn_day[i].setBackground(Color.LIGHT_GRAY); // 짙은 회색
  				btn_day[i].setFont(new Font("돋움", Font.ITALIC, 18));
@@ -202,7 +202,7 @@ import javax.swing.*;
  		all_sche.setForeground(mainWhite);
  		all_sche.addActionListener(new ActionListener() {
  			public void actionPerformed(ActionEvent e) {
- 				fr_2 = new All_sch(list, holi_years[year  2014]); //// 여기서 공휴일
+ 				fr_2 = new All_sch(list, holi_years[year - 2014]); //// 여기서 공휴일
  																	//// 선언 하는
  																	//// 구나////
  				
@@ -307,7 +307,7 @@ import javax.swing.*;
  			if (tmp_bt.equals(previous_m)) { // 이전 월 눌렀을 시
  				if (tmp_month == 0) {
  					tmp_month = 11;
- 					tmp_year;
+ 					tmp_year--;
  					setapi(tmp_year);
  				} else
  					tmp_month = 1;
@@ -316,7 +316,7 @@ import javax.swing.*;
  				setapi(tmp_year);
  			} else if (tmp_bt.equals(btn_td)) { // today 버튼 눌렀을 때
  				tmp_year = year; // 변수를 현재 년도와 달로 변경
- 				tmp_month = month  1;
+ 				tmp_month = month - 1;
  				for (int i = 0; i < 42; i++)
  					if (btn_day[i].getText().equals(day + 1 + ""))
  						btn_day[i].setBackground(Color.LIGHT_GRAY); 
@@ -453,7 +453,7 @@ import javax.swing.*;
  									sF.model.clear(); // 서브 프레임 리스트 초기화
  									showList(1); // 해당 노드의 모든 일정 출력
  									if (idx != 0)
- 										sF.list.setSelectedIndex(idx  1); // 선택된
+ 										sF.list.setSelectedIndex(idx - 1); // 선택된
  																			// 리스트
  																			// 아이템이
  																			// 0이
@@ -486,7 +486,7 @@ import javax.swing.*;
  
  	public void shift_day(int year, int month, int date) {
  		tmp_year = year; // 임시 시간을 입력받은 시간으로 변경
- 		tmp_month = month  1;
+ 		tmp_month = month - 1;
  		tmp_date = date;
  		for (int i = 0; i < 42; i++)
  			if (btn_day[i].getText().equals(day + 1 + "")) {
@@ -506,19 +506,19 @@ import javax.swing.*;
  
  	public void setting() { // 바뀐 년 월에 맞게 날짜 버튼들 위치 초기화(첫 초기화때랑 방식 비슷) ////수정ㅊ
  		tmp.set(Calendar.DAY_OF_MONTH, 1);
- 		mon_fir = tmp.get(Calendar.DAY_OF_WEEK)  1;
+ 		mon_fir = tmp.get(Calendar.DAY_OF_WEEK) - 1;
  		mon_last = tmp.getActualMaximum(Calendar.DATE);
  		for (int i = 0; i < 42; i++) {
  			pl_day.remove(btn_day[i]);
  
- 			if ((i  mon_fir + 2) == day + 1 && (year == tmp_year) && (month  1 == tmp_month))
+ 			if ((i - mon_fir + 2) == day + 1 && (year == tmp_year) && (month - 1 == tmp_month))
  				btn_day[i].setBackground(Color.LIGHT_GRAY);
  			else
  				btn_day[i].setBackground(mainWhite); // 배경색깔
  
  			if (i >= mon_fir && i < mon_last + mon_fir) { // 해당 1일부터 말일까지 위치에 맞게
  															// 세팅
- 				btn_day[i].setText(new Integer(i  mon_fir + 1).toString());
+ 				btn_day[i].setText(new Integer(i - mon_fir + 1).toString());
  				btn_day[i].setEnabled(true);
  				pl_day.add(btn_day[i]);
  			} else {

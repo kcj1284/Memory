@@ -24,7 +24,7 @@ public class CalendarData {
  	} 
 
 	public void delCal(int idx) {
- 		count;
+ 		count--;
  		for(int i = idx+1 ; i < count+1 ; i++) {
  			cal[idx++] = cal[i];
  			if(i == count) {
@@ -35,7 +35,7 @@ public class CalendarData {
  	} 
 
 	public void sort() {	// Á¤·Ä
- 		for(int i = 0 ; i < count1 ; i++) {
+ 		for(int i = 0 ; i < count-1 ; i++) {
  			for(int j = i+1 ; j < count ; j++) {
  				if(cal[i].compareTo(cal[j]) > 0) {
  					String tmp = new String(cal[i]);

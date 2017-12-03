@@ -84,8 +84,8 @@ import javax.swing.*;
  		this.month = month;
  		this.day = day;
  		
- 		cal.set(year, month1, day);
- 		long difference = cal.getTimeInMillis()  Calendar.getInstance().getTimeInMillis(); 
+ 		cal.set(year, month-1, day);
+ 		long difference = cal.getTimeInMillis() - Calendar.getInstance().getTimeInMillis(); 
  	    long date = difference/(1000 * 60 * 60 * 24);
  	    if(date == 0) dday = year + "/" + month + "/" + day;
  	    else if(date > 0) dday = year + "/" + month + "/" + day + " (Dday : +" + date + ")";
@@ -118,7 +118,7 @@ import javax.swing.*;
  	void setN() {
  		Calendar cal = Calendar.getInstance();
  		cal.set(Calendar.YEAR, year);
- 		cal.set(Calendar.MONTH, month1);
+ 		cal.set(Calendar.MONTH, month-1);
  		cal.set(Calendar.DATE, day);
  		pl_date.setLayout(new GridBagLayout());
  		//pl_date.setBorderPainted(false);

@@ -15,7 +15,7 @@ import javax.swing.*;
  	
  	String node_name = year + "/" + month +"/" + date;
  	
- 	//String holis [];
+ 	String holis [];
  	String names [];
  	int node_num = 0;
  	
@@ -69,7 +69,7 @@ import javax.swing.*;
  	}
  	
  	void sortNames() {		// Á¤·Ä
- 		for(int i = 0 ; i < node_num  1 ; i++) {
+ 		for(int i = 0 ; i < node_num - 1 ; i++) {
  			for(int j = i+1 ; j < node_num ; j++) {
  				if(changeStr(names[i]) > changeStr(names[j])) {
  					String tmp = new String(names[i]);
