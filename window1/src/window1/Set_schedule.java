@@ -65,10 +65,10 @@ public class Set_schedule extends JDialog{
 	JList list;
 	DefaultListModel model;
 	
-	Set_schedule(int year, int month, int day){
+	public Set_schedule(int year, int month, int day){
+		super(Calendar_3, dday, true);
 		init(year, month, day);
 		
-		setTitle(dday);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);	// X표 누를시 메인 프레임은 안꺼짐
 		
 		makeGUI();

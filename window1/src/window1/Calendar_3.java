@@ -12,7 +12,7 @@ public class Calendar_3 extends JPanel {
 
 	JButton all_sche = new JButton("모든일정");
 	JButton btn_menu = new JButton("일정관리");
-	Set_schedule sF;
+	Set_schedule sF; //일정 관리 창
 	///////////////
 	All_sch fr_2;
 
@@ -485,7 +485,7 @@ public class Calendar_3 extends JPanel {
 		}
 	}
 
-	public void shift_day(int year, int month, int date) {
+	public void shift_day(int year, int month, int date) {  ///수정해야 할것 같군...
 		tmp_year = year; // 임시 시간을 입력받은 시간으로 변경
 		tmp_month = month - 1;
 		tmp_date = date;
@@ -505,7 +505,7 @@ public class Calendar_3 extends JPanel {
 		setting();
 	}
 
-	public void setting() { // 바뀐 년 월에 맞게 날짜 버튼들 위치 초기화(첫 초기화때랑 방식 비슷) ////수정ㅊ
+	public void setting() { // 바뀐 년 월에 맞게 날짜 버튼들 위치 초기화(첫 초기화때랑 방식 비슷)
 		tmp.set(Calendar.DAY_OF_MONTH, 1);
 		mon_fir = tmp.get(Calendar.DAY_OF_WEEK) - 1;
 		mon_last = tmp.getActualMaximum(Calendar.DATE);
@@ -546,22 +546,5 @@ public class Calendar_3 extends JPanel {
 			if (list.search(name).getcnt() > 0)
 				return true;
 		return false;
-	}
-
-	public void showList(int n) {
-		if (n != 1)
-			model.clear();
-		else
-			sF.model.clear();
-		CalendarData tmp = list.search(node_name);
-
-		if (tmp != null) {
-			for (int i = 0; i < tmp.count; i++) { // 해당 노드의 모든 일정 출력
-				if (n == 0)
-					model.addElement((i + 1) + ". " + list.search(node_name).cal[i]);
-				if (n == 1)
-					sF.model.addElement((i + 1) + ". " + list.search(node_name).cal[i]);
-			}
-		}
 	}
 }
