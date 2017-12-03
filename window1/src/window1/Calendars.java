@@ -3,6 +3,9 @@ package window1;
 import java.util.*;
 
 import javax.swing.*;
+
+import Album.SlideShow;
+
 import java.awt.*; //밑에와 같은데 이것이좀더 포괄적이다.
 import java.awt.event.*; //모든 이벤트를 쓴다라는것이다.
 import java.io.*; // 파일 입출력에 대한 것들이다.
@@ -428,5 +431,4 @@ public class Calendars extends JPanel {
 
 			fa.mkdir();
 	}
-
 }
