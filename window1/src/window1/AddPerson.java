@@ -21,11 +21,10 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 /**
- * @author 김찬중
- *  Home에서 인물을 추가하는 Class
+ * @author 김찬중 Home에서 인물을 추가하는 Class
  */
 public class AddPerson extends JFrame {
- 
+
 	private JPanel contentPane;
 	private JTextField tf_name;
 	private JTextField tf_num;
@@ -34,12 +33,11 @@ public class AddPerson extends JFrame {
 	private JTextField tf_stid;
 	private JTextField tf_group;
 	private JTextField tf_hash;
-	JComboBox<String> cb_day,cb_month;
+	JComboBox<String> cb_day, cb_month;
 
-	private String name, num, mail, major, hash, stid, sex,groupname;
+	private String name, num, mail, major, hash, stid, sex, groupname, month, day;
 	ButtonGroup group;
-	private int day,month;
-	
+
 	public AddPerson() {
 
 		setResizable(false);
@@ -48,30 +46,29 @@ public class AddPerson extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setBounds(310, 115, 398, 775);
-		
-		JRadioButton [] gender = new JRadioButton[2];
-		String [] text = {"남자","여자"};
+
+		JRadioButton[] gender = new JRadioButton[2];
+		String[] text = { "남자", "여자" };
 		JPanel genderpanel = new JPanel();
 		genderpanel.setBounds(170, 542, 200, 40);
 		contentPane.add(genderpanel);
 		ButtonGroup group = new ButtonGroup();
-		for(int i = 0;i<gender.length;i++) {
+		for (int i = 0; i < gender.length; i++) {
 			gender[i] = new JRadioButton(text[i]);
 			group.add(gender[i]);
 			genderpanel.add(gender[i]);
-			//gender[i].addItemListener(new MyItemListener());
 		}
-		class MyItemListener implements ItemListener{
+		class MyItemListener implements ItemListener {
 			public void itemStateChanged(ItemEvent e) {
-				if(e.getStateChange()==ItemEvent.DESELECTED)
+				if (e.getStateChange() == ItemEvent.DESELECTED)
 					return;
-				if(gender[0].isSelected())
+				if (gender[0].isSelected())
 					sex = "남자";
 				else
 					sex = "여자";
 			}
 		}
-		
+
 		tf_name = new JTextField();
 		tf_name.setBackground(Color.LIGHT_GRAY);
 		tf_name.setFont(new Font("맑은 고딕", Font.PLAIN, 25));
@@ -127,21 +124,23 @@ public class AddPerson extends JFrame {
 		tf_hash.setColumns(10);
 		tf_hash.setBounds(170, 600, 200, 40);
 		contentPane.add(tf_hash);
-		
-		String [] month = {"1","2","3","4","5","6","7","8","9","10","11","12"};
+
+		String[] month = { "1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월" };
 		JComboBox cb_month = new JComboBox(month);
 		cb_month.setFont(new Font("맑은 고딕", Font.PLAIN, 25));
 		cb_month.setForeground(Color.BLACK);
 		cb_month.setBounds(170, 420, 95, 40);
 		contentPane.add(cb_month);
-		
-		String [] day = {"1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"};
+
+		String[] day = { "1일", "2일", "3일", "4일", "5일", "6일", "7일", "8일", "9일", "10일", "11일", "12일", "13일", "14일", "15일",
+				"16일", "17일", "18일", "19일", "20일", "21일", "22일", "23일", "24일", "25일", "26일", "27일", "28일", "29일", "30일",
+				"31일" };
 		JComboBox cb_day = new JComboBox(day);
 		cb_day.setFont(new Font("맑은 고딕", Font.PLAIN, 25));
 		cb_day.setForeground(Color.BLACK);
 		cb_day.setBounds(275, 420, 95, 40);
 		contentPane.add(cb_day);
-		
+
 		JButton btn_close = new JButton("");
 		btn_close.setBorderPainted(false);
 		btn_close.setIcon(new ImageIcon("rsc\\icon\\btn_close.png"));
@@ -159,15 +158,15 @@ public class AddPerson extends JFrame {
 		btn_save.setIcon(new ImageIcon("rsc\\icon\\btn_save.png"));
 		btn_save.setBounds(162, 694, 110, 46);
 		btn_save.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent arg0) {
 				AddPerson();
 				Frame.frame_addperson.setVisible(false);
 			}
 		});
-		
+
 		contentPane.setLayout(null);
 		contentPane.add(btn_save);
-		
+
 		JLabel lb_background = new JLabel(new ImageIcon("rsc\\Addperson.png"));
 		lb_background.setBackground(Color.WHITE);
 		lb_background.setBounds(5, 5, 382, 730);
@@ -177,7 +176,7 @@ public class AddPerson extends JFrame {
 	}
 
 	public void AddPerson() {
-		
+
 		DB db = new DB();
 
 		name = tf_name.getText();
@@ -186,10 +185,10 @@ public class AddPerson extends JFrame {
 		major = tf_major.getText();
 		stid = tf_stid.getText();
 		hash = tf_hash.getText();
-		month = cb_month.getSelectedIndex()+1;
+		month = cb_month.getSelectedItem().toString();
 		groupname = tf_group.getText();
-		day = cb_day.getSelectedIndex()+1;
-		
+		day = cb_day.getSelectedItem().toString();
+
 		///////////// name ///////////////
 		if (name.length() < 4 || name.length() > 12) { // 아이디의 길이가 짧거나 길면
 			JOptionPane.showMessageDialog(Frame.frame_addperson, "이름은 2~6자의 한글만 사용 가능합니다.", "오류",
@@ -223,7 +222,8 @@ public class AddPerson extends JFrame {
 		}
 		///////////// stid ///////////////
 		if (stid.length() != 6) { // 학번의 길이가 6이 아니면
-			JOptionPane.showMessageDialog(Frame.frame_addperson, "학번은 6자리 숫자만 사용 가능합니다.", "오류", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(Frame.frame_addperson, "학번은 6자리 숫자만 사용 가능합니다.", "오류",
+					JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 		for (char c : stid.toCharArray()) {
@@ -233,15 +233,16 @@ public class AddPerson extends JFrame {
 				return;
 			}
 		}
-		
-		
+
 		db.insertAddress(name, num, mail, major, stid, month, day, groupname, hash, sex);
 		db.getAddress();
-		JOptionPane.showMessageDialog(Frame.frame_addperson, "인물이 정상적으로 추가 되었습니다.", "인물추가 완료", JOptionPane.INFORMATION_MESSAGE);
-		Frame.frame_join.setVisible(false);
-		
+		JOptionPane.showMessageDialog(Frame.frame_addperson, "인물이 정상적으로 추가 되었습니다.", "인물추가 완료",
+				JOptionPane.INFORMATION_MESSAGE);
+		// Frame.frame_addperson.setVisible(false);
+
 	}
-	void reset(){
+
+	void reset() {
 		tf_name.setText("");
 		tf_num.setText("");
 		tf_mail.setText("");
@@ -251,7 +252,6 @@ public class AddPerson extends JFrame {
 		tf_hash.setText("");
 		cb_month.setSelectedIndex(0);
 		cb_day.setSelectedIndex(0);
-		
-		
-		}
+
+	}
 }
