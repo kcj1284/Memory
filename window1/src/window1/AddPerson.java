@@ -125,16 +125,40 @@ public class AddPerson extends JFrame {
 		tf_hash.setBounds(170, 600, 200, 40);
 		contentPane.add(tf_hash);
 
-		String[] month = { "1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월" };
-		JComboBox cb_month = new JComboBox(month);
+		String[] monthArr = { "1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월" };
+		JComboBox<String> cb_month = new JComboBox<String>();
+		for (int i = 0; i < monthArr.length; i++) {
+			cb_month.addItem(monthArr[i]);
+		}
+		cb_month.setSelectedIndex(0);
+		cb_month.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				month = cb_month.getSelectedItem().toString();
+			}
+			
+		});
 		cb_month.setFont(new Font("맑은 고딕", Font.PLAIN, 25));
 		cb_month.setForeground(Color.BLACK);
 		cb_month.setBounds(170, 420, 95, 40);
 		contentPane.add(cb_month);
 
-		String[] day = { "1일", "2일", "3일", "4일", "5일", "6일", "7일", "8일", "9일", "10일", "11일", "12일", "13일", "14일", "15일",
+		String[] dayArr = { "1일", "2일", "3일", "4일", "5일", "6일", "7일", "8일", "9일", "10일", "11일", "12일", "13일", "14일", "15일",
 				"16일", "17일", "18일", "19일", "20일", "21일", "22일", "23일", "24일", "25일", "26일", "27일", "28일", "29일", "30일","31일" };
-		JComboBox cb_day = new JComboBox(day);
+		JComboBox<String> cb_day = new JComboBox<String>();
+		for (int i = 0; i < dayArr.length; i++) {
+			cb_day.addItem(dayArr[i]);
+		}
+		cb_day.setSelectedIndex(0);
+		cb_day.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				month = cb_day.getSelectedItem().toString();
+			}
+			
+		});
 		cb_day.setFont(new Font("맑은 고딕", Font.PLAIN, 25));
 		cb_day.setForeground(Color.BLACK);
 		cb_day.setBounds(275, 420, 95, 40);
@@ -182,13 +206,11 @@ public class AddPerson extends JFrame {
 		mail = tf_mail.getText();
 		major = tf_major.getText();
 		stid = tf_stid.getText();
-		hash = tf_hash.getText();
-		month = cb_month.getSelectedItem().toString();
+		hash = tf_hash.getText();		
 		groupname = tf_group.getText();
-		day = cb_day.getSelectedItem().toString();
 
 		///////////// name ///////////////
-		if (name.length() < 4 || name.length() > 12) { // 아이디의 길이가 짧거나 길면
+		if (name.length() > 4) { // 아이디의 길이가 짧거나 길면
 			JOptionPane.showMessageDialog(Frame.frame_addperson, "이름은 2~6자의 한글만 사용 가능합니다.", "오류",
 					JOptionPane.ERROR_MESSAGE);
 			return;

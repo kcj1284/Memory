@@ -5,7 +5,7 @@ import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Toolkit;
-
+import javax.swing.table.DefaultTableModel;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -41,9 +41,10 @@ public class Home extends JFrame {
 	JTable table_view;
 	ArrayList<AddressInfo> rs_set = null;
 	JComboBox cb_type;
-	PageTableModel model;
-
+	DefaultTableModel defaultTableModel;
+	Table_model model;
 	private String combo, value;
+	
 
 	/**
 	 * Create the frame.
@@ -59,12 +60,13 @@ public class Home extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		String[] element = new String[5];
+		String[] element = new String[6];
 		element[0] = "이름";
 		element[1] = "학번";
 		element[2] = "학과";
 		element[3] = "번호";
 		element[4] = "해쉬태그";
+		element[5] = "생일";
 
 		cb_type = new JComboBox(element);
 		cb_type.setBounds(307, 12, 99, 44);
@@ -121,92 +123,93 @@ public class Home extends JFrame {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(307, 133, 1197, 640);
 		contentPane.add(scrollPane);
-
-		table_view = new JTable();
-		table_view.setForeground(Color.WHITE);
-		scrollPane.setViewportView(table_view);
-
-		JLabel lb_background = new JLabel(new ImageIcon("rsc\\Home.jpg"));
-		lb_background.setBackground(Color.WHITE);
-		lb_background.setBounds(0, 0, 1642, 800);
-		contentPane.add(lb_background);
-
-		model = new PageTableModel();
+		
+		model = new Table_model();
 		TableColumnModel columnModel = new DefaultTableColumnModel();
 		TableCellRenderer renderer = new DefaultTableCellRenderer();
-		DefaultTableCellRenderer cbrenderer = new CheckboxRenderer();
 
 		TableColumn column = new TableColumn(0);
-		column.setCellRenderer(cbrenderer);
-		column.setHeaderValue(" ");
+		column.setCellRenderer(renderer);
+		column.setHeaderValue("이름");
 		column.setPreferredWidth(5);
 		columnModel.addColumn(column);
 
 		column = new TableColumn(1);
-		column.setHeaderValue("사이트 이름");
+		column.setHeaderValue("번호");
 		columnModel.addColumn(column);
 
 		column = new TableColumn(2);
-		column.setHeaderValue("키워드");
+		column.setHeaderValue("학번");
 		columnModel.addColumn(column);
 
 		column = new TableColumn(3);
-		column.setHeaderValue("ID");
+		column.setHeaderValue("전공");
 		columnModel.addColumn(column);
 
 		column = new TableColumn(4);
-		column.setHeaderValue("PassWord");
+		column.setHeaderValue("성별");
 		columnModel.addColumn(column);
 
 		column = new TableColumn(5);
-		column.setHeaderValue("등록일자");
+		column.setHeaderValue("생일");
 		columnModel.addColumn(column);
 
 		columnModel.setColumnSelectionAllowed(false);
-	}
-
-	class PageTableModel extends AbstractTableModel {
-		private ArrayList<AddressInfo> data;
-		Object[][] dataEntries;
-
-		public PageTableModel() {
-			data = new ArrayList<AddressInfo>();
+		
+		table_view = new JTable(model, columnModel);
+		table_view.setForeground(Color.WHITE);
+		scrollPane.setViewportView(table_view);
+		
+		JLabel lb_background = new JLabel(new ImageIcon("rsc\\Home.jpg"));
+		lb_background.setBackground(Color.WHITE);
+		lb_background.setBounds(0, 0, 1642, 800);
+		contentPane.add(lb_background);
+		
+	
 		}
+	
+		class Table_model extends AbstractTableModel{
+			
+			    private ArrayList<AddressInfo> pages;
 
-		public int getColumnCount() { // 전체 데이터의 열 수를 반환
-			return 6;
-		}
+			    public Table_model(){
+			        pages = new ArrayList<AddressInfo>();
+			    }
+			   
+			    public int getColumnCount() {
+			        return 6;
+			    }
 
-		public int getRowCount() { // 전체 데이터의 행 수를 반환
-			return data.size();
-		}
+			    public int getRowCount() {
+			        return pages.size();
+			    }
+			    
+			    public void addPageInfo(AddressInfo page){
+			        int idx = pages.size();
+			        pages.add(page);
+			    }
 
-		public void addAcInfo(ArrayList<AddressInfo> data) {
-			this.data = data;
-		}
-
-		@Override
-		public Object getValueAt(int rowIndex, int columnIndex) { // 행과 열에 맞는 데이터를 table모델 위에 그린다.
-			AddressInfo tmpdt = data.get(rowIndex);
-			switch (columnIndex) {
-			case 0:
-				return tmpdt.name;
-			case 1:
-				return tmpdt.major;
-			case 2:
-				return tmpdt.stid;
-			case 3:
-				return tmpdt.sex;
-			case 4:
-				return tmpdt.num;
-			case 5:
-				return tmpdt.hash;
-				
-			// return data.get(rowIndex);
-			default:
-				return "invalid";
+			
+			    public Object getValueAt(int rowIndex, int columnIndex) {
+			    	AddressInfo info = pages.get(rowIndex);
+			        switch (columnIndex) {
+			        case 0 :
+			            return info.name;
+			        case 1 :
+			            return info.num;
+			        case 2 :
+			            return info.stid;
+			        case 3 :
+			            return info.major;
+			        case 4 :
+			            return info.sex;
+			        case 5 :
+			            return info.month.toString()+"	"+info.day.toString();
+			        default :
+			                return "invalid";
+			        }
+			    }
 			}
-		}
 
 		public void Home() {
 
@@ -215,4 +218,4 @@ public class Home extends JFrame {
 
 		}
 	}
-}
+	
