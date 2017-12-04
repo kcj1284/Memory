@@ -25,7 +25,7 @@ import javax.swing.border.EmptyBorder;
  *  Home에서 인물을 추가하는 Class
  */
 public class AddPerson extends JFrame {
-
+ 
 	private JPanel contentPane;
 	private JTextField tf_name;
 	private JTextField tf_num;
