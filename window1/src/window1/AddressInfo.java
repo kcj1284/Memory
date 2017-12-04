@@ -2,23 +2,23 @@ package window1;
 
 public class AddressInfo {
 
-	String name,phone,email,major,birthday,groupname,snsAddress,hash,gender;
-	int code;
+	String name, num, mail, major, hash, stid, sex,groupname;
+	int month,day;
 	int rowid;
 
 	public AddressInfo(){};
 
-	public AddressInfo(String name,String phone,String email,String major,int code,String birthday,String groupname,String snsAddress,String hash,String gender,int rowid){
+	public AddressInfo(String name,String num,String mail,String major,String stid,int month,int day,String groupname,String hash,String sex,int rowid){
 		this.name = name;
-		this.phone = phone;
-		this.email = email;
+		this.num = num;
+		this.mail = mail;
 		this.major = major;
-		this.code = code;
-		this.birthday = birthday;
+		this.stid = stid;
+		this.month = month;
+		this.day = day;
 		this.groupname = groupname;
-		this.snsAddress = snsAddress;
 		this.hash = hash;
-		this.gender = gender;
+		this.sex = sex;
 		this.rowid = rowid;
 	}
 
