@@ -5,6 +5,8 @@ import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -34,7 +36,7 @@ public class AddPerson extends JFrame {
 	private JTextField tf_hash;
 	JComboBox<String> cb_day,cb_month;
 
-	private String name, num, mail, major, stid, sns, hash;
+	private String name, num, mail, major, stid, hash, sex;
 	ButtonGroup group;
 	private int day,month;
 	
@@ -47,17 +49,28 @@ public class AddPerson extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setBounds(310, 115, 398, 775);
 		
-		group = new ButtonGroup();
-		JRadioButton btn1 = new JRadioButton("남자");
-		btn1.setSize(95, 40);
-		btn1.setLocation(170, 539);
-		JRadioButton btn2 = new JRadioButton("여자");
-		btn2.setSize(75, 40);
-		btn2.setLocation(271, 544);
-		group.add(btn1);
-		group.add(btn2);
-		contentPane.add(btn1);
-		contentPane.add(btn2);
+		JRadioButton [] gender = new JRadioButton[2];
+		String [] text = {"남자","여자"};
+		JPanel genderpanel = new JPanel();
+		genderpanel.setBounds(170, 542, 200, 40);
+		contentPane.add(genderpanel);
+		ButtonGroup group = new ButtonGroup();
+		for(int i = 0;i<gender.length;i++) {
+			gender[i] = new JRadioButton(text[i]);
+			group.add(gender[i]);
+			genderpanel.add(gender[i]);
+			//gender[i].addItemListener(new MyItemListener());
+		}
+		class MyItemListener implements ItemListener{
+			public void itemStateChanged(ItemEvent e) {
+				if(e.getStateChange()==ItemEvent.DESELECTED)
+					return;
+				if(gender[0].isSelected())
+					sex = "남자";
+				else
+					sex = "여자";
+			}
+		}
 		
 		tf_name = new JTextField();
 		tf_name.setBackground(Color.LIGHT_GRAY);
@@ -115,20 +128,17 @@ public class AddPerson extends JFrame {
 		tf_hash.setBounds(170, 600, 200, 40);
 		contentPane.add(tf_hash);
 		
-		String[] month = new String[12];
-		for(int k=0;k<12;k++) {
-			month[k] = "k+1";
-				};
+		String [] month = {"1","2","3","4","5","6","7","8","9","10","11","12"};
 		JComboBox cb_month = new JComboBox(month);
 		cb_month.setFont(new Font("맑은 고딕", Font.PLAIN, 25));
-		cb_month.setForeground(Color.WHITE);
+		cb_month.setForeground(Color.BLACK);
 		cb_month.setBounds(170, 420, 95, 40);
 		contentPane.add(cb_month);
 		
-		cb_day = new JComboBox<String>();
+		String [] day = {"1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"};
+		JComboBox cb_day = new JComboBox(day);
 		cb_day.setFont(new Font("맑은 고딕", Font.PLAIN, 25));
-		cb_day.setForeground(Color.WHITE);
-		cb_day.addItem("1");
+		cb_day.setForeground(Color.BLACK);
 		cb_day.setBounds(275, 420, 95, 40);
 		contentPane.add(cb_day);
 		
@@ -225,7 +235,7 @@ public class AddPerson extends JFrame {
 		/*
 		db.insert(name, num, mail, major, stid, month, day, group, hash);
 		db.getMember();
-		JOptionPane.showMessageDialog(Frame.frame_addperson, "민울이 정상적으로 추가 되었습니다.", "인물추가 완료", JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(Frame.frame_addperson, "인물이 정상적으로 추가 되었습니다.", "인물추가 완료", JOptionPane.INFORMATION_MESSAGE);
 		Frame.frame_join.setVisible(false);
 		*/
 	}
@@ -239,6 +249,7 @@ public class AddPerson extends JFrame {
 		tf_hash.setText("");
 		cb_month.setSelectedIndex(0);
 		cb_day.setSelectedIndex(0);
+		
 		
 		}
 }

@@ -53,6 +53,7 @@ public class Home extends JFrame {
 		element[2] = "학과";
 		element[3] = "번호";
 		element[4] = "해쉬태그";
+		
 		JComboBox cb_type = new JComboBox(element);
 		cb_type.setBounds(307, 12, 99, 44);
 		cb_type.setBackground(new Color(114, 172, 69));
