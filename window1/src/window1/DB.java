@@ -36,7 +36,19 @@ public class DB {
 		}
 	}
 
-	public boolean getMember() { // 유저 정보 갱신
+	
+	public static void inputQuery(String s){
+	      try{
+	         stmt = null;
+	         stmt = conn.prepareStatement(s);
+	         stmt.executeUpdate(); 
+	      }
+	      catch(SQLException e){
+	         e.printStackTrace();
+	      }
+	   }
+	
+	public static boolean getMember() { // 유저 정보 갱신
 		boolean isSuccess = false;
 		try {
 			MemberInfo m;
