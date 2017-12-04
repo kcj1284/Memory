@@ -133,8 +133,7 @@ public class AddPerson extends JFrame {
 		contentPane.add(cb_month);
 
 		String[] day = { "1老", "2老", "3老", "4老", "5老", "6老", "7老", "8老", "9老", "10老", "11老", "12老", "13老", "14老", "15老",
-				"16老", "17老", "18老", "19老", "20老", "21老", "22老", "23老", "24老", "25老", "26老", "27老", "28老", "29老", "30老",
-				"31老" };
+				"16老", "17老", "18老", "19老", "20老", "21老", "22老", "23老", "24老", "25老", "26老", "27老", "28老", "29老", "30老","31老" };
 		JComboBox cb_day = new JComboBox(day);
 		cb_day.setFont(new Font("讣篮 绊雕", Font.PLAIN, 25));
 		cb_day.setForeground(Color.BLACK);
