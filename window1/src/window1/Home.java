@@ -31,8 +31,10 @@ public class Home extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField tf_search;
-	private JTable table;
+	private JTable table_view;
+	JComboBox cb_type;
 
+	private String combo, value;
 	/**
 	 * Create the frame.
 	 */
@@ -54,7 +56,7 @@ public class Home extends JFrame {
 		element[3] = "번호";
 		element[4] = "해쉬태그";
 		
-		JComboBox cb_type = new JComboBox(element);
+		cb_type = new JComboBox(element);
 		cb_type.setBounds(307, 12, 99, 44);
 		cb_type.setBackground(new Color(114, 172, 69));
 		contentPane.add(cb_type);
@@ -110,15 +112,22 @@ public class Home extends JFrame {
 		scrollPane.setBounds(307, 133, 1197, 640);
 		contentPane.add(scrollPane);
 		
-		table = new JTable();
-		table.setForeground(Color.WHITE);
-		scrollPane.setViewportView(table);
+		table_view = new JTable();
+		table_view.setForeground(Color.WHITE);
+		scrollPane.setViewportView(table_view);
 
 		JLabel lb_background = new JLabel(new ImageIcon("rsc\\Home.jpg"));
 		lb_background.setBackground(Color.WHITE);
 		lb_background.setBounds(0, 0, 1642, 800);
 		contentPane.add(lb_background);
 
-
+	}
+	
+	public void Home() {
+		
+		combo = cb_type.getSelectedItem().toString();
+		value = tf_search.getText();
+		
 	}
 }
+
