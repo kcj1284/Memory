@@ -160,7 +160,6 @@ public class AddPerson extends JFrame {
 		btn_save.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				AddPerson();
-				Frame.frame_addperson.setVisible(false);
 			}
 		});
 
@@ -236,9 +235,8 @@ public class AddPerson extends JFrame {
 
 		db.insertAddress(name, num, mail, major, stid, month, day, groupname, hash, sex);
 		db.getAddress();
-		JOptionPane.showMessageDialog(Frame.frame_addperson, "인물이 정상적으로 추가 되었습니다.", "인물추가 완료",
-				JOptionPane.INFORMATION_MESSAGE);
-		// Frame.frame_addperson.setVisible(false);
+		JOptionPane.showMessageDialog(Frame.frame_addperson, "인물이 정상적으로 추가 되었습니다.", "인물추가 완료", JOptionPane.INFORMATION_MESSAGE);
+		Frame.frame_addperson.setVisible(false);
 
 	}
 

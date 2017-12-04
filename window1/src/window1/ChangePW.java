@@ -94,9 +94,9 @@ public class ChangePW extends JFrame {
 	 */
 	
 	private void changePW(String pw){
-		String id = DB.member_vector.get(DB.userIndex).id;
+		String id = Data.member_vector.get(Data.userIndex).id;
 		DB.inputQuery("update user set pw = password('" + pw + "') where id = '" + id + "'");
-		DB.getDBInfo();
+		DB.getMember();
 	}
 	
 }
