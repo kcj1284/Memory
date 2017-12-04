@@ -64,6 +64,40 @@ public class DB {
 		return isSuccess;
 	}
 
+	public boolean getAddress() { // 유저 정보 갱신
+		boolean isSuccess = false;
+		try {
+			AddressInfo m;
+			Data.address_vector.removeAllElements();
+			stmt = conn.prepareStatement("select * from address"); // 쿼리문 전송
+			rs = stmt.executeQuery();
+
+			while (rs.next()) { // result set이 더 있을 경우
+				m = new AddressInfo();
+				m.name = rs.getString("name");
+				m.num = rs.getString("num");
+				m.mail = rs.getString("mail");
+				m.major = rs.getString("major");
+				m.hash = rs.getString("hash");
+				m.stid = rs.getString("stid");
+				m.sex = rs.getString("sex");
+				m.month = rs.getInt("month");
+				m.day = rs.getInt("day");
+				m.groupname = rs.getString("groupname");
+
+				System.out.println(rs.getString("id") + "\t" + rs.getString("pw") + "\t" + rs.getString("email") + "\t"
+						+ rs.getString("name") + "\t" + rs.getString("pwAnswer"));
+				Data.address_vector.addElement(m); // 벡터에 유저 정보 추가
+			}
+			isSuccess = true;
+		} catch (SQLException e) {
+
+		}
+		return isSuccess;
+	}
+	
+	
+	
 	protected boolean insertMember(String id, String passwd, String email, String name, int question, String answer) {
 		boolean isSuccess = false;
 		String sql = "insert into member(id, pw, email, name, pwQuestion, pwAnswer) values(?, ?, ?, ?, ?, ?)";
@@ -87,6 +121,7 @@ public class DB {
 		return isSuccess;
 	}
 
+	
 	public boolean searchaddress(){
 		boolean isSuccess = false;
 		try {
@@ -98,15 +133,15 @@ public class DB {
 			while (rs.next()) { // result set이 더 있을 경우
 				m = new AddressInfo();
 				m.name = rs.getString("name");
-				m.phone = rs.getString("phone");
-				m.email = rs.getString("email");
+				m.num = rs.getString("num");
+				m.mail = rs.getString("mail");
 				m.major = rs.getString("major");
-				m.code = Integer.parseInt(rs.getString("code"));
-				m.birthday = rs.getString("birthday");
+				m.stid = rs.getString("stid");
+				m.month = rs.getInt("month");
 				m.groupname = rs.getString("groupname");
-				m.snsAddress = rs.getString("snsAddress");
+				m.day = rs.getInt("day");
 				m.hash = rs.getString("hash");
-				m.gender = rs.getString("gender");
+				m.sex = rs.getString("sex");
 				m.rowid = rs.getInt("rowid");
 
 
@@ -138,17 +173,16 @@ public class DB {
 			while (rs.next()) { // result set이 더 있을 경우
 				m = new AddressInfo();
 				m.name = rs.getString("name");
-				m.phone = rs.getString("phone");
-				m.email = rs.getString("email");
+				m.num = rs.getString("num");
+				m.mail = rs.getString("mail");
 				m.major = rs.getString("major");
-				m.code = Integer.parseInt(rs.getString("code"));
-				m.birthday = rs.getString("birthday");
+				m.stid = rs.getString("stid");
+				m.month = rs.getInt("month");
 				m.groupname = rs.getString("groupname");
-				m.snsAddress = rs.getString("snsAddress");
+				m.day = rs.getInt("day");
 				m.hash = rs.getString("hash");
-				m.gender = rs.getString("gender");
+				m.sex = rs.getString("sex");
 				m.rowid = rs.getInt("rowid");
-
 
 
 				System.out.println(rs.getString("name") + "\t" + rs.getString("phone") + "\t" + rs.getString("email") + "\t"
@@ -178,15 +212,15 @@ public class DB {
 			while (rs.next()) { // result set이 더 있을 경우
 				m = new AddressInfo();
 				m.name = rs.getString("name");
-				m.phone = rs.getString("phone");
-				m.email = rs.getString("email");
+				m.num = rs.getString("num");
+				m.mail = rs.getString("mail");
 				m.major = rs.getString("major");
-				m.code = Integer.parseInt(rs.getString("code"));
-				m.birthday = rs.getString("birthday");
+				m.stid = rs.getString("stid");
+				m.month = rs.getInt("month");
 				m.groupname = rs.getString("groupname");
-				m.snsAddress = rs.getString("snsAddress");
+				m.day = rs.getInt("day");
 				m.hash = rs.getString("hash");
-				m.gender = rs.getString("gender");
+				m.sex = rs.getString("sex");
 				m.rowid = rs.getInt("rowid");
 
 
@@ -218,15 +252,15 @@ public class DB {
 			while (rs.next()) { // result set이 더 있을 경우
 				m = new AddressInfo();
 				m.name = rs.getString("name");
-				m.phone = rs.getString("phone");
-				m.email = rs.getString("email");
+				m.num = rs.getString("num");
+				m.mail = rs.getString("mail");
 				m.major = rs.getString("major");
-				m.code = Integer.parseInt(rs.getString("code"));
-				m.birthday = rs.getString("birthday");
+				m.stid = rs.getString("stid");
+				m.month = rs.getInt("month");
 				m.groupname = rs.getString("groupname");
-				m.snsAddress = rs.getString("snsAddress");
+				m.day = rs.getInt("day");
 				m.hash = rs.getString("hash");
-				m.gender = rs.getString("gender");
+				m.sex = rs.getString("sex");
 				m.rowid = rs.getInt("rowid");
 
 
@@ -259,15 +293,15 @@ public class DB {
 			while (rs.next()) { // result set이 더 있을 경우
 				m = new AddressInfo();
 				m.name = rs.getString("name");
-				m.phone = rs.getString("phone");
-				m.email = rs.getString("email");
+				m.num = rs.getString("num");
+				m.mail = rs.getString("mail");
 				m.major = rs.getString("major");
-				m.code = Integer.parseInt(rs.getString("code"));
-				m.birthday = rs.getString("birthday");
+				m.stid = rs.getString("stid");
+				m.month = rs.getInt("month");
 				m.groupname = rs.getString("groupname");
-				m.snsAddress = rs.getString("snsAddress");
+				m.day = rs.getInt("day");
 				m.hash = rs.getString("hash");
-				m.gender = rs.getString("gender");
+				m.sex = rs.getString("sex");
 				m.rowid = rs.getInt("rowid");
 
 
@@ -299,15 +333,15 @@ public class DB {
 			while (rs.next()) { // result set이 더 있을 경우
 				m = new AddressInfo();
 				m.name = rs.getString("name");
-				m.phone = rs.getString("phone");
-				m.email = rs.getString("email");
+				m.num = rs.getString("num");
+				m.mail = rs.getString("mail");
 				m.major = rs.getString("major");
-				m.code = Integer.parseInt(rs.getString("code"));
-				m.birthday = rs.getString("birthday");
+				m.stid = rs.getString("stid");
+				m.month = rs.getInt("month");
 				m.groupname = rs.getString("groupname");
-				m.snsAddress = rs.getString("snsAddress");
+				m.day = rs.getInt("day");
 				m.hash = rs.getString("hash");
-				m.gender = rs.getString("gender");
+				m.sex = rs.getString("sex");
 				m.rowid = rs.getInt("rowid");
 
 
@@ -326,22 +360,22 @@ public class DB {
 		return isSuccess;
 	}
 
-	public boolean insertaddress(String name,String phone,String email,String major,int code,String birthday,String groupname,String snsAddress,String hash,String gender) {
+	public boolean insertAddress(String name,String num,String mail,String major,String stid,int month,int day,String groupname,String hash,String sex) {
 		boolean isSuccess = false;
-		String sql = "insert into address(name,phone,email,major,code,birthday,groupname,snsAddress,hash,gender) values(?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into address(name,num,mail,major,stid,month,day,group,hash,sex) values(?,?,?,?,?,?,?,?,?,?)";
 		try {
 
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, name);
-			stmt.setString(2, phone);
-			stmt.setString(3, email);
+			stmt.setString(2, num);
+			stmt.setString(3, mail);
 			stmt.setString(4, major);
-			stmt.setInt(5, code);
-			stmt.setString(6, birthday);
-			stmt.setString(7, groupname);
-			stmt.setString(8, snsAddress);
+			stmt.setString(5, stid);
+			stmt.setInt(6, month);
+			stmt.setInt(7, day);
+			stmt.setString(8, groupname);
 			stmt.setString(9, hash);
-			stmt.setString(10, gender);
+			stmt.setString(10, sex);
 			stmt.executeUpdate(sql);
 			isSuccess = true;
 			/*	  MemberInfo m;
@@ -464,17 +498,16 @@ public class DB {
 			while (rs.next()) { // result set이 더 있을 경우
 				m = new AddressInfo();
 				m.name = rs.getString("name");
-				m.phone = rs.getString("phone");
-				m.email = rs.getString("email");
+				m.num = rs.getString("num");
+				m.mail = rs.getString("mail");
 				m.major = rs.getString("major");
-				m.code = Integer.parseInt(rs.getString("code"));
-				m.birthday = rs.getString("birthday");
+				m.stid = rs.getString("stid");
+				m.month = rs.getInt("month");
 				m.groupname = rs.getString("groupname");
-				m.snsAddress = rs.getString("snsAddress");
+				m.day = rs.getInt("day");
 				m.hash = rs.getString("hash");
-				m.gender = rs.getString("gender");
+				m.sex = rs.getString("sex");
 				m.rowid = rs.getInt("rowid");
-
 
 
 				System.out.println(rs.getString("name") + "\t" + rs.getString("phone") + "\t" + rs.getString("email") + "\t"
@@ -516,7 +549,7 @@ public class DB {
 		int i;
 		String id="kkm";
 		for(i=0; i<Data.address_vector.size(); i++){
-			if(Data.address_vector.elementAt(i).email.equals(email) && Data.address_vector.elementAt(i).name.equals(name)){
+			if(Data.address_vector.elementAt(i).mail.equals(email) && Data.address_vector.elementAt(i).name.equals(name)){
 
 			}
 		}
