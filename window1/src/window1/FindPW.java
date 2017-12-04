@@ -80,7 +80,7 @@ public class FindPW extends JFrame {
 		String pwAnswer = tf_pwAnswer.getText();
 		int i;
 		for(i = 0; i < Data.member_vector.size(); i++){
-			if(Data.member_vector.get(i).id.equals(id) && DB.isPWCorrect(id, pwAnswer, true)){
+			if(Data.member_vector.get(i).id.equals(id) && DB.PWCorrect(id, pwAnswer)){
 				Frame.frame_changePW.setVisible(true);
 				Frame.frame_findPW.setVisible(false);
 				break;
