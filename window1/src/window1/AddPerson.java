@@ -160,6 +160,7 @@ public class AddPerson extends JFrame {
 		btn_save.setBounds(162, 694, 110, 46);
 		btn_save.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				AddPerson();
 				Frame.frame_addperson.setVisible(false);
 			}
 		});
