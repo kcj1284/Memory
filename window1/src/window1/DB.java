@@ -211,13 +211,13 @@ public class DB {
 		return isSuccess;
 	}
 
-	public boolean searchcode(int code){
+	public boolean searchcode(String stid){
 		boolean isSuccess = false;
 		try {
 			AddressInfo m;
 			Data.address_vector.removeAllElements();
-			stmt = conn.prepareStatement("select rowid,* from address WHERE code like ?"); // 쿼리문 전송
-			stmt.setInt(1, '%'+code+'%');
+			stmt = conn.prepareStatement("select rowid,* from address WHERE stid like ?"); // 쿼리문 전송
+			stmt.setString(1, '%'+stid+'%');
 
 			rs = stmt.executeQuery();
 
@@ -292,13 +292,13 @@ public class DB {
 		return isSuccess;
 	}
 
-	public boolean searchphone(String phone){
+	public boolean searchphone(String num){
 		boolean isSuccess = false;
 		try {
 			AddressInfo m;
 			Data.address_vector.removeAllElements();
-			stmt = conn.prepareStatement("select rowid,* from address WHERE phone like ?"); // 쿼리문 전송
-			stmt.setString(1, '%'+phone+'%');
+			stmt = conn.prepareStatement("select rowid,* from address WHERE num like ?"); // 쿼리문 전송
+			stmt.setString(1, '%'+num+'%');
 
 			rs = stmt.executeQuery();
 
@@ -332,7 +332,7 @@ public class DB {
 		return isSuccess;
 	}
 
-	public boolean searchhash(String hash){
+	public boolean searchHash(String hash){
 		boolean isSuccess = false;
 		try {
 			AddressInfo m;
@@ -404,13 +404,13 @@ public class DB {
 		return isSuccess;
 	}
 
-	public boolean deleteAddress(String phone){
+	public boolean deleteAddress(String num){
 
 		boolean isSuccess = true;
-		String sql = "DELETE FROM address WHERE phone = ?";
+		String sql = "DELETE FROM address WHERE num = ?";
 		try{
 			stmt = conn.prepareStatement(sql);
-			stmt.setString(1, phone);
+			stmt.setString(1, num);
 			System.out.println(sql);
 
 			stmt.executeUpdate();
@@ -422,21 +422,21 @@ public class DB {
 		return isSuccess;
 	}
 
-	public boolean updateaddress(String name,String phone,String email,String major,int code,String birthday,String groupname,String snsAddress,String hash,String gender,int rowid){
+	public boolean updateaddress(String name,String num,String mail,String major,String stid,String month,String day,String groupname,String hash,String sex,int rowid){
 		boolean isSuccess = false;
-		String sql = "UPDATE address SET name=?,phone=?,email=?,major=?,code=?,birthday=?,groupname=?,snsAddress=?,hash=?,gender=?,rowid=? WHERE rowid=?";
+		String sql = "UPDATE address SET name=?,num=?,mail=?,major=?,stid=?,month=?,day=?,groupname=?,hash=?,sex=?,rowid=? WHERE rowid=?";
 		try{
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, name);
-			stmt.setString(2, phone);
-			stmt.setString(3, email);
+			stmt.setString(2, num);
+			stmt.setString(3, mail);
 			stmt.setString(4, major);
-			stmt.setInt(5, code);
-			stmt.setString(6, birthday);
-			stmt.setString(7, groupname);
-			stmt.setString(8, snsAddress);
+			stmt.setString(5, stid);
+			stmt.setString(6, month);
+			stmt.setString(7, day);
+			stmt.setString(8, groupname);
 			stmt.setString(9, hash);
-			stmt.setString(10, gender);
+			stmt.setString(10, sex);
 			stmt.setInt(11, rowid);
 			stmt.executeUpdate(sql);
 			isSuccess = true;
@@ -448,19 +448,19 @@ public class DB {
 		return isSuccess;
 	}
 
-	public int accountgender(){
-		int gender=0;
+	public int accountsex(){
+		int sex=0;
 		try {
 			Statement stmt = conn.createStatement();// 쿼리문 전송
-			gender=(int)(stmt.executeUpdate("select count(*) from address WHERE gender=남")/stmt.executeUpdate("select count(*) from address")*100);
+			sex=(int)(stmt.executeUpdate("select count(*) from address WHERE sex=남")/stmt.executeUpdate("select count(*) from address")*100);
 
-			System.out.println(gender);
+			System.out.println(sex);
 
 		} catch (SQLException e) {
-			System.err.println("Error : Don't account gender");
+			System.err.println("Error : Don't account sex");
 			System.out.println(e.getMessage());
 		}
-		return gender;
+		return sex;
 	}
 
 
