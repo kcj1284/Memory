@@ -81,8 +81,8 @@ public class DB {
 				m.hash = rs.getString("hash");
 				m.stid = rs.getString("stid");
 				m.sex = rs.getString("sex");
-				m.month = rs.getInt("month");
-				m.day = rs.getInt("day");
+				m.month = rs.getString("month");
+				m.day = rs.getString("day");
 				m.groupname = rs.getString("groupname");
 
 				System.out.println(rs.getString("id") + "\t" + rs.getString("pw") + "\t" + rs.getString("email") + "\t"
@@ -137,9 +137,9 @@ public class DB {
 				m.mail = rs.getString("mail");
 				m.major = rs.getString("major");
 				m.stid = rs.getString("stid");
-				m.month = rs.getInt("month");
+				m.month = rs.getString("month");
 				m.groupname = rs.getString("groupname");
-				m.day = rs.getInt("day");
+				m.day = rs.getString("day");
 				m.hash = rs.getString("hash");
 				m.sex = rs.getString("sex");
 				m.rowid = rs.getInt("rowid");
@@ -177,9 +177,9 @@ public class DB {
 				m.mail = rs.getString("mail");
 				m.major = rs.getString("major");
 				m.stid = rs.getString("stid");
-				m.month = rs.getInt("month");
+				m.month = rs.getString("month");
 				m.groupname = rs.getString("groupname");
-				m.day = rs.getInt("day");
+				m.day = rs.getString("day");
 				m.hash = rs.getString("hash");
 				m.sex = rs.getString("sex");
 				m.rowid = rs.getInt("rowid");
@@ -216,9 +216,9 @@ public class DB {
 				m.mail = rs.getString("mail");
 				m.major = rs.getString("major");
 				m.stid = rs.getString("stid");
-				m.month = rs.getInt("month");
+				m.month = rs.getString("month");
 				m.groupname = rs.getString("groupname");
-				m.day = rs.getInt("day");
+				m.day = rs.getString("day");
 				m.hash = rs.getString("hash");
 				m.sex = rs.getString("sex");
 				m.rowid = rs.getInt("rowid");
@@ -256,9 +256,9 @@ public class DB {
 				m.mail = rs.getString("mail");
 				m.major = rs.getString("major");
 				m.stid = rs.getString("stid");
-				m.month = rs.getInt("month");
+				m.month = rs.getString("month");
 				m.groupname = rs.getString("groupname");
-				m.day = rs.getInt("day");
+				m.day = rs.getString("day");
 				m.hash = rs.getString("hash");
 				m.sex = rs.getString("sex");
 				m.rowid = rs.getInt("rowid");
@@ -297,9 +297,9 @@ public class DB {
 				m.mail = rs.getString("mail");
 				m.major = rs.getString("major");
 				m.stid = rs.getString("stid");
-				m.month = rs.getInt("month");
+				m.month = rs.getString("month");
 				m.groupname = rs.getString("groupname");
-				m.day = rs.getInt("day");
+				m.day = rs.getString("day");
 				m.hash = rs.getString("hash");
 				m.sex = rs.getString("sex");
 				m.rowid = rs.getInt("rowid");
@@ -337,9 +337,9 @@ public class DB {
 				m.mail = rs.getString("mail");
 				m.major = rs.getString("major");
 				m.stid = rs.getString("stid");
-				m.month = rs.getInt("month");
+				m.month = rs.getString("month");
 				m.groupname = rs.getString("groupname");
-				m.day = rs.getInt("day");
+				m.day = rs.getString("day");
 				m.hash = rs.getString("hash");
 				m.sex = rs.getString("sex");
 				m.rowid = rs.getInt("rowid");
@@ -360,7 +360,7 @@ public class DB {
 		return isSuccess;
 	}
 
-	public boolean insertAddress(String name,String num,String mail,String major,String stid,int month,int day,String groupname,String hash,String sex) {
+	public boolean insertAddress(String name,String num,String mail,String major,String stid,String month,String day,String groupname,String hash,String sex) {
 		boolean isSuccess = false;
 		String sql = "insert into address(name,num,mail,major,stid,month,day,group,hash,sex) values(?,?,?,?,?,?,?,?,?,?)";
 		try {
@@ -371,8 +371,8 @@ public class DB {
 			stmt.setString(3, mail);
 			stmt.setString(4, major);
 			stmt.setString(5, stid);
-			stmt.setInt(6, month);
-			stmt.setInt(7, day);
+			stmt.setString(6, month);
+			stmt.setString(7, day);
 			stmt.setString(8, groupname);
 			stmt.setString(9, hash);
 			stmt.setString(10, sex);
@@ -502,9 +502,9 @@ public class DB {
 				m.mail = rs.getString("mail");
 				m.major = rs.getString("major");
 				m.stid = rs.getString("stid");
-				m.month = rs.getInt("month");
+				m.month = rs.getString("month");
 				m.groupname = rs.getString("groupname");
-				m.day = rs.getInt("day");
+				m.day = rs.getString("day");
 				m.hash = rs.getString("hash");
 				m.sex = rs.getString("sex");
 				m.rowid = rs.getInt("rowid");
