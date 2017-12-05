@@ -34,10 +34,12 @@ public class AddPerson extends JFrame {
 	private JTextField tf_stid;
 	private JTextField tf_group;
 	private JTextField tf_hash;
+	private JTextField tf_sex;
 	JComboBox<String> cb_day, cb_month;
 
 	private String name, num, mail, major, hash, stid, sex, groupname, month, day;
 	ButtonGroup group;
+	
 
 	public AddPerson() {
 
@@ -52,7 +54,7 @@ public class AddPerson extends JFrame {
 		 * @author 김찬중
 		 * 남자 여자 선택하는 라디오 버튼
 		 * 선택한 성별을 sex에 저장
-		 */
+		 *//*
 		
 		JRadioButton[] gender = new JRadioButton[2];
 		String[] text = { "남자", "여자" };
@@ -66,6 +68,7 @@ public class AddPerson extends JFrame {
 			group.add(gender[i]);
 			genderpanel.add(gender[i]);
 		}
+		
 		class MyItemListener implements ItemListener {
 			public void itemStateChanged(ItemEvent e) {
 				if (e.getStateChange() == ItemEvent.DESELECTED)
@@ -75,8 +78,9 @@ public class AddPerson extends JFrame {
 				else
 					sex = "여자";
 			}
-		}
+		}*/
 
+		
 		/**
 		 * @author 김찬중
 		 * 이름을 추가하는 텍스트필드
@@ -154,11 +158,14 @@ public class AddPerson extends JFrame {
 		tf_group.setColumns(10);
 		tf_group.setBounds(170, 480, 200, 40);
 		contentPane.add(tf_group);
-
-		/**
-		 * @author 김찬중
-		 * 해쉬태그를 추가하는 텍스트필드
-		 */
+		
+		tf_sex = new JTextField();
+		tf_sex.setBackground(new Color(245, 244, 243));
+		tf_sex.setFont(new Font("맑은 고딕", Font.PLAIN, 25));
+		tf_sex.setForeground(Color.BLACK);
+		tf_sex.setBounds(170, 542, 200, 40);
+		tf_sex.setColumns(10);
+		contentPane.add(tf_sex);
 		
 		tf_hash = new JTextField();
 		tf_hash.setBackground(new Color(245, 244, 243));
@@ -274,6 +281,7 @@ public class AddPerson extends JFrame {
 		major = tf_major.getText();
 		stid = tf_stid.getText();
 		hash = tf_hash.getText();
+		sex = tf_sex.getText();
 		groupname = tf_group.getText();
 
 		/**
@@ -303,7 +311,17 @@ public class AddPerson extends JFrame {
 				return;
 			}
 		}
-
+		
+		/**
+		 * @author 김찬중
+		 * 입력된 성별을 검사하여 남자와 여자가 아니면 오류메세지를 띄운다
+		 */
+		
+		if (name=="남자"||name=="여자") { 
+			JOptionPane.showMessageDialog(Frame.frame_addperson, "성별은 남자와 여자만 입력할 수 있습니다.", "오류", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		
 		/**
 		 * @author 김찬중
 		 * 입력된 이메일을 검사하여 /@버튼이 없거나 .이 없다면 오류메세지를 띄운다  
@@ -360,6 +378,7 @@ public class AddPerson extends JFrame {
 		tf_major.setText("");
 		tf_stid.setText("");
 		tf_group.setText("");
+		tf_sex.setText("");
 		tf_hash.setText("");
 		cb_month.setSelectedIndex(0);
 		cb_day.setSelectedIndex(0);

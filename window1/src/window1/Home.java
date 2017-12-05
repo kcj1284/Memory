@@ -7,12 +7,14 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Vector;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -26,7 +28,6 @@ import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
-import javax.swing.JList;
 
 /**
  * @author 김찬중
@@ -44,6 +45,9 @@ public class Home extends JFrame {
 	private String combo, value;
 	
 	public Home() {
+		
+		DB db = new DB();
+		
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(250, 130, 1509, 752);
@@ -120,8 +124,16 @@ public class Home extends JFrame {
 		btn_search.setBorderPainted(false);
 		btn_search.setIcon(new ImageIcon("rsc\\icon\\btn_search.jpg"));
 		btn_search.setBounds(833, 13, 123, 42);
-		contentPane.add(btn_search);
+		btn_search.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//db.search(tf_.getText()); // 검색창에 입력된 텍스트를 search메소드로 전달하여 검색
+				model.addPageInfo(Data.address_vector);// 검색된 결과를 table모델에 전달
+				model.fireTableDataChanged();// 화면 상에 보이는 표를 업데이트
+			}
 
+		});
+		contentPane.add(btn_search);
+		
 		/**
 		 * @author 김찬중
 		 * 모든 창을 닫고 로그인 화면을 띄워주는 버튼
@@ -208,10 +220,10 @@ public class Home extends JFrame {
 
 	class Table_model extends AbstractTableModel {
 
-		private ArrayList<AddressInfo> pages;
+		private Vector<AddressInfo> pages;
 
 		public Table_model() {
-			pages = new ArrayList<AddressInfo>();
+			pages = new Vector<AddressInfo>();
 		}
 
 		public int getColumnCount() {
@@ -222,9 +234,8 @@ public class Home extends JFrame {
 			return pages.size();
 		}
 
-		public void addPageInfo(AddressInfo page) {
-			int idx = pages.size();
-			pages.add(page);
+		public void addPageInfo(Vector<AddressInfo> page) {
+			this.pages = page;
 		}
 
 		public Object getValueAt(int rowIndex, int columnIndex) {

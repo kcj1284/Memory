@@ -20,6 +20,8 @@ import javax.swing.border.EmptyBorder;
  */
 @SuppressWarnings("serial")
 public class FindIDPW extends JFrame {
+	
+	DB db = new DB();
 
 	private JPanel contentPane;
 	private JTextField tf_findid_email;
@@ -28,6 +30,9 @@ public class FindIDPW extends JFrame {
 	private JTextField tf_findpw_id;
 
 	public FindIDPW() {
+		
+		db.getMember();
+		
 		setResizable(false);
 		setTitle("아이디/비밀번호 찾기");
 		setIconImage(Toolkit.getDefaultToolkit().getImage("rsc\\logo_icon.png"));
@@ -105,6 +110,7 @@ public class FindIDPW extends JFrame {
 	/**
 	 * 이메일과 이름을 입력받아서 이에 일치하는 아이디를 메시지로 띄워주는 메소드
 	 */
+	
 	private void findID(String email, String name) {
 		int i;
 		for (i = 0; i < Data.member_vector.size(); i++) {
