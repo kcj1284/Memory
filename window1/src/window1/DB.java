@@ -197,9 +197,9 @@ public class DB {
 				m.rowid = rs.getInt("rowid");
 
 
-				System.out.println(rs.getString("name") + "\t" + rs.getString("phone") + "\t" + rs.getString("email") + "\t"
+				/*System.out.println(rs.getString("name") + "\t" + rs.getString("phone") + "\t" + rs.getString("email") + "\t"
 						+ rs.getString("major") + "\t" + rs.getInt("code") + rs.getString("birthday") + "\t" + rs.getString("groupname") + "\t"
-						+rs.getString("snsAddress") + "\t" + rs.getString("hash") + "\t" +rs.getString("gender") );
+						+rs.getString("snsAddress") + "\t" + rs.getString("hash") + "\t" +rs.getString("gender") );*/
 				Data.address_vector.addElement(m); // 벡터에 유저 정보 추가
 			}
 			isSuccess = true;

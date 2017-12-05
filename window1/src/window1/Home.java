@@ -30,7 +30,8 @@ import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 
 /**
- * @author 김찬중 프로그램의 메인화면
+ * @author 김찬중 
+ * 프로그램의 메인화면
  */
 public class Home extends JFrame {
 
@@ -58,7 +59,8 @@ public class Home extends JFrame {
 		contentPane.setLayout(null);
 
 		/**
-		 * @author 김찬중 검색을 할 유형을 고르는 콤보박스
+		 * @author 김찬중 
+		 * 검색을 할 유형을 고르는 콤보박스
 		 */
 
 		String[] element = new String[6];
@@ -77,7 +79,8 @@ public class Home extends JFrame {
 		cb_type.setForeground(Color.WHITE);
 
 		/**
-		 * @author 김찬중 AddPerson 창을 여는 버튼
+		 * @author 김찬중 
+		 * AddPerson 창을 여는 버튼
 		 */
 
 		JButton btn_AddPerson = new JButton("");
@@ -92,7 +95,8 @@ public class Home extends JFrame {
 		contentPane.add(btn_AddPerson);
 
 		/**
-		 * @author 김찬중 AddGroup 창을 여는 버튼
+		 * @author 김찬중
+		 *  AddGroup 창을 여는 버튼
 		 */
 
 		JButton btn_AddGroup = new JButton("");
@@ -107,7 +111,8 @@ public class Home extends JFrame {
 		contentPane.add(btn_AddGroup);
 
 		/**
-		 * @author 김찬중 검색할 내용을 입력하는 텍스트필드
+		 * @author 김찬중 
+		 * 검색할 내용을 입력하는 텍스트필드
 		 */
 
 		tf_search = new JTextField();
@@ -130,7 +135,8 @@ public class Home extends JFrame {
 		contentPane.add(btn_search);
 
 		/**
-		 * @author 김찬중 모든 창을 닫고 로그인 화면을 띄워주는 버튼
+		 * @author 김찬중
+		 *  모든 창을 닫고 로그인 화면을 띄워주는 버튼
 		 */
 
 		JButton btn_logout = new JButton("");
@@ -147,7 +153,8 @@ public class Home extends JFrame {
 		});
 
 		/**
-		 * @author 김찬중 DB에서 가져온 자료를 table에 넣는 함수들
+		 * @author 김찬중
+		 *  DB에서 가져온 자료를 table에 넣는 함수들
 		 */
 
 		JScrollPane scrollPane = new JScrollPane();
