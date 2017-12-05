@@ -217,7 +217,7 @@ public class AddPerson extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				month = cb_day.getSelectedItem().toString();
+				day = cb_day.getSelectedItem().toString();
 			}
 
 		});

@@ -31,8 +31,7 @@ import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 
 /**
- * @author 김찬중 
- * 프로그램의 메인화면
+ * @author 김찬중 프로그램의 메인화면
  */
 public class Home extends JFrame {
 
@@ -43,8 +42,6 @@ public class Home extends JFrame {
 	JComboBox cb_type;
 	DefaultTableModel defaultTableModel;
 	Table_model model;
-	private String combo, value;
-
 	public Home() {
 
 		DB db = new DB();
@@ -60,19 +57,14 @@ public class Home extends JFrame {
 		contentPane.setLayout(null);
 
 		/**
-		 * @author 김찬중 
-		 * 검색을 할 유형을 고르는 콤보박스
+		 * @author 김찬중 검색을 할 유형을 고르는 콤보박스
 		 */
 
-		String[] element = new String[6];
-		element[0] = "이름";
-		element[1] = "학번";
-		element[2] = "학과";
-		element[3] = "번호";
-		element[4] = "해쉬태그";
-		element[5] = "생일";
-
-		cb_type = new JComboBox(element);
+		String[] element = { "이름", "학번", "학과", "번호", "해쉬태그" };
+		JComboBox<String> cb_type = new JComboBox<String>();
+		for (int i = 0; i < element.length; i++) {
+			cb_type.addItem(element[i]);
+		}
 		cb_type.setBounds(307, 12, 99, 44);
 		cb_type.setBackground(new Color(114, 172, 69));
 		contentPane.add(cb_type);
@@ -80,8 +72,7 @@ public class Home extends JFrame {
 		cb_type.setForeground(Color.WHITE);
 
 		/**
-		 * @author 김찬중 
-		 * AddPerson 창을 여는 버튼
+		 * @author 김찬중 AddPerson 창을 여는 버튼
 		 */
 
 		JButton btn_AddPerson = new JButton("");
@@ -96,8 +87,7 @@ public class Home extends JFrame {
 		contentPane.add(btn_AddPerson);
 
 		/**
-		 * @author 김찬중
-		 *  AddGroup 창을 여는 버튼
+		 * @author 김찬중 AddGroup 창을 여는 버튼
 		 */
 
 		JButton btn_AddGroup = new JButton("");
@@ -112,8 +102,7 @@ public class Home extends JFrame {
 		contentPane.add(btn_AddGroup);
 
 		/**
-		 * @author 김찬중 
-		 * 검색할 내용을 입력하는 텍스트필드
+		 * @author 김찬중 검색할 내용을 입력하는 텍스트필드
 		 */
 
 		tf_search = new JTextField();
@@ -127,17 +116,43 @@ public class Home extends JFrame {
 		btn_search.setBounds(833, 13, 123, 42);
 		btn_search.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				db.searchname(tf_search.getText()); // 검색창에 입력된 텍스트를 search메소드로 전달하여 검색
-				model.addPageInfo(Data.address_vector);// 검색된 결과를 table모델에 전달
-				model.fireTableDataChanged();// 화면 상에 보이는 표를 업데이트
+				
+				switch(cb_type.getSelectedIndex()) {
+				case 0:
+					db.searchname(tf_search.getText());
+					model.addPageInfo(Data.address_vector);
+					model.fireTableDataChanged();
+					break;
+				case 1:
+					db.searchcode(tf_search.getText());
+					model.addPageInfo(Data.address_vector);
+					model.fireTableDataChanged();
+					break;
+				case 2:
+					db.searchmajor(tf_search.getText());
+					model.addPageInfo(Data.address_vector);
+					model.fireTableDataChanged();
+					break;
+				case 3:
+					db.searchphone(tf_search.getText());
+					model.addPageInfo(Data.address_vector);
+					model.fireTableDataChanged();
+					break;
+				case 4:
+					db.searchHash(tf_search.getText());
+					model.addPageInfo(Data.address_vector);
+					model.fireTableDataChanged();
+					break;
+				}
+					
+				
 			}
 
 		});
 		contentPane.add(btn_search);
-		
+
 		/**
-		 * @author 김찬중
-		 *  모든 창을 닫고 로그인 화면을 띄워주는 버튼
+		 * @author 김찬중 모든 창을 닫고 로그인 화면을 띄워주는 버튼
 		 */
 
 		JButton btn_logout = new JButton("");
@@ -156,8 +171,7 @@ public class Home extends JFrame {
 		});
 
 		/**
-		 * @author 김찬중
-		 *  DB에서 가져온 자료를 table에 넣는 함수들
+		 * @author 김찬중 DB에서 가져온 자료를 table에 넣는 함수들
 		 */
 
 		JScrollPane scrollPane = new JScrollPane();
@@ -169,9 +183,10 @@ public class Home extends JFrame {
 		TableCellRenderer renderer = new DefaultTableCellRenderer();
 
 		TableColumn column = new TableColumn(0);
+		column.setPreferredWidth(10);
+
 		column.setCellRenderer(renderer);
 		column.setHeaderValue("이름");
-		column.setPreferredWidth(10);
 		columnModel.addColumn(column);
 
 		column = new TableColumn(1);
@@ -196,7 +211,8 @@ public class Home extends JFrame {
 		columnModel.setColumnSelectionAllowed(false);
 
 		table_view = new JTable(model, columnModel);
-		table_view.setRowHeight(20);
+		table_view.setFont(new Font("굴림", Font.PLAIN, 30));
+		table_view.setRowHeight(50);
 		scrollPane.setViewportView(table_view);
 		scrollPane.getViewport().setBackground(Color.WHITE);
 
