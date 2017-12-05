@@ -268,6 +268,7 @@ public class Join extends JFrame {
 			}
 
 			db.insertMember(id, pw, email, name, pwQuestion, pwAnswer);
+			//db.addressBook(name);
 			db.getMember();
 			JOptionPane.showMessageDialog(Frame.frame_join, "회원가입이 정상적으로 완료되었습니다.", "회원가입 완료",
 					JOptionPane.INFORMATION_MESSAGE);
