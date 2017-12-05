@@ -30,7 +30,7 @@ public class AddGroup extends JFrame {
 	 * Create the frame.
 	 */
 	public AddGroup() {
-		
+
 		setResizable(false);
 		setIconImage(Toolkit.getDefaultToolkit().getImage("rsc\\logo_icon.png"));
 		setTitle("AddGroup");

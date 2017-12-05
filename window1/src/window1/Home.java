@@ -1,35 +1,31 @@
 package window1;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.EventQueue;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Toolkit;
-import javax.swing.table.DefaultTableModel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableColumnModel;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.awt.event.ActionEvent;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JTextField;
-import javax.swing.JTable;
-import javax.swing.JTextArea;
-import javax.swing.JScrollPane;
 
 /**
  * @author 김찬중 프로그램의 메인화면
@@ -44,7 +40,6 @@ public class Home extends JFrame {
 	DefaultTableModel defaultTableModel;
 	Table_model model;
 	private String combo, value;
-	
 
 	/**
 	 * Create the frame.
@@ -121,9 +116,9 @@ public class Home extends JFrame {
 		});
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(307, 133, 1197, 640);
+		scrollPane.setBounds(307, 68, 1188, 640);
 		contentPane.add(scrollPane);
-		
+
 		model = new Table_model();
 		TableColumnModel columnModel = new DefaultTableColumnModel();
 		TableCellRenderer renderer = new DefaultTableCellRenderer();
@@ -131,7 +126,7 @@ public class Home extends JFrame {
 		TableColumn column = new TableColumn(0);
 		column.setCellRenderer(renderer);
 		column.setHeaderValue("이름");
-		column.setPreferredWidth(5);
+		column.setPreferredWidth(10);
 		columnModel.addColumn(column);
 
 		column = new TableColumn(1);
@@ -153,69 +148,69 @@ public class Home extends JFrame {
 		column = new TableColumn(5);
 		column.setHeaderValue("생일");
 		columnModel.addColumn(column);
-
 		columnModel.setColumnSelectionAllowed(false);
-		
+
 		table_view = new JTable(model, columnModel);
-		table_view.setForeground(Color.WHITE);
+		table_view.setRowHeight(20);
 		scrollPane.setViewportView(table_view);
-		
+
+		JTableHeader header = table_view.getTableHeader();
+		header.setPreferredSize(new Dimension(10, 50));
+
 		JLabel lb_background = new JLabel(new ImageIcon("rsc\\Home.jpg"));
+		lb_background.setForeground(Color.WHITE);
 		lb_background.setBackground(Color.WHITE);
 		lb_background.setBounds(0, 0, 1642, 800);
 		contentPane.add(lb_background);
-		
-	
+
+	}
+
+	class Table_model extends AbstractTableModel {
+
+		private ArrayList<AddressInfo> pages;
+
+		public Table_model() {
+			pages = new ArrayList<AddressInfo>();
 		}
-	
-		class Table_model extends AbstractTableModel{
-			
-			    private ArrayList<AddressInfo> pages;
 
-			    public Table_model(){
-			        pages = new ArrayList<AddressInfo>();
-			    }
-			   
-			    public int getColumnCount() {
-			        return 6;
-			    }
+		public int getColumnCount() {
+			return 6;
+		}
 
-			    public int getRowCount() {
-			        return pages.size();
-			    }
-			    
-			    public void addPageInfo(AddressInfo page){
-			        int idx = pages.size();
-			        pages.add(page);
-			    }
+		public int getRowCount() {
+			return pages.size();
+		}
 
-			
-			    public Object getValueAt(int rowIndex, int columnIndex) {
-			    	AddressInfo info = pages.get(rowIndex);
-			        switch (columnIndex) {
-			        case 0 :
-			            return info.name;
-			        case 1 :
-			            return info.num;
-			        case 2 :
-			            return info.stid;
-			        case 3 :
-			            return info.major;
-			        case 4 :
-			            return info.sex;
-			        case 5 :
-			            return info.month.toString()+"	"+info.day.toString();
-			        default :
-			                return "invalid";
-			        }
-			    }
+		public void addPageInfo(AddressInfo page) {
+			int idx = pages.size();
+			pages.add(page);
+		}
+
+		public Object getValueAt(int rowIndex, int columnIndex) {
+			AddressInfo info = pages.get(rowIndex);
+			switch (columnIndex) {
+			case 0:
+				return info.name;
+			case 1:
+				return info.num;
+			case 2:
+				return info.stid;
+			case 3:
+				return info.major;
+			case 4:
+				return info.sex;
+			case 5:
+				return info.month.toString() + "	" + info.day.toString();
+			default:
+				return "invalid";
 			}
-
-		public void Home() {
-
-			combo = cb_type.getSelectedItem().toString();
-			value = tf_search.getText();
-
 		}
 	}
-	
+
+	public void Home() {
+
+		combo = cb_type.getSelectedItem().toString();
+		value = tf_search.getText();
+
+	}
+}

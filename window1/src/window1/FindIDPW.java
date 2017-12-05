@@ -1,4 +1,5 @@
 package window1;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Toolkit;
@@ -12,11 +13,10 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.border.EmptyBorder;	
+import javax.swing.border.EmptyBorder;
 
 /**
- * @author 김찬중
- * 아이디 또는 비밀번호를 찾는 Class
+ * @author 김찬중 아이디 또는 비밀번호를 찾는 Class
  */
 @SuppressWarnings("serial")
 public class FindIDPW extends JFrame {
@@ -105,15 +105,16 @@ public class FindIDPW extends JFrame {
 	/**
 	 * 이메일과 이름을 입력받아서 이에 일치하는 아이디를 메시지로 띄워주는 메소드
 	 */
-	private void findID(String email, String name){
+	private void findID(String email, String name) {
 		int i;
-		for(i = 0; i < Data.member_vector.size(); i++){
-			if(Data.member_vector.get(i).email.equals(email) && Data.member_vector.get(i).name.equals(name)){
-				JOptionPane.showMessageDialog(Frame.frame_join, "아이디는 " + Data.member_vector.get(i).id + "입니다.", "아이디 찾기", JOptionPane.INFORMATION_MESSAGE);
+		for (i = 0; i < Data.member_vector.size(); i++) {
+			if (Data.member_vector.get(i).email.equals(email) && Data.member_vector.get(i).name.equals(name)) {
+				JOptionPane.showMessageDialog(Frame.frame_join, "아이디는 " + Data.member_vector.get(i).id + "입니다.",
+						"아이디 찾기", JOptionPane.INFORMATION_MESSAGE);
 				break;
 			}
 		}
-		if(i == Data.member_vector.size()){
+		if (i == Data.member_vector.size()) {
 			JOptionPane.showMessageDialog(Frame.frame_join, "일치하는 계정이 존재하지 않습니다.", "오류", JOptionPane.ERROR_MESSAGE);
 		}
 	}
@@ -121,12 +122,12 @@ public class FindIDPW extends JFrame {
 	/**
 	 * 아이디, 이메일, 이름을 받아서 이에 일치하는 본인확인 질문을 띄워주는 메소드
 	 */
-	private void findPW(String id, String email){
+	private void findPW(String id, String email) {
 		int i;
-		for(i = 0; i < Data.member_vector.size(); i++){
-			if(Data.member_vector.get(i).id.equals(id) && Data.member_vector.get(i).email.equals(email)){
+		for (i = 0; i < Data.member_vector.size(); i++) {
+			if (Data.member_vector.get(i).id.equals(id) && Data.member_vector.get(i).email.equals(email)) {
 				String pwAnswer = "";
-				switch(Data.member_vector.get(i).pwQuestion){
+				switch (Data.member_vector.get(i).pwQuestion) {
 				case 0:
 					pwAnswer = "나의 장래희망은?";
 					break;
@@ -153,15 +154,16 @@ public class FindIDPW extends JFrame {
 				break;
 			}
 		}
-		if(i == Data.member_vector.size()){
+		if (i == Data.member_vector.size()) {
 			JOptionPane.showMessageDialog(Frame.frame_join, "일치하는 계정이 존재하지 않습니다.", "오류", JOptionPane.ERROR_MESSAGE);
 		}
 	}
-	void reset(){
+
+	void reset() {
 		tf_findid_email.setText("");
 		tf_findid_name.setText("");
 		tf_findpw_id.setText("");
 		tf_findpw_email.setText("");
-		
-		}
+
+	}
 }

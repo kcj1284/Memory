@@ -137,15 +137,16 @@ public class AddPerson extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				month = cb_month.getSelectedItem().toString();
 			}
-			
+
 		});
 		cb_month.setFont(new Font("讣篮 绊雕", Font.PLAIN, 25));
 		cb_month.setForeground(Color.BLACK);
 		cb_month.setBounds(170, 420, 95, 40);
 		contentPane.add(cb_month);
 
-		String[] dayArr = { "1老", "2老", "3老", "4老", "5老", "6老", "7老", "8老", "9老", "10老", "11老", "12老", "13老", "14老", "15老",
-				"16老", "17老", "18老", "19老", "20老", "21老", "22老", "23老", "24老", "25老", "26老", "27老", "28老", "29老", "30老","31老" };
+		String[] dayArr = { "1老", "2老", "3老", "4老", "5老", "6老", "7老", "8老", "9老", "10老", "11老", "12老", "13老", "14老",
+				"15老", "16老", "17老", "18老", "19老", "20老", "21老", "22老", "23老", "24老", "25老", "26老", "27老", "28老", "29老",
+				"30老", "31老" };
 		JComboBox<String> cb_day = new JComboBox<String>();
 		for (int i = 0; i < dayArr.length; i++) {
 			cb_day.addItem(dayArr[i]);
@@ -157,7 +158,7 @@ public class AddPerson extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				month = cb_day.getSelectedItem().toString();
 			}
-			
+
 		});
 		cb_day.setFont(new Font("讣篮 绊雕", Font.PLAIN, 25));
 		cb_day.setForeground(Color.BLACK);
@@ -206,7 +207,7 @@ public class AddPerson extends JFrame {
 		mail = tf_mail.getText();
 		major = tf_major.getText();
 		stid = tf_stid.getText();
-		hash = tf_hash.getText();		
+		hash = tf_hash.getText();
 		groupname = tf_group.getText();
 
 		///////////// name ///////////////
@@ -256,7 +257,8 @@ public class AddPerson extends JFrame {
 
 		db.insertAddress(name, num, mail, major, stid, month, day, groupname, hash, sex);
 		db.getAddress();
-		JOptionPane.showMessageDialog(Frame.frame_addperson, "牢拱捞 沥惑利栏肺 眠啊 登菌嚼聪促.", "牢拱眠啊 肯丰", JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(Frame.frame_addperson, "牢拱捞 沥惑利栏肺 眠啊 登菌嚼聪促.", "牢拱眠啊 肯丰",
+				JOptionPane.INFORMATION_MESSAGE);
 		Frame.frame_addperson.setVisible(false);
 
 	}

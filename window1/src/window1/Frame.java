@@ -1,7 +1,7 @@
 package window1;
+
 /**
- * @author 김찬중
- * 모든 GUI창의 객체를 static으로 저장해두는 Class
+ * @author 김찬중 모든 GUI창의 객체를 static으로 저장해두는 Class
  */
 public class Frame {
 	static Home frame_home = new Home();
@@ -13,4 +13,4 @@ public class Frame {
 	static ChangePW frame_changePW = new ChangePW();
 	static AddPerson frame_addperson = new AddPerson();
 	static AddGroup frame_addgroup = new AddGroup();
-} 
+}

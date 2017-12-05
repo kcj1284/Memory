@@ -1,4 +1,5 @@
 package window1;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Toolkit;
@@ -16,8 +17,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 /**
- * @author 김찬중
- * 비밀번호를 찾을 때 사용되는 Class
+ * @author 김찬중 비밀번호를 찾을 때 사용되는 Class
  */
 @SuppressWarnings("serial")
 public class FindPW extends JFrame {
@@ -58,7 +58,7 @@ public class FindPW extends JFrame {
 		tf_pwAnswer.setBounds(146, 144, 146, 24);
 		contentPane.add(tf_pwAnswer);
 
-		btn_submit= new JButton("");
+		btn_submit = new JButton("");
 		btn_submit.setBorderPainted(false);
 		btn_submit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -73,20 +73,22 @@ public class FindPW extends JFrame {
 
 	/**
 	 * 본인확인 질문에 대한 답이 맞는 경우 비밀번호 변경창을 띄워주는 메소드
-	 * @param id 비밀번호를 변경할 id
+	 * 
+	 * @param id
+	 *            비밀번호를 변경할 id
 	 */
-	
-	void findPW2(String id){
+
+	void findPW2(String id) {
 		String pwAnswer = tf_pwAnswer.getText();
 		int i;
-		for(i = 0; i < Data.member_vector.size(); i++){
-			if(Data.member_vector.get(i).id.equals(id) && DB.PWCorrect(id, pwAnswer)){
+		for (i = 0; i < Data.member_vector.size(); i++) {
+			if (Data.member_vector.get(i).id.equals(id) && DB.PWCorrect(id, pwAnswer)) {
 				Frame.frame_changePW.setVisible(true);
 				Frame.frame_findPW.setVisible(false);
 				break;
 			}
 		}
-		if(i == Data.member_vector.size()){
+		if (i == Data.member_vector.size()) {
 			JOptionPane.showMessageDialog(Frame.frame_join, "비밀번호 확인 답이 일치하지 않습니다.", "오류", JOptionPane.ERROR_MESSAGE);
 		}
 	}

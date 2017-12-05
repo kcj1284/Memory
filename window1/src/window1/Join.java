@@ -25,9 +25,9 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.awt.event.ActionEvent;
+
 /**
- * @author 김찬중
- * 회원가입을 하는 Class
+ * @author 김찬중 회원가입을 하는 Class
  */
 public class Join extends JFrame {
 
@@ -51,7 +51,7 @@ public class Join extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);		
+		contentPane.setLayout(null);
 
 		tf_id = new JTextField();
 		tf_id.setBackground(new Color(114, 172, 69));
@@ -123,21 +123,21 @@ public class Join extends JFrame {
 		cb_pwQuestion.setBounds(144, 336, 217, 24);
 		contentPane.add(cb_pwQuestion);
 
-		try{
+		try {
 			JLabel lb_background = new JLabel(new ImageIcon(ImageIO.read(new File("rsc\\join.png"))));
 			lb_background.setBackground(Color.WHITE);
 			lb_background.setBounds(0, 0, 400, 550);
 			contentPane.add(lb_background);
-		}
-		catch(IOException s){
+		} catch (IOException s) {
 			s.printStackTrace();
 		}
 	}
-	public void join(){
+
+	public void join() {
 		DB db = new DB();
-		if(!db.getMember()){
+		if (!db.getMember()) {
 			System.out.println("오류");
-		} else{
+		} else {
 			id = tf_id.getText();
 			pw = String.valueOf(tf_pw.getPassword());
 			pwCheck = String.valueOf(tf_pwCheck.getPassword());
@@ -147,35 +147,39 @@ public class Join extends JFrame {
 			pwAnswer = tf_pwAnswer.getText();
 
 			///////////// id ///////////////
-			if(id.length() < 4 || id.length() > 12){ // 아이디의 길이가 짧거나 길면
-				JOptionPane.showMessageDialog(Frame.frame_join, "아이디는 4~12자의 영문, 숫자만 사용 가능합니다.", "오류", JOptionPane.ERROR_MESSAGE);
+			if (id.length() < 4 || id.length() > 12) { // 아이디의 길이가 짧거나 길면
+				JOptionPane.showMessageDialog(Frame.frame_join, "아이디는 4~12자의 영문, 숫자만 사용 가능합니다.", "오류",
+						JOptionPane.ERROR_MESSAGE);
 				return;
 			}
-			for(char c : id.toCharArray()){ 
-				if(!Character.isAlphabetic(c) && !Character.isDigit(c)){ // 아이디가 영어 또는 숫자가 아니면
-					JOptionPane.showMessageDialog(Frame.frame_join, "아이디는 4~12자의 영문, 숫자만 사용 가능합니다.", "오류", JOptionPane.ERROR_MESSAGE);
+			for (char c : id.toCharArray()) {
+				if (!Character.isAlphabetic(c) && !Character.isDigit(c)) { // 아이디가 영어 또는 숫자가 아니면
+					JOptionPane.showMessageDialog(Frame.frame_join, "아이디는 4~12자의 영문, 숫자만 사용 가능합니다.", "오류",
+							JOptionPane.ERROR_MESSAGE);
 					return;
 				}
 			}
-			for(int i = 0; i < Data.member_vector.size(); i++){
-				if(Data.member_vector.get(i).id.equals(id)){ // 아이디가 중복되면
+			for (int i = 0; i < Data.member_vector.size(); i++) {
+				if (Data.member_vector.get(i).id.equals(id)) { // 아이디가 중복되면
 					JOptionPane.showMessageDialog(Frame.frame_join, "이미 존재하는 아이디입니다.", "오류", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
 			}
 
 			///////////// pw ///////////////
-			if(pw.length() < 4 || pw.length() > 12){ // 비밀번호의 길이가 짧거나 길면
-				JOptionPane.showMessageDialog(Frame.frame_join, "비밀번호는 4~12자의 영문, 숫자만 사용 가능합니다.", "오류", JOptionPane.ERROR_MESSAGE);
+			if (pw.length() < 4 || pw.length() > 12) { // 비밀번호의 길이가 짧거나 길면
+				JOptionPane.showMessageDialog(Frame.frame_join, "비밀번호는 4~12자의 영문, 숫자만 사용 가능합니다.", "오류",
+						JOptionPane.ERROR_MESSAGE);
 				return;
 			}
-			for(char c : pw.toCharArray()){ 
-				if(!Character.isAlphabetic(c) && !Character.isDigit(c)){ // 비밀번호가 영어 또는 숫자가 아니면
-					JOptionPane.showMessageDialog(Frame.frame_join, "비밀번호는 4~12자의 영문, 숫자만 사용 가능합니다.", "오류", JOptionPane.ERROR_MESSAGE);
+			for (char c : pw.toCharArray()) {
+				if (!Character.isAlphabetic(c) && !Character.isDigit(c)) { // 비밀번호가 영어 또는 숫자가 아니면
+					JOptionPane.showMessageDialog(Frame.frame_join, "비밀번호는 4~12자의 영문, 숫자만 사용 가능합니다.", "오류",
+							JOptionPane.ERROR_MESSAGE);
 					return;
 				}
 			}
-			if(!pw.equals(pwCheck)){ // 비밀번호랑 비밀번호확인이랑 다르면
+			if (!pw.equals(pwCheck)) { // 비밀번호랑 비밀번호확인이랑 다르면
 				JOptionPane.showMessageDialog(Frame.frame_join, "비밀번호가 일치하지 않습니다.", "오류", JOptionPane.ERROR_MESSAGE);
 				return;
 			}
@@ -183,24 +187,25 @@ public class Join extends JFrame {
 			///////////// email ///////////////
 			int AtNum = 0, DotNum = 0; // @이랑 .의 개수
 
-			for(char c : email.toCharArray()){
-				if(c == '@') AtNum++;
-				if(c == '.') DotNum++;
+			for (char c : email.toCharArray()) {
+				if (c == '@')
+					AtNum++;
+				if (c == '.')
+					DotNum++;
 			}
-			if(AtNum != 1 || DotNum != 1){
+			if (AtNum != 1 || DotNum != 1) {
 				JOptionPane.showMessageDialog(Frame.frame_join, "올바른 형식의 이메일이 아닙니다.", "오류", JOptionPane.ERROR_MESSAGE);
 				return;
 			}
 
-
 			///////////// name ///////////////
-			if(name.length() == 0){
+			if (name.length() == 0) {
 				JOptionPane.showMessageDialog(Frame.frame_join, "이름을 입력해주세요.", "오류", JOptionPane.ERROR_MESSAGE);
 				return;
 			}
 
 			///////////// pwAnswer ///////////////
-			if(pwAnswer.length() == 0){
+			if (pwAnswer.length() == 0) {
 				JOptionPane.showMessageDialog(Frame.frame_join, "비밀번호 찾기 답을 입력해주세요.", "오류", JOptionPane.ERROR_MESSAGE);
 				return;
 			}
@@ -208,12 +213,13 @@ public class Join extends JFrame {
 			///////////// DB에 데이터 입력 ///////////////
 			db.insertMember(id, pw, email, name, pwQuestion, pwAnswer);
 			db.getMember();
-			JOptionPane.showMessageDialog(Frame.frame_join, "회원가입이 정상적으로 완료되었습니다.", "회원가입 완료", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(Frame.frame_join, "회원가입이 정상적으로 완료되었습니다.", "회원가입 완료",
+					JOptionPane.INFORMATION_MESSAGE);
 			Frame.frame_join.setVisible(false);
 		}
 	}
 
-	void reset(){
+	void reset() {
 		tf_id.setText("");
 		tf_pw.setText("");
 		tf_pwCheck.setText("");

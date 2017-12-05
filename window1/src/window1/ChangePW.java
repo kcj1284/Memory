@@ -1,4 +1,5 @@
 package window1;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Toolkit;
@@ -15,8 +16,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
 
 /**
- * @author 김찬중
- * 새로운 비밀번호를 설정할 수 있도록 해주는 Class
+ * @author 김찬중 새로운 비밀번호를 설정할 수 있도록 해주는 Class
  */
 @SuppressWarnings("serial")
 public class ChangePW extends JFrame {
@@ -41,26 +41,30 @@ public class ChangePW extends JFrame {
 				String pw = new String(tf_pw.getPassword());
 				String pwCheck = new String(tf_pwCheck.getPassword());
 
-				if(pw.length() < 4 || pw.length() > 12){ // 비밀번호의 길이가 짧거나 길면
-					JOptionPane.showMessageDialog(Frame.frame_join, "비밀번호는 4~12자의 영문, 숫자만 사용 가능합니다.", "오류", JOptionPane.ERROR_MESSAGE);
+				if (pw.length() < 4 || pw.length() > 12) { // 비밀번호의 길이가 짧거나 길면
+					JOptionPane.showMessageDialog(Frame.frame_join, "비밀번호는 4~12자의 영문, 숫자만 사용 가능합니다.", "오류",
+							JOptionPane.ERROR_MESSAGE);
 					return;
 				}
-				for(char c : pw.toCharArray()){ 
-					if(!Character.isAlphabetic(c) && !Character.isDigit(c)){ // 비밀번호가 영어 또는 숫자가 아니면
-						JOptionPane.showMessageDialog(Frame.frame_join, "비밀번호는 4~12자의 영문, 숫자만 사용 가능합니다.", "오류", JOptionPane.ERROR_MESSAGE);
+				for (char c : pw.toCharArray()) {
+					if (!Character.isAlphabetic(c) && !Character.isDigit(c)) { // 비밀번호가 영어 또는 숫자가 아니면
+						JOptionPane.showMessageDialog(Frame.frame_join, "비밀번호는 4~12자의 영문, 숫자만 사용 가능합니다.", "오류",
+								JOptionPane.ERROR_MESSAGE);
 						return;
 					}
 				}
-				if(!pw.equals(pwCheck)){ // 비밀번호랑 비밀번호확인이랑 다르면
-					JOptionPane.showMessageDialog(Frame.frame_join, "비밀번호가 일치하지 않습니다.", "오류", JOptionPane.ERROR_MESSAGE);
+				if (!pw.equals(pwCheck)) { // 비밀번호랑 비밀번호확인이랑 다르면
+					JOptionPane.showMessageDialog(Frame.frame_join, "비밀번호가 일치하지 않습니다.", "오류",
+							JOptionPane.ERROR_MESSAGE);
 					return;
 				}
 				changePW(pw);
-				JOptionPane.showMessageDialog(Frame.frame_join, "비밀번호가 성공적으로 변경되었습니다.", "비밀번호 변경 완료", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(Frame.frame_join, "비밀번호가 성공적으로 변경되었습니다.", "비밀번호 변경 완료",
+						JOptionPane.INFORMATION_MESSAGE);
 				Frame.frame_changePW.setVisible(false);
 			}
 		});
-		
+
 		btn_change.setIcon(new ImageIcon("rsc\\icon\\btn_change.PNG"));
 		btn_change.setBounds(123, 203, 165, 33);
 		btn_change.setBorderPainted(false);
@@ -90,13 +94,15 @@ public class ChangePW extends JFrame {
 
 	/**
 	 * 찾기를 시도한 계정의 비밀번호를 변경
-	 * @param pw 변경할 비밀번호
+	 * 
+	 * @param pw
+	 *            변경할 비밀번호
 	 */
-	
-	private void changePW(String pw){
+
+	private void changePW(String pw) {
 		String id = Data.member_vector.get(Data.userIndex).id;
 		DB.inputQuery("update member set pw = password('" + pw + "') where id = '" + id + "'");
 		DB.getMember();
 	}
-	
+
 }
