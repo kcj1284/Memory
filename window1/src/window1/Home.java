@@ -30,8 +30,7 @@ import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 
 /**
- * @author 김찬중
- * 프로그램의 메인화면
+ * @author 김찬중 프로그램의 메인화면
  */
 public class Home extends JFrame {
 
@@ -43,11 +42,11 @@ public class Home extends JFrame {
 	DefaultTableModel defaultTableModel;
 	Table_model model;
 	private String combo, value;
-	
+
 	public Home() {
-		
+
 		DB db = new DB();
-		
+
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(250, 130, 1509, 752);
@@ -59,10 +58,9 @@ public class Home extends JFrame {
 		contentPane.setLayout(null);
 
 		/**
-		 * @author 김찬중
-		 * 검색을 할 유형을 고르는 콤보박스
+		 * @author 김찬중 검색을 할 유형을 고르는 콤보박스
 		 */
-		
+
 		String[] element = new String[6];
 		element[0] = "이름";
 		element[1] = "학번";
@@ -79,10 +77,9 @@ public class Home extends JFrame {
 		cb_type.setForeground(Color.WHITE);
 
 		/**
-		 * @author 김찬중
-		 * AddPerson 창을 여는 버튼
+		 * @author 김찬중 AddPerson 창을 여는 버튼
 		 */
-		
+
 		JButton btn_AddPerson = new JButton("");
 		btn_AddPerson.setBorderPainted(false);
 		btn_AddPerson.setIcon(new ImageIcon("rsc\\icon\\btn_AddPerson.png"));
@@ -95,10 +92,9 @@ public class Home extends JFrame {
 		contentPane.add(btn_AddPerson);
 
 		/**
-		 * @author 김찬중
-		 * AddGroup 창을 여는 버튼
+		 * @author 김찬중 AddGroup 창을 여는 버튼
 		 */
-		
+
 		JButton btn_AddGroup = new JButton("");
 		btn_AddGroup.setBorderPainted(false);
 		btn_AddGroup.setIcon(new ImageIcon("rsc\\icon\\btn_AddGroup.png"));
@@ -109,12 +105,11 @@ public class Home extends JFrame {
 			}
 		});
 		contentPane.add(btn_AddGroup);
-		
+
 		/**
-		 * @author 김찬중
-		 * 검색할 내용을 입력하는 텍스트필드
+		 * @author 김찬중 검색할 내용을 입력하는 텍스트필드
 		 */
-		
+
 		tf_search = new JTextField();
 		tf_search.setBounds(406, 12, 426, 44);
 		contentPane.add(tf_search);
@@ -126,19 +121,18 @@ public class Home extends JFrame {
 		btn_search.setBounds(833, 13, 123, 42);
 		btn_search.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//db.search(tf_.getText()); // 검색창에 입력된 텍스트를 search메소드로 전달하여 검색
+				// db.search(tf_.getText()); // 검색창에 입력된 텍스트를 search메소드로 전달하여 검색
 				model.addPageInfo(Data.address_vector);// 검색된 결과를 table모델에 전달
 				model.fireTableDataChanged();// 화면 상에 보이는 표를 업데이트
 			}
 
 		});
 		contentPane.add(btn_search);
-		
+
 		/**
-		 * @author 김찬중
-		 * 모든 창을 닫고 로그인 화면을 띄워주는 버튼
+		 * @author 김찬중 모든 창을 닫고 로그인 화면을 띄워주는 버튼
 		 */
-		
+
 		JButton btn_logout = new JButton("");
 		btn_logout.setBorderPainted(false);
 		btn_logout.setIcon(new ImageIcon("rsc\\icon\\btn_logout.png"));
@@ -153,10 +147,9 @@ public class Home extends JFrame {
 		});
 
 		/**
-		 * @author 김찬중
-		 * DB에서 가져온 자료를 table에 넣는 함수들
+		 * @author 김찬중 DB에서 가져온 자료를 table에 넣는 함수들
 		 */
-		
+
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(307, 68, 1188, 640);
 		contentPane.add(scrollPane);
@@ -200,11 +193,11 @@ public class Home extends JFrame {
 		JTableHeader header = table_view.getTableHeader();
 		header.setPreferredSize(new Dimension(10, 50));
 		header.setBackground(Color.WHITE);
-		
+
 		JLabel label = new JLabel("그룹");
 		label.setBounds(14, 153, 62, 18);
 		contentPane.add(label);
-		
+
 		JList group_list = new JList();
 		group_list.setBackground(Color.WHITE);
 		group_list.setBounds(3, 139, 295, 265);
