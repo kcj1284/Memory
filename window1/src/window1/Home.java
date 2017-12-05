@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -133,7 +134,7 @@ public class Home extends JFrame {
 
 		});
 		contentPane.add(btn_search);
-
+		
 		/**
 		 * @author 김찬중
 		 *  모든 창을 닫고 로그인 화면을 띄워주는 버튼
@@ -146,6 +147,8 @@ public class Home extends JFrame {
 		contentPane.add(btn_logout);
 		btn_logout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				tf_search.setText("");
+				Data.address_vector.removeAllElements();
 				Frame.frame_login.setVisible(true);
 				Frame.frame_home.setVisible(false);
 				Frame.frame_popup.setVisible(false);
