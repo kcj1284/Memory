@@ -24,8 +24,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /**
- * @author 김찬중
- *  Login을 하는 Class
+ * @author 김찬중 Login을 하는 Class
  */
 public class Login extends JFrame {
 	DB db = new DB();
