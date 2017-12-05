@@ -126,7 +126,7 @@ public class Home extends JFrame {
 		btn_search.setBounds(833, 13, 123, 42);
 		btn_search.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// db.search(tf_.getText()); // 검색창에 입력된 텍스트를 search메소드로 전달하여 검색
+				db.searchname(tf_search.getText()); // 검색창에 입력된 텍스트를 search메소드로 전달하여 검색
 				model.addPageInfo(Data.address_vector);// 검색된 결과를 table모델에 전달
 				model.fireTableDataChanged();// 화면 상에 보이는 표를 업데이트
 			}
@@ -252,17 +252,10 @@ public class Home extends JFrame {
 			case 4:
 				return info.sex;
 			case 5:
-				return info.month.toString() + "	" + info.day.toString();
+				return info.month + "	" + info.day;
 			default:
 				return "invalid";
 			}
 		}
-	}
-
-	public void Home() {
-
-		combo = cb_type.getSelectedItem().toString();
-		value = tf_search.getText();
-
 	}
 }
