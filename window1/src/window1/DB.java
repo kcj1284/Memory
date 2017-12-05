@@ -90,12 +90,12 @@ public class DB {
 				m.num = rs.getString("num");
 				m.mail = rs.getString("mail");
 				m.major = rs.getString("major");
-				m.hash = rs.getString("hash");
 				m.stid = rs.getString("stid");
-				m.sex = rs.getString("sex");
 				m.month = rs.getString("month");
 				m.day = rs.getString("day");
 				m.groupname = rs.getString("groupname");
+				m.hash = rs.getString("hash");
+				m.sex = rs.getString("sex");
 
 				System.out.println(rs.getString("id") + "\t" + rs.getString("pw") + "\t" + rs.getString("email") + "\t"
 						+ rs.getString("name") + "\t" + rs.getString("pwAnswer"));
@@ -109,7 +109,7 @@ public class DB {
 	}
 	
 	
-	
+
 	protected boolean insertMember(String id, String passwd, String email, String name, int question, String answer) {
 		boolean isSuccess = false;
 		String sql = "insert into member(id, pw, email, name, pwQuestion, pwAnswer) values(?, ?, ?, ?, ?, ?)";
@@ -128,7 +128,7 @@ public class DB {
 			isSuccess = true;
 			/*isSuccess = stmt.execute(sql);*/
 		} catch (SQLException e) {
-			System.err.println("Error : Insert Member");
+			System.err.println("Error : Insert Member1");
 		}
 		return isSuccess;
 	}
@@ -374,7 +374,7 @@ public class DB {
 
 	public boolean insertAddress(String name,String num,String mail,String major,String stid,String month,String day,String groupname,String hash,String sex) {
 		boolean isSuccess = false;
-		String sql = "insert into address(name,num,mail,major,stid,month,day,group,hash,sex) values(?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into address(name,num,mail,major,stid,month,day,groupname,hash,sex) values(?,?,?,?,?,?,?,?,?,?)";
 		try {
 
 			stmt = conn.prepareStatement(sql);
@@ -388,7 +388,7 @@ public class DB {
 			stmt.setString(8, groupname);
 			stmt.setString(9, hash);
 			stmt.setString(10, sex);
-			stmt.executeUpdate(sql);
+			stmt.executeUpdate();
 			isSuccess = true;
 			/*	  MemberInfo m;
 					Data.member_vector.removeAllElements();*/
@@ -399,7 +399,8 @@ public class DB {
 
 
 		} catch (SQLException e) {
-			System.err.println("Error : Insert Member");
+			System.err.println("Error : Insert Member2");
+			System.out.println(e.getMessage());
 		}
 		return isSuccess;
 	}
@@ -438,7 +439,7 @@ public class DB {
 			stmt.setString(9, hash);
 			stmt.setString(10, sex);
 			stmt.setInt(11, rowid);
-			stmt.executeUpdate(sql);
+			stmt.executeUpdate();
 			isSuccess = true;
 		}catch (SQLException e) {
 			System.err.println("Error : Update address");
@@ -490,11 +491,11 @@ public class DB {
 
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, groupname);
-			stmt.executeUpdate(sql);
+			stmt.executeUpdate();
 			isSuccess = true;
 
 		} catch (SQLException e) {
-			System.err.println("Error : Insert Member");
+			System.err.println("Error : Insert Member3");
 		}
 		return isSuccess;
 	}
