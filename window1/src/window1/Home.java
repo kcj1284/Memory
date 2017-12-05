@@ -26,9 +26,11 @@ import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
+import javax.swing.JList;
 
 /**
- * @author 김찬중 프로그램의 메인화면
+ * @author 김찬중
+ * 프로그램의 메인화면
  */
 public class Home extends JFrame {
 
@@ -40,14 +42,11 @@ public class Home extends JFrame {
 	DefaultTableModel defaultTableModel;
 	Table_model model;
 	private String combo, value;
-
-	/**
-	 * Create the frame.
-	 */
+	
 	public Home() {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(50, 30, 1642, 820);
+		setBounds(250, 130, 1509, 752);
 		setIconImage(Toolkit.getDefaultToolkit().getImage("rsc\\logo_icon.png"));
 		setTitle("Home");
 		contentPane = new JPanel();
@@ -55,6 +54,11 @@ public class Home extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
+		/**
+		 * @author 김찬중
+		 * 검색을 할 유형을 고르는 콤보박스
+		 */
+		
 		String[] element = new String[6];
 		element[0] = "이름";
 		element[1] = "학번";
@@ -70,6 +74,11 @@ public class Home extends JFrame {
 		cb_type.setFont(new Font("맑은 고딕", Font.BOLD, 20));
 		cb_type.setForeground(Color.WHITE);
 
+		/**
+		 * @author 김찬중
+		 * AddPerson 창을 여는 버튼
+		 */
+		
 		JButton btn_AddPerson = new JButton("");
 		btn_AddPerson.setBorderPainted(false);
 		btn_AddPerson.setIcon(new ImageIcon("rsc\\icon\\btn_AddPerson.png"));
@@ -81,6 +90,11 @@ public class Home extends JFrame {
 		});
 		contentPane.add(btn_AddPerson);
 
+		/**
+		 * @author 김찬중
+		 * AddGroup 창을 여는 버튼
+		 */
+		
 		JButton btn_AddGroup = new JButton("");
 		btn_AddGroup.setBorderPainted(false);
 		btn_AddGroup.setIcon(new ImageIcon("rsc\\icon\\btn_AddGroup.png"));
@@ -91,6 +105,12 @@ public class Home extends JFrame {
 			}
 		});
 		contentPane.add(btn_AddGroup);
+		
+		/**
+		 * @author 김찬중
+		 * 검색할 내용을 입력하는 텍스트필드
+		 */
+		
 		tf_search = new JTextField();
 		tf_search.setBounds(406, 12, 426, 44);
 		contentPane.add(tf_search);
@@ -102,10 +122,15 @@ public class Home extends JFrame {
 		btn_search.setBounds(833, 13, 123, 42);
 		contentPane.add(btn_search);
 
+		/**
+		 * @author 김찬중
+		 * 모든 창을 닫고 로그인 화면을 띄워주는 버튼
+		 */
+		
 		JButton btn_logout = new JButton("");
 		btn_logout.setBorderPainted(false);
 		btn_logout.setIcon(new ImageIcon("rsc\\icon\\btn_logout.png"));
-		btn_logout.setBounds(1500, 13, 123, 42);
+		btn_logout.setBounds(1372, 12, 123, 42);
 		contentPane.add(btn_logout);
 		btn_logout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -115,6 +140,11 @@ public class Home extends JFrame {
 			}
 		});
 
+		/**
+		 * @author 김찬중
+		 * DB에서 가져온 자료를 table에 넣는 함수들
+		 */
+		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(307, 68, 1188, 640);
 		contentPane.add(scrollPane);
@@ -153,9 +183,20 @@ public class Home extends JFrame {
 		table_view = new JTable(model, columnModel);
 		table_view.setRowHeight(20);
 		scrollPane.setViewportView(table_view);
+		scrollPane.getViewport().setBackground(Color.WHITE);
 
 		JTableHeader header = table_view.getTableHeader();
 		header.setPreferredSize(new Dimension(10, 50));
+		header.setBackground(Color.WHITE);
+		
+		JLabel label = new JLabel("그룹");
+		label.setBounds(14, 153, 62, 18);
+		contentPane.add(label);
+		
+		JList group_list = new JList();
+		group_list.setBackground(Color.WHITE);
+		group_list.setBounds(3, 139, 295, 265);
+		contentPane.add(group_list);
 
 		JLabel lb_background = new JLabel(new ImageIcon("rsc\\Home.jpg"));
 		lb_background.setForeground(Color.WHITE);

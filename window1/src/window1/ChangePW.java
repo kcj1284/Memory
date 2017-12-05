@@ -16,7 +16,8 @@ import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
 
 /**
- * @author 김찬중 새로운 비밀번호를 설정할 수 있도록 해주는 Class
+ * @author 김찬중
+ * 새로운 비밀번호를 설정할 수 있도록 해주는 Class
  */
 @SuppressWarnings("serial")
 public class ChangePW extends JFrame {

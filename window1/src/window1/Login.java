@@ -24,7 +24,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /**
- * @author 김찬중 Login을 하는 Class
+ * @author 김찬중
+ *  Login을 하는 Class
  */
 public class Login extends JFrame {
 	DB db = new DB();
@@ -35,10 +36,6 @@ public class Login extends JFrame {
 	private String pw;
 	private JTextField tf_id;
 	private JPasswordField tf_pw;
-
-	/**
-	 * @author 김찬중 Launch the application.
-	 */
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {

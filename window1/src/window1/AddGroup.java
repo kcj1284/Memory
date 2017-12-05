@@ -17,7 +17,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
 
 /**
- * @author 김찬중 Home에서 그룹을 추가하는 Class
+ * @author 김찬중 
+ * Home에서 그룹을 추가하는 Class
  */
 public class AddGroup extends JFrame {
 
