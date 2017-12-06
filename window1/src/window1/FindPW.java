@@ -36,9 +36,29 @@ public class FindPW extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+				tf_pwAnswer = new JTextField();
+				tf_pwAnswer.setOpaque(false);
+				tf_pwAnswer.setForeground(Color.BLACK);
+				tf_pwAnswer.setFont(new Font("±¼¸²", Font.PLAIN, 18));
+				tf_pwAnswer.setColumns(10);
+				tf_pwAnswer.setBounds(124, 141, 166, 33);
+				contentPane.add(tf_pwAnswer);
+		
+				btn_submit = new JButton("");
+				btn_submit.setBorderPainted(false);
+				btn_submit.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						findPW2(Data.member_vector.get(Data.userIndex).id);
+					}
+				});
+				btn_submit.setIcon(new ImageIcon("rsc\\icon\\btn_submit.PNG"));
+				btn_submit.setBounds(124, 197, 166, 33);
+				btn_submit.setBorderPainted(false);
+				contentPane.add(btn_submit);
 
 		lb_pwQuestion = new JLabel("");
-		lb_pwQuestion.setForeground(Color.WHITE);
+		lb_pwQuestion.setForeground(Color.BLACK);
 		lb_pwQuestion.setFont(new Font("±¼¸²", Font.BOLD, 20));
 		lb_pwQuestion.setHorizontalAlignment(SwingConstants.CENTER);
 		lb_pwQuestion.setBounds(14, 79, 364, 28);
@@ -49,26 +69,6 @@ public class FindPW extends JFrame {
 		lb_background.setBounds(0, 0, 400, 276);
 		contentPane.add(lb_background);
 		contentPane.add(lb_background);
-
-		tf_pwAnswer = new JTextField();
-		tf_pwAnswer.setBackground(new Color(102, 211, 222));
-		tf_pwAnswer.setForeground(Color.WHITE);
-		tf_pwAnswer.setFont(new Font("±¼¸²", Font.PLAIN, 18));
-		tf_pwAnswer.setColumns(10);
-		tf_pwAnswer.setBounds(146, 144, 146, 24);
-		contentPane.add(tf_pwAnswer);
-
-		btn_submit = new JButton("");
-		btn_submit.setBorderPainted(false);
-		btn_submit.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				findPW2(Data.member_vector.get(Data.userIndex).id);
-			}
-		});
-		btn_submit.setIcon(new ImageIcon("rsc\\icon\\btn_submit.PNG"));
-		btn_submit.setBounds(124, 197, 166, 33);
-		btn_submit.setBorderPainted(false);
-		contentPane.add(btn_submit);
 	}
 
 	/**

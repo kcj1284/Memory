@@ -36,7 +36,7 @@ public class FindIDPW extends JFrame {
 		setResizable(false);
 		setTitle("¾ÆÀÌµð/ºñ¹Ð¹øÈ£ Ã£±â");
 		setIconImage(Toolkit.getDefaultToolkit().getImage("rsc\\logo_icon.png"));
-		setBounds(100, 100, 403, 530);
+		setBounds(100, 100, 403, 561);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -48,32 +48,32 @@ public class FindIDPW extends JFrame {
 		contentPane.add(lb_background);
 
 		tf_findid_email = new JTextField();
-		tf_findid_email.setBackground(new Color(102, 211, 222));
-		tf_findid_email.setForeground(Color.WHITE);
+		tf_findid_email.setOpaque(false);
+		tf_findid_email.setForeground(Color.BLACK);
 		tf_findid_email.setFont(new Font("±¼¸²", Font.PLAIN, 18));
 		tf_findid_email.setBounds(135, 95, 215, 24);
 		contentPane.add(tf_findid_email);
 		tf_findid_email.setColumns(10);
 
 		tf_findid_name = new JTextField();
-		tf_findid_name.setBackground(new Color(102, 211, 222));
-		tf_findid_name.setForeground(Color.WHITE);
+		tf_findid_name.setOpaque(false);
+		tf_findid_name.setForeground(Color.BLACK);
 		tf_findid_name.setFont(new Font("±¼¸²", Font.PLAIN, 18));
 		tf_findid_name.setBounds(135, 136, 146, 24);
 		contentPane.add(tf_findid_name);
 		tf_findid_name.setColumns(10);
 
 		tf_findpw_id = new JTextField();
-		tf_findpw_id.setBackground(new Color(102, 211, 222));
-		tf_findpw_id.setForeground(Color.WHITE);
+		tf_findpw_id.setOpaque(false);
+		tf_findpw_id.setForeground(Color.BLACK);
 		tf_findpw_id.setFont(new Font("±¼¸²", Font.PLAIN, 18));
 		tf_findpw_id.setBounds(135, 330, 144, 24);
 		contentPane.add(tf_findpw_id);
 		tf_findpw_id.setColumns(10);
 
 		tf_findpw_email = new JTextField();
-		tf_findpw_email.setBackground(new Color(102, 211, 222));
-		tf_findpw_email.setForeground(Color.WHITE);
+		tf_findpw_email.setOpaque(false);
+		tf_findpw_email.setForeground(Color.BLACK);
 		tf_findpw_email.setFont(new Font("±¼¸²", Font.PLAIN, 18));
 		tf_findpw_email.setColumns(15);
 		tf_findpw_email.setBounds(135, 372, 215, 24);

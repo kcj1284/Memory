@@ -153,7 +153,7 @@ public class Join extends JFrame {
 		
 		cb_pwQuestion = new JComboBox<String>();
 		cb_pwQuestion.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 15));
-		cb_pwQuestion.setForeground(Color.BLACK);
+		cb_pwQuestion.setForeground(Color.WHITE);
 		cb_pwQuestion.setBackground(new Color(54, 114, 87));
 		cb_pwQuestion.addItem("³ªÀÇ Àå·¡Èñ¸ÁÀº?");
 		cb_pwQuestion.addItem("³ªÀÇ º¸¹° 1È£´Â?");

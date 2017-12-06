@@ -329,7 +329,7 @@ public class Home extends JFrame {
 			}
 		}
 	}
-	/*class Group_model extends AbstractTableModel {
+/*	class Group_model extends AbstractTableModel {
 
 		private Vector<String> list;
 
