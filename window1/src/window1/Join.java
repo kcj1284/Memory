@@ -60,7 +60,7 @@ public class Join extends JFrame {
 		 */
 		
 		tf_id = new JTextField();
-		tf_id.setBackground(new Color(114, 172, 69));
+		tf_id.setOpaque(false);
 		tf_id.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 15));
 		tf_id.setForeground(Color.WHITE);
 		tf_id.setColumns(10);
@@ -73,7 +73,7 @@ public class Join extends JFrame {
 		 */
 		
 		tf_email = new JTextField();
-		tf_email.setBackground(new Color(114, 172, 69));
+		tf_email.setOpaque(false);
 		tf_email.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 15));
 		tf_email.setForeground(Color.WHITE);
 		tf_email.setColumns(10);
@@ -86,7 +86,7 @@ public class Join extends JFrame {
 		 */
 		
 		tf_name = new JTextField();
-		tf_name.setBackground(new Color(114, 172, 69));
+		tf_name.setOpaque(false);
 		tf_name.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 15));
 		tf_name.setForeground(Color.WHITE);
 		tf_name.setColumns(10);
@@ -99,7 +99,7 @@ public class Join extends JFrame {
 		 */
 		
 		tf_pwAnswer = new JTextField();
-		tf_pwAnswer.setBackground(new Color(114, 172, 69));
+		tf_pwAnswer.setOpaque(false);
 		tf_pwAnswer.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 15));
 		tf_pwAnswer.setForeground(Color.WHITE);
 		tf_pwAnswer.setColumns(10);
@@ -112,7 +112,7 @@ public class Join extends JFrame {
 		 */
 		
 		tf_pw = new JPasswordField();
-		tf_pw.setBackground(new Color(114, 172, 69));
+		tf_pw.setOpaque(false);
 		tf_pw.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 15));
 		tf_pw.setForeground(Color.WHITE);
 		tf_pw.setBounds(144, 172, 145, 24);
@@ -124,7 +124,7 @@ public class Join extends JFrame {
 		 */
 		
 		tf_pwCheck = new JPasswordField();
-		tf_pwCheck.setBackground(new Color(114, 172, 69));
+		tf_pwCheck.setOpaque(false);
 		tf_pwCheck.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 15));
 		tf_pwCheck.setForeground(Color.WHITE);
 		tf_pwCheck.setBounds(144, 214, 145, 24);
@@ -153,8 +153,8 @@ public class Join extends JFrame {
 		
 		cb_pwQuestion = new JComboBox<String>();
 		cb_pwQuestion.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 15));
-		cb_pwQuestion.setForeground(Color.WHITE);
-		cb_pwQuestion.setBackground(new Color(114, 172, 69));
+		cb_pwQuestion.setForeground(Color.BLACK);
+		cb_pwQuestion.setBackground(new Color(54, 114, 87));
 		cb_pwQuestion.addItem("³ªÀÇ Àå·¡Èñ¸ÁÀº?");
 		cb_pwQuestion.addItem("³ªÀÇ º¸¹° 1È£´Â?");
 		cb_pwQuestion.addItem("°¡Àå ±â¾ï¿¡ ³²´Â ¼±»ý´Ô ¼ºÇÔÀº?");

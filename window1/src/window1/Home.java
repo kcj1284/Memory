@@ -1,7 +1,13 @@
 package window1;
 
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.ImageIcon;
@@ -9,11 +15,11 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -36,10 +42,13 @@ public class Home extends JFrame {
 	JComboBox cb_type;
 	DefaultTableModel defaultTableModel;
 	Table_model model;
+	//Group_model model2;
+	private JTable table_group;
+	
 	public Home() {
 
 		DB db = new DB();
-
+		
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(250, 130, 1509, 752);
@@ -51,7 +60,8 @@ public class Home extends JFrame {
 		contentPane.setLayout(null);
 
 		/**
-		 * @author 김찬중 검색을 할 유형을 고르는 콤보박스
+		 * @author 김찬중
+		 * 검색을 할 유형을 고르는 콤보박스
 		 */
 
 		String[] element = { "이름", "학번", "학과", "번호", "해쉬태그" };
@@ -66,7 +76,8 @@ public class Home extends JFrame {
 		cb_type.setForeground(Color.WHITE);
 
 		/**
-		 * @author 김찬중 AddPerson 창을 여는 버튼
+		 * @author 김찬중
+		 * AddPerson 창을 여는 버튼
 		 */
 
 		JButton btn_AddPerson = new JButton("");
@@ -81,7 +92,8 @@ public class Home extends JFrame {
 		contentPane.add(btn_AddPerson);
 
 		/**
-		 * @author 김찬중 AddGroup 창을 여는 버튼
+		 * @author 김찬중
+		 * AddGroup 창을 여는 버튼
 		 */
 
 		JButton btn_AddGroup = new JButton("");
@@ -94,9 +106,10 @@ public class Home extends JFrame {
 			}
 		});
 		contentPane.add(btn_AddGroup);
-
+		
 		/**
-		 * @author 김찬중 검색할 내용을 입력하는 텍스트필드
+		 * @author 김찬중
+		 * 검색할 내용을 입력하는 텍스트필드
 		 */
 
 		tf_search = new JTextField();
@@ -139,14 +152,14 @@ public class Home extends JFrame {
 					break;
 				}
 					
-				
 			}
 
 		});
 		contentPane.add(btn_search);
 
 		/**
-		 * @author 김찬중 모든 창을 닫고 로그인 화면을 띄워주는 버튼
+		 * @author 김찬중 
+		 * 모든 창을 닫고 로그인 화면을 띄워주는 버튼
 		 */
 
 		JButton btn_logout = new JButton("");
@@ -165,7 +178,8 @@ public class Home extends JFrame {
 		});
 
 		/**
-		 * @author 김찬중 DB에서 가져온 자료를 table에 넣는 함수들
+		 * @author 김찬중
+		 * DB에서 가져온 자료를 table에 넣는 함수들
 		 */
 
 		JScrollPane scrollPane = new JScrollPane();
@@ -178,34 +192,42 @@ public class Home extends JFrame {
 		
 		TableColumn column = new TableColumn(0);
 		column.setPreferredWidth(10);
+		DefaultTableCellRenderer center = new DefaultTableCellRenderer();
+		center.setHorizontalAlignment(SwingConstants.CENTER);		
 		
 		column.setCellRenderer(renderer);
 		column.setHeaderValue("이름");
+		column.setCellRenderer(center);
 		columnModel.addColumn(column);
 		
 		column = new TableColumn(1);
 		column.setHeaderValue("번호");
+		column.setCellRenderer(center);
 		columnModel.addColumn(column);
 		
 		column = new TableColumn(2);
 		column.setHeaderValue("학번");
+		column.setCellRenderer(center);
 		columnModel.addColumn(column);
 		
 		column = new TableColumn(3);
 		column.setHeaderValue("전공");
+		column.setCellRenderer(center);
 		columnModel.addColumn(column);
 		
 		column = new TableColumn(4);
 		column.setHeaderValue("성별");
+		column.setCellRenderer(center);
 		columnModel.addColumn(column);
 		
 		column = new TableColumn(5);
 		column.setHeaderValue("생일");
+		column.setCellRenderer(center);
 		columnModel.addColumn(column);
 		columnModel.setColumnSelectionAllowed(false);
 		
 		table_view = new JTable(model, columnModel);
-		table_view.setFont(new Font("굴림", Font.PLAIN, 30));
+		table_view.setFont(new Font("굴림", Font.PLAIN, 25));
 		table_view.setRowHeight(50);
 		table_view.addMouseListener(new MouseListener() {
 	         public void mouseClicked(MouseEvent e) {
@@ -214,8 +236,6 @@ public class Home extends JFrame {
 	            	 Frame.frame_addperson.data = model.pages.get(j.getSelectedRow());
 	            	 Frame.frame_addperson.Value();
 	            	 Frame.frame_addperson.setVisible(true);
-	            	 
-	            	// db.updateaddress(model.pages.get(j.getSelectedRow()).rowid); //클릭할 때마다 DB의 항목에 count 1씩 추가
 	                   
 	                }
 	          }
@@ -229,12 +249,38 @@ public class Home extends JFrame {
 
 		JTableHeader header = table_view.getTableHeader();
 		header.setPreferredSize(new Dimension(10, 50));
+		header.setFont(new Font("굴림", Font.BOLD, 30));
 		header.setBackground(Color.WHITE);
 
-		JList group_list = new JList();
-		group_list.setOpaque(false);
-		group_list.setBounds(3, 139, 295, 265);
-		contentPane.add(group_list);
+		
+		/*class rate_panel extends JPanel {
+			public void paintComponent(Graphics g) {
+				super.paintComponent(g);
+				g.setColor(Color.RED);
+				g.drawArc(0, 0, 80, 80, 90, 270);
+			}
+		}
+	
+		JPanel rate_panel = new JPanel();
+		rate_panel.setBounds(3, 416, 298, 298);
+		contentPane.add(rate_panel);*/
+		
+		/*model2 = new Table_model();
+		TableColumnModel columnModel2 = new DefaultTableColumnModel();
+		
+		TableColumn column = new TableColumn(0);
+		column.setPreferredWidth(10);
+		center.setHorizontalAlignment(SwingConstants.CENTER);		
+		
+		column.setCellRenderer(renderer);
+		column.setHeaderValue("이름");
+		column.setCellRenderer(center);
+		columnModel.addColumn(column);*/
+	
+		table_group = new JTable();
+		table_group.setOpaque(false);
+		table_group.setBounds(3, 133, 296, 328);
+		contentPane.add(table_group);
 
 		JLabel lb_background = new JLabel(new ImageIcon("rsc\\Home.jpg"));
 		lb_background.setBackground(Color.WHITE);
@@ -277,10 +323,41 @@ public class Home extends JFrame {
 			case 4:
 				return info.sex;
 			case 5:
-				return info.month + "	" + info.day;
+				return info.month + "월 " + info.day + "일";
 			default:
 				return "invalid";
 			}
 		}
 	}
+	/*class Group_model extends AbstractTableModel {
+
+		private Vector<String> list;
+
+		public Group_model(){
+			list= new Vector<String>();
+		}
+
+		public int getColumnCount() {
+			return 6;
+		}
+
+		public int getRowCount() {
+			return list.size();
+		}
+
+		public void addPageInfo(Vector<String> page) {
+			this.list = page;
+		}
+
+		public Object getValueAt(int rowIndex, int columnIndex) {
+			String info = list.get(rowIndex);
+			switch (columnIndex) {
+			case 0:
+				return info.groupadd;
+			
+			default:
+				return "invalid";
+			}
+		}
+	}*/
 }

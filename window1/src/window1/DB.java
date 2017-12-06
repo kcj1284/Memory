@@ -408,12 +408,11 @@ public class DB {
 	public boolean deleteAddress(int num){
 
 		boolean isSuccess = true;
-		String sql = "DELETE FROM address WHERE num = ?";
+		String sql = "DELETE FROM address WHERE rowid = ?";
 		try{
 			stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, num);
 			System.out.println(sql);
-
 			stmt.executeUpdate();
 		} catch (SQLException e){
 			System.out.println("Error : Can't delete\n");
@@ -423,7 +422,7 @@ public class DB {
 		return isSuccess;
 	}
 
-	public boolean updateaddress(String name,String num,String mail,String major,String stid,String month,String day,String groupname,String hash,String sex,int rowid){
+	/*public boolean updateaddress(String name,String num,String mail,String major,String stid,String month,String day,String groupname,String hash,String sex,int rowid){
 		boolean isSuccess = false;
 		String sql = "UPDATE address SET name=?,num=?,mail=?,major=?,stid=?,month=?,day=?,groupname=?,hash=?,sex=?,rowid=? WHERE rowid=?";
 		try{
@@ -447,7 +446,7 @@ public class DB {
 			isSuccess = false;
 		}
 		return isSuccess;
-	}
+	}*/
 
 	public int accountsex(){
 		int sex=0;
@@ -503,30 +502,20 @@ public class DB {
 	public boolean searchgroup(){
 		boolean isSuccess = false;
 		try {
-			AddressInfo m;
+			String m;
 			Data.address_vector.removeAllElements();
 			stmt = conn.prepareStatement("select rowid,* from address WHERE groupname=?"); // 쿼리문 전송
 			rs = stmt.executeQuery();
 
 			while (rs.next()) { // result set이 더 있을 경우
-				m = new AddressInfo();
-				m.name = rs.getString("name");
-				m.num = rs.getString("num");
-				m.mail = rs.getString("mail");
-				m.major = rs.getString("major");
-				m.stid = rs.getString("stid");
-				m.month = rs.getString("month");
-				m.groupname = rs.getString("groupname");
-				m.day = rs.getString("day");
-				m.hash = rs.getString("hash");
-				m.sex = rs.getString("sex");
-				m.rowid = rs.getInt("rowid");
+				m = new String();
+				//m = rs.getString(1,);
 
 
 				/*System.out.println(rs.getString("name") + "\t" + rs.getString("phone") + "\t" + rs.getString("email") + "\t"
 						+ rs.getString("major") + "\t" + rs.getInt("code") + rs.getString("birthday") + "\t" + rs.getString("groupname") + "\t"
 						+rs.getString("snsAddress") + "\t" + rs.getString("hash") + "\t" +rs.getString("gender") );*/
-				Data.address_vector.addElement(m); // 벡터에 유저 정보 추가
+				Data.groupname_vector.addElement(m); // 벡터에 유저 정보 추가
 			}
 			isSuccess = true;
 		} catch (SQLException e) {

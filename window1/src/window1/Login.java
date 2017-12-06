@@ -91,7 +91,7 @@ public class Login extends JFrame {
 
 		JButton btn_find = new JButton("");
 		btn_find.setBorderPainted(false);
-		btn_find.setIcon(new ImageIcon("rsc\\icon\\btn_join.png"));
+		btn_find.setIcon(new ImageIcon("rsc\\icon\\btn_IDPW.png"));
 		btn_find.setBounds(352, 551, 170, 50);
 		btn_find.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -128,7 +128,7 @@ public class Login extends JFrame {
 		tf_id.addActionListener(listener);
 		tf_pw.addActionListener(listener);
 
-		JLabel lb_background = new JLabel(new ImageIcon("rsc\\Login.jpg"));
+		JLabel lb_background = new JLabel(new ImageIcon("rsc\\Login.png"));
 		lb_background.setBackground(Color.WHITE);
 		lb_background.setBounds(0, 0, 1300, 800);
 		contentPane.add(lb_background);

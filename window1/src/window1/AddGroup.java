@@ -17,8 +17,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
 
 /**
- * @author 김찬중 
- * Home에서 그룹을 추가하는 Class
+ * @author 김찬중 Home에서 그룹을 추가하는 Class
  */
 public class AddGroup extends JFrame {
 
@@ -53,6 +52,8 @@ public class AddGroup extends JFrame {
 		btn_Add.setBounds(186, 276, 116, 45);
 		btn_Add.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				AddGroup();
+				reset();
 				Frame.frame_addgroup.setVisible(false);
 			}
 		});
@@ -67,21 +68,15 @@ public class AddGroup extends JFrame {
 
 	}
 
-	public void AddPerson() {
+	public void AddGroup() {
 
 		DB db = new DB();
 
 		groupadd = tf_groupadd.getText();
-
+		db.insertgroup(groupadd);
+		JOptionPane.showMessageDialog(Frame.frame_addgroup, "그룹이 정상적으로 추가 되었습니다.", "그룹추가 완료",
+				JOptionPane.INFORMATION_MESSAGE);
 	}
-
-	/*
-	 * DB연결해 주세요. db.insertadress(name, num, mail, major, stid, month, day, group,
-	 * sns, hash); db.getMember();
-	 * JOptionPane.showMessageDialog(Frame.frame_addperson, "민울이 정상적으로 추가 되었습니다.",
-	 * "인물추가 완료", JOptionPane.INFORMATION_MESSAGE);
-	 * Frame.frame_join.setVisible(false);
-	 */
 
 	void reset() {
 		tf_groupadd.setText("");
