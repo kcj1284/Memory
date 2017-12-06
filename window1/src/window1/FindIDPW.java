@@ -42,16 +42,11 @@ public class FindIDPW extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		JLabel lb_background = new JLabel("");
-		lb_background.setIcon(new ImageIcon("rsc\\IDPWFind.png"));
-		lb_background.setBounds(0, 0, 400, 514);
-		contentPane.add(lb_background);
-
 		tf_findid_email = new JTextField();
 		tf_findid_email.setOpaque(false);
 		tf_findid_email.setForeground(Color.BLACK);
 		tf_findid_email.setFont(new Font("±¼¸²", Font.PLAIN, 18));
-		tf_findid_email.setBounds(135, 95, 215, 24);
+		tf_findid_email.setBounds(135, 90, 215, 24);
 		contentPane.add(tf_findid_email);
 		tf_findid_email.setColumns(10);
 
@@ -59,7 +54,7 @@ public class FindIDPW extends JFrame {
 		tf_findid_name.setOpaque(false);
 		tf_findid_name.setForeground(Color.BLACK);
 		tf_findid_name.setFont(new Font("±¼¸²", Font.PLAIN, 18));
-		tf_findid_name.setBounds(135, 136, 146, 24);
+		tf_findid_name.setBounds(135, 131, 146, 24);
 		contentPane.add(tf_findid_name);
 		tf_findid_name.setColumns(10);
 
@@ -78,7 +73,6 @@ public class FindIDPW extends JFrame {
 		tf_findpw_email.setColumns(15);
 		tf_findpw_email.setBounds(135, 372, 215, 24);
 		contentPane.add(tf_findpw_email);
-		contentPane.add(lb_background);
 
 		JButton btn_findID = new JButton("");
 		btn_findID.addActionListener(new ActionListener() {
@@ -103,8 +97,13 @@ public class FindIDPW extends JFrame {
 		});
 		btn_findPW.setIcon(new ImageIcon("rsc\\icon\\btn_find.PNG"));
 		btn_findPW.setBorderPainted(false);
-		btn_findPW.setBounds(127, 468, 165, 35);
+		btn_findPW.setBounds(127, 450, 165, 35);
 		contentPane.add(btn_findPW);
+		
+		JLabel lb_background = new JLabel(new ImageIcon("rsc\\Find.png"));
+		lb_background.setBounds(0, 0, 400, 526);
+		contentPane.add(lb_background);
+		setContentPane(contentPane);
 	}
 
 	/**

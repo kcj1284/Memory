@@ -70,7 +70,8 @@ public class Home extends JFrame {
 			cb_type.addItem(element[i]);
 		}
 		cb_type.setBounds(307, 12, 99, 44);
-		cb_type.setBackground(new Color(114, 172, 69));
+		cb_type.setBackground(new Color(54, 114, 87
+				));
 		contentPane.add(cb_type);
 		cb_type.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
 		cb_type.setForeground(Color.WHITE);
@@ -113,13 +114,14 @@ public class Home extends JFrame {
 		 */
 
 		tf_search = new JTextField();
+		tf_search.setFont(new Font("±¼¸²", Font.PLAIN, 20));
 		tf_search.setBounds(406, 12, 426, 44);
 		contentPane.add(tf_search);
 		tf_search.setColumns(10);
 
 		JButton btn_search = new JButton("");
 		btn_search.setBorderPainted(false);
-		btn_search.setIcon(new ImageIcon("rsc\\icon\\btn_search.jpg"));
+		btn_search.setIcon(new ImageIcon("rsc\\icon\\btn_search.png"));
 		btn_search.setBounds(833, 13, 123, 42);
 		btn_search.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -277,11 +279,9 @@ public class Home extends JFrame {
 		column1.setCellRenderer(center);
 		columnModel2.addColumn(column1);
 	
-		
-		
 		table_group = new JTable(model2,columnModel2);
-		/*table_group.setOpaque(false);*/
-		table_group.setBounds(3, 133, 296, 328);
+		table_group.setOpaque(false);
+		table_group.setBounds(119, 189, 180, 328);
 		table_group.addMouseListener(new MouseListener() {
 	         public void mouseClicked(MouseEvent e) {
 	             JTable j = (JTable) e.getComponent();

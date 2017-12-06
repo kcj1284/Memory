@@ -39,11 +39,11 @@ public class AddGroup extends JFrame {
 		setBounds(100, 100, 500, 368);
 
 		tf_groupadd = new JTextField();
-		tf_groupadd.setBackground(Color.LIGHT_GRAY);
+		tf_groupadd.setOpaque(false);
 		tf_groupadd.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 25));
 		tf_groupadd.setForeground(Color.WHITE);
 		tf_groupadd.setColumns(10);
-		tf_groupadd.setBounds(119, 173, 170, 35);
+		tf_groupadd.setBounds(167, 162, 170, 35);
 		contentPane.add(tf_groupadd);
 
 		JButton btn_Add = new JButton("");
