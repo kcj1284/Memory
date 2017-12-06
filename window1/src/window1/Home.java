@@ -42,7 +42,7 @@ public class Home extends JFrame {
 	JComboBox cb_type;
 	DefaultTableModel defaultTableModel;
 	Table_model model;
-	//Group_model model2;
+	Group_model model2;
 	private JTable table_group;
 	
 	public Home() {
@@ -265,21 +265,39 @@ public class Home extends JFrame {
 		rate_panel.setBounds(3, 416, 298, 298);
 		contentPane.add(rate_panel);*/
 		
-		/*model2 = new Table_model();
+		model2 = new Group_model();
 		TableColumnModel columnModel2 = new DefaultTableColumnModel();
 		
-		TableColumn column = new TableColumn(0);
-		column.setPreferredWidth(10);
+		TableColumn column1 = new TableColumn(0);
+		column1.setPreferredWidth(10);
+		column1.setHeaderValue("이름");
 		center.setHorizontalAlignment(SwingConstants.CENTER);		
 		
-		column.setCellRenderer(renderer);
-		column.setHeaderValue("이름");
-		column.setCellRenderer(center);
-		columnModel.addColumn(column);*/
+		column1.setCellRenderer(renderer);
+		column1.setCellRenderer(center);
+		columnModel2.addColumn(column1);
 	
-		table_group = new JTable();
-		table_group.setOpaque(false);
+		
+		
+		table_group = new JTable(model2,columnModel2);
+		/*table_group.setOpaque(false);*/
 		table_group.setBounds(3, 133, 296, 328);
+		table_group.addMouseListener(new MouseListener() {
+	         public void mouseClicked(MouseEvent e) {
+	             JTable j = (JTable) e.getComponent();
+	             if(e.getClickCount() == 2) { 
+	            	
+	            	 db.searchgroup(model2.list.get(j.getSelectedRow()));
+	            	model.addPageInfo(Data.address_vector);
+					model.fireTableDataChanged();
+	                   
+	                }
+	          }
+	          public void mouseEntered(MouseEvent e) {}
+	          public void mouseExited(MouseEvent e) {}
+	          public void mousePressed(MouseEvent e) {}
+	          public void mouseReleased(MouseEvent e) {}
+	       });
 		contentPane.add(table_group);
 
 		JLabel lb_background = new JLabel(new ImageIcon("rsc\\Home.jpg"));
@@ -329,35 +347,40 @@ public class Home extends JFrame {
 			}
 		}
 	}
-/*	class Group_model extends AbstractTableModel {
-
+	
+	
+	class Group_model extends AbstractTableModel {
+		DB db = new DB();
+		
 		private Vector<String> list;
 
 		public Group_model(){
-			list= new Vector<String>();
+			db.group();
+			System.out.println(Data.groupname_vector.get(1));
+			list= Data.groupname_vector;
 		}
 
 		public int getColumnCount() {
-			return 6;
+			return 1;
 		}
 
 		public int getRowCount() {
 			return list.size();
 		}
 
-		public void addPageInfo(Vector<String> page) {
+		/*public void addPageInfo(Vector<String> page) {
 			this.list = page;
-		}
-
+		}*/
+		
 		public Object getValueAt(int rowIndex, int columnIndex) {
-			String info = list.get(rowIndex);
-			switch (columnIndex) {
+			
+			switch (0) {
 			case 0:
-				return info.groupadd;
+				return Data.groupname_vector.get(rowIndex);
 			
 			default:
 				return "invalid";
 			}
 		}
-	}*/
+	}
 }
