@@ -65,8 +65,8 @@ public class DB {
 				m.pwQuestion = Integer.parseInt(rs.getString("pwQuestion"));
 				m.pwAnswer = rs.getString("pwAnswer");
 
-				System.out.println(rs.getString("id") + "\t" + rs.getString("pw") + "\t" + rs.getString("email") + "\t"
-						+ rs.getString("name") + "\t" + rs.getString("pwAnswer"));
+				/*System.out.println(rs.getString("id") + "\t" + rs.getString("pw") + "\t" + rs.getString("email") + "\t"
+						+ rs.getString("name") + "\t" + rs.getString("pwAnswer"));*/
 				Data.member_vector.addElement(m); // 벡터에 유저 정보 추가
 			}
 			isSuccess = true;
@@ -97,8 +97,8 @@ public class DB {
 				m.hash = rs.getString("hash");
 				m.sex = rs.getString("sex");
 
-				System.out.println(rs.getString("id") + "\t" + rs.getString("pw") + "\t" + rs.getString("email") + "\t"
-						+ rs.getString("name") + "\t" + rs.getString("pwAnswer"));
+				/*System.out.println(rs.getString("id") + "\t" + rs.getString("pw") + "\t" + rs.getString("email") + "\t"
+						+ rs.getString("name") + "\t" + rs.getString("pwAnswer"));*/
 				Data.address_vector.addElement(m); // 벡터에 유저 정보 추가
 			}
 			isSuccess = true;
@@ -158,9 +158,9 @@ public class DB {
 
 
 
-				System.out.println(rs.getString("name") + "\t" + rs.getString("phone") + "\t" + rs.getString("email") + "\t"
+				/*System.out.println(rs.getString("name") + "\t" + rs.getString("phone") + "\t" + rs.getString("email") + "\t"
 						+ rs.getString("major") + "\t" + rs.getInt("code") + rs.getString("birthday") + "\t" + rs.getString("groupname") + "\t"
-						+rs.getString("snsAddress") + "\t" + rs.getString("hash") + "\t" +rs.getString("gender") );
+						+rs.getString("snsAddress") + "\t" + rs.getString("hash") + "\t" +rs.getString("gender") );*/
 				Data.address_vector.addElement(m); // 벡터에 유저 정보 추가
 			}
 			isSuccess = true;
@@ -237,9 +237,9 @@ public class DB {
 
 
 
-				System.out.println(rs.getString("name") + "\t" + rs.getString("phone") + "\t" + rs.getString("email") + "\t"
+				/*System.out.println(rs.getString("name") + "\t" + rs.getString("phone") + "\t" + rs.getString("email") + "\t"
 						+ rs.getString("major") + "\t" + rs.getInt("code") + rs.getString("birthday") + "\t" + rs.getString("groupname") + "\t"
-						+rs.getString("snsAddress") + "\t" + rs.getString("hash") + "\t" +rs.getString("gender") );
+						+rs.getString("snsAddress") + "\t" + rs.getString("hash") + "\t" +rs.getString("gender") );*/
 				Data.address_vector.addElement(m); // 벡터에 유저 정보 추가
 			}
 			isSuccess = true;
@@ -277,9 +277,9 @@ public class DB {
 
 
 
-				System.out.println(rs.getString("name") + "\t" + rs.getString("phone") + "\t" + rs.getString("email") + "\t"
+				/*System.out.println(rs.getString("name") + "\t" + rs.getString("phone") + "\t" + rs.getString("email") + "\t"
 						+ rs.getString("major") + "\t" + rs.getInt("code") + rs.getString("birthday") + "\t" + rs.getString("groupname") + "\t"
-						+rs.getString("snsAddress") + "\t" + rs.getString("hash") + "\t" +rs.getString("gender") );
+						+rs.getString("snsAddress") + "\t" + rs.getString("hash") + "\t" +rs.getString("gender") );*/
 				Data.address_vector.addElement(m); // 벡터에 유저 정보 추가
 			}
 			isSuccess = true;
@@ -318,9 +318,9 @@ public class DB {
 
 
 
-				System.out.println(rs.getString("name") + "\t" + rs.getString("phone") + "\t" + rs.getString("email") + "\t"
+				/*System.out.println(rs.getString("name") + "\t" + rs.getString("phone") + "\t" + rs.getString("email") + "\t"
 						+ rs.getString("major") + "\t" + rs.getInt("code") + rs.getString("birthday") + "\t" + rs.getString("groupname") + "\t"
-						+rs.getString("snsAddress") + "\t" + rs.getString("hash") + "\t" +rs.getString("gender") );
+						+rs.getString("snsAddress") + "\t" + rs.getString("hash") + "\t" +rs.getString("gender") );*/
 				Data.address_vector.addElement(m); // 벡터에 유저 정보 추가
 			}
 			isSuccess = true;
@@ -358,9 +358,9 @@ public class DB {
 
 
 
-				System.out.println(rs.getString("name") + "\t" + rs.getString("phone") + "\t" + rs.getString("email") + "\t"
+				/*System.out.println(rs.getString("name") + "\t" + rs.getString("phone") + "\t" + rs.getString("email") + "\t"
 						+ rs.getString("major") + "\t" + rs.getInt("code") + rs.getString("birthday") + "\t" + rs.getString("groupname") + "\t"
-						+rs.getString("snsAddress") + "\t" + rs.getString("hash") + "\t" +rs.getString("gender") );
+						+rs.getString("snsAddress") + "\t" + rs.getString("hash") + "\t" +rs.getString("gender") );*/
 				Data.address_vector.addElement(m); // 벡터에 유저 정보 추가
 			}
 			isSuccess = true;
@@ -405,13 +405,13 @@ public class DB {
 		return isSuccess;
 	}
 
-	public boolean deleteAddress(String num){
+	public boolean deleteAddress(int num){
 
 		boolean isSuccess = true;
 		String sql = "DELETE FROM address WHERE num = ?";
 		try{
 			stmt = conn.prepareStatement(sql);
-			stmt.setString(1, num);
+			stmt.setInt(1, num);
 			System.out.println(sql);
 
 			stmt.executeUpdate();
@@ -523,9 +523,9 @@ public class DB {
 				m.rowid = rs.getInt("rowid");
 
 
-				System.out.println(rs.getString("name") + "\t" + rs.getString("phone") + "\t" + rs.getString("email") + "\t"
+				/*System.out.println(rs.getString("name") + "\t" + rs.getString("phone") + "\t" + rs.getString("email") + "\t"
 						+ rs.getString("major") + "\t" + rs.getInt("code") + rs.getString("birthday") + "\t" + rs.getString("groupname") + "\t"
-						+rs.getString("snsAddress") + "\t" + rs.getString("hash") + "\t" +rs.getString("gender") );
+						+rs.getString("snsAddress") + "\t" + rs.getString("hash") + "\t" +rs.getString("gender") );*/
 				Data.address_vector.addElement(m); // 벡터에 유저 정보 추가
 			}
 			isSuccess = true;

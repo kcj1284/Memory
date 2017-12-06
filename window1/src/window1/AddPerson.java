@@ -39,8 +39,10 @@ public class AddPerson extends JFrame {
 
 	private String name, num, mail, major, hash, stid, sex, groupname, month, day;
 	ButtonGroup group;
-	
+	static AddressInfo data;
 
+	DB db = new DB();
+	
 	public AddPerson() {
 
 		setResizable(false);
@@ -180,7 +182,7 @@ public class AddPerson extends JFrame {
 		 * 생일의 월을 선택하는 콤보박스
 		 */
 		
-		String[] monthArr = { "1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월" };
+		String[] monthArr = { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" };
 		JComboBox<String> cb_month = new JComboBox<String>();
 		for (int i = 0; i < monthArr.length; i++) {
 			cb_month.addItem(monthArr[i]);
@@ -205,9 +207,8 @@ public class AddPerson extends JFrame {
 		 * 생일의 일을 선택하는 콤보박스
 		 */
 		
-		String[] dayArr = { "1일", "2일", "3일", "4일", "5일", "6일", "7일", "8일", "9일", "10일", "11일", "12일", "13일", "14일",
-				"15일", "16일", "17일", "18일", "19일", "20일", "21일", "22일", "23일", "24일", "25일", "26일", "27일", "28일", "29일",
-				"30일", "31일" };
+		String[] dayArr = { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14",
+				"15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" };
 		JComboBox<String> cb_day = new JComboBox<String>();
 		for (int i = 0; i < dayArr.length; i++) {
 			cb_day.addItem(dayArr[i]);
@@ -256,12 +257,23 @@ public class AddPerson extends JFrame {
 		btn_save.setBounds(162, 694, 110, 46);
 		btn_save.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				db.deleteAddress(data.rowid);
 				AddPerson();
 			}
 		});
 
 		contentPane.setLayout(null);
 		contentPane.add(btn_save);
+		
+		JButton btn_del = new JButton("");
+		btn_del.setBounds(0, 694, 118, 46);
+		btn_del.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				db.deleteAddress(data.rowid);
+			}
+		});
+		contentPane.setLayout(null);
+		contentPane.add(btn_del);
 
 		JLabel lb_background = new JLabel(new ImageIcon("rsc\\Addperson.png"));
 		lb_background.setBackground(Color.WHITE);
@@ -270,10 +282,8 @@ public class AddPerson extends JFrame {
 		setContentPane(contentPane);
 
 	}
-
+	
 	public void AddPerson() {
-
-		DB db = new DB();
 
 		name = tf_name.getText();
 		num = tf_num.getText();
@@ -357,13 +367,26 @@ public class AddPerson extends JFrame {
 				return;
 			}
 		}
-
+		
 		db.insertAddress(name, num, mail, major, stid, month, day, groupname, hash, sex);
 		db.getAddress();
 		JOptionPane.showMessageDialog(Frame.frame_addperson, "인물이 정상적으로 추가 되었습니다.", "인물추가 완료",
 				JOptionPane.INFORMATION_MESSAGE);
 		Frame.frame_addperson.setVisible(false);
 
+	}
+	
+	public void Value() {
+		
+		tf_name.setText(data.name);
+		tf_num.setText(data.num);
+		tf_mail.setText(data.mail);
+		tf_major.setText(data.major);
+		tf_stid.setText(data.stid);
+		tf_group.setText(data.groupname);
+		tf_sex.setText(data.sex);
+		tf_hash.setText(data.hash);
+		
 	}
 	
 	/**

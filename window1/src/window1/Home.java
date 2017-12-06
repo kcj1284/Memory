@@ -1,15 +1,9 @@
 package window1;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
+import java.awt.*;
+import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.Vector;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -181,38 +175,55 @@ public class Home extends JFrame {
 		model = new Table_model();
 		TableColumnModel columnModel = new DefaultTableColumnModel();
 		TableCellRenderer renderer = new DefaultTableCellRenderer();
-
+		
 		TableColumn column = new TableColumn(0);
 		column.setPreferredWidth(10);
-
+		
 		column.setCellRenderer(renderer);
 		column.setHeaderValue("이름");
 		columnModel.addColumn(column);
-
+		
 		column = new TableColumn(1);
 		column.setHeaderValue("번호");
 		columnModel.addColumn(column);
-
+		
 		column = new TableColumn(2);
 		column.setHeaderValue("학번");
 		columnModel.addColumn(column);
-
+		
 		column = new TableColumn(3);
 		column.setHeaderValue("전공");
 		columnModel.addColumn(column);
-
+		
 		column = new TableColumn(4);
 		column.setHeaderValue("성별");
 		columnModel.addColumn(column);
-
+		
 		column = new TableColumn(5);
 		column.setHeaderValue("생일");
 		columnModel.addColumn(column);
 		columnModel.setColumnSelectionAllowed(false);
-
+		
 		table_view = new JTable(model, columnModel);
 		table_view.setFont(new Font("굴림", Font.PLAIN, 30));
 		table_view.setRowHeight(50);
+		table_view.addMouseListener(new MouseListener() {
+	         public void mouseClicked(MouseEvent e) {
+	             JTable j = (JTable) e.getComponent();
+	             if(e.getClickCount() == 2) { 
+	            	 Frame.frame_addperson.data = model.pages.get(j.getSelectedRow());
+	            	 Frame.frame_addperson.Value();
+	            	 Frame.frame_addperson.setVisible(true);
+	            	 
+	            	// db.updateaddress(model.pages.get(j.getSelectedRow()).rowid); //클릭할 때마다 DB의 항목에 count 1씩 추가
+	                   
+	                }
+	          }
+	          public void mouseEntered(MouseEvent e) {}
+	          public void mouseExited(MouseEvent e) {}
+	          public void mousePressed(MouseEvent e) {}
+	          public void mouseReleased(MouseEvent e) {}
+	       });
 		scrollPane.setViewportView(table_view);
 		scrollPane.getViewport().setBackground(Color.WHITE);
 
@@ -220,17 +231,12 @@ public class Home extends JFrame {
 		header.setPreferredSize(new Dimension(10, 50));
 		header.setBackground(Color.WHITE);
 
-		JLabel label = new JLabel("그룹");
-		label.setBounds(14, 153, 62, 18);
-		contentPane.add(label);
-
 		JList group_list = new JList();
-		group_list.setBackground(Color.WHITE);
+		group_list.setOpaque(false);
 		group_list.setBounds(3, 139, 295, 265);
 		contentPane.add(group_list);
 
 		JLabel lb_background = new JLabel(new ImageIcon("rsc\\Home.jpg"));
-		lb_background.setForeground(Color.WHITE);
 		lb_background.setBackground(Color.WHITE);
 		lb_background.setBounds(0, 0, 1642, 800);
 		contentPane.add(lb_background);
