@@ -467,12 +467,12 @@ public class DB {
 
    public void group(){
       try {
-         stmt = conn.prepareStatement("select * from groupname"); // 쿼리문 전송
+         stmt = conn.prepareStatement("select * from group_name"); // 쿼리문 전송
          rs = stmt.executeQuery();
 
          while (rs.next()) { // result set이 더 있을 경우
-            String m=rs.getString("groupname");
-            System.out.println(rs.getString("groupname"));
+            String m=rs.getString("name");
+            System.out.println(rs.getString("name"));
             Data.groupname_vector.addElement(m); // 벡터에 유저 정보 추가
          }   
       } catch (SQLException e) {
@@ -502,7 +502,7 @@ public class DB {
    public boolean searchgroup(String groupname){
       boolean isSuccess = false;
       try {
-         String m;
+         AddressInfo m;
          Data.address_vector.removeAllElements();
          stmt = conn.prepareStatement("select rowid,* from address WHERE groupname=?"); // 쿼리문 전송
          stmt.setString(1, groupname);
@@ -510,15 +510,25 @@ public class DB {
          isSuccess = true;
 
          while (rs.next()) { // result set이 더 있을 경우
-            m = new String();
-            //m = rs.getString(1,);
+             m = new AddressInfo();
+             m.name = rs.getString("name");
+             m.num = rs.getString("num");
+             m.mail = rs.getString("mail");
+             m.major = rs.getString("major");
+             m.stid = rs.getString("stid");
+             m.month = rs.getString("month");
+             m.groupname = rs.getString("groupname");
+             m.day = rs.getString("day");
+             m.hash = rs.getString("hash");
+             m.sex = rs.getString("sex");
+             m.rowid = rs.getInt("rowid");
 
 
-            /*System.out.println(rs.getString("name") + "\t" + rs.getString("phone") + "\t" + rs.getString("email") + "\t"
-                  + rs.getString("major") + "\t" + rs.getInt("code") + rs.getString("birthday") + "\t" + rs.getString("groupname") + "\t"
-                  +rs.getString("snsAddress") + "\t" + rs.getString("hash") + "\t" +rs.getString("gender") );*/
-            Data.groupname_vector.addElement(m); // 벡터에 유저 정보 추가
-         }
+             /*System.out.println(rs.getString("name") + "\t" + rs.getString("phone") + "\t" + rs.getString("email") + "\t"
+                   + rs.getString("major") + "\t" + rs.getInt("code") + rs.getString("birthday") + "\t" + rs.getString("groupname") + "\t"
+                   +rs.getString("snsAddress") + "\t" + rs.getString("hash") + "\t" +rs.getString("gender") );*/
+             Data.address_vector.addElement(m); // 벡터에 유저 정보 추가
+          }
          isSuccess = true;
       } catch (SQLException e) {
          System.err.println("Error : Can't serch groupname\n");
