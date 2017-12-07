@@ -1,28 +1,21 @@
 package window1;
 
-import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.RenderingHints;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.geom.Arc2D;
-import java.awt.geom.Ellipse2D;
 import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -31,6 +24,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableColumnModel;
@@ -39,7 +33,6 @@ import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
-import javax.swing.border.LineBorder;
 
 /**
  * @author 김찬중 프로그램의 메인화면
@@ -56,8 +49,7 @@ public class Home extends JFrame {
 	Table_model model;
 	Group_model model2;
 	private JTable table_group;
-	private int man;
-	private int woman;
+	private double man,woman,num =0;
 	
 	public Home() {
 
@@ -207,7 +199,7 @@ public class Home extends JFrame {
 				Data.address_vector.removeAllElements();
 				Frame.frame_login.setVisible(true);
 				Frame.frame_home.setVisible(false);
-				Frame.frame_popup.setVisible(false);
+				Frame.frame_calendars.setVisible(false);
 			}
 		});
 		
@@ -357,7 +349,7 @@ public class Home extends JFrame {
 		table_group.setBorder(new LineBorder(new Color(0, 0, 0)));
 		table_group.setOpaque(false);
 		table_group.setRowHeight(30);
-		table_group.setBounds(60, 181, 180, 219);
+		table_group.setBounds(60, 181, 180, 168);
 		table_group.addMouseListener(new MouseListener() {
 			
 			public void mouseClicked(MouseEvent e) {
@@ -385,14 +377,15 @@ public class Home extends JFrame {
 		});
 		contentPane.add(table_group);
 		
-		/*man = db.accountMan();
-		acountwoMan();*/
+		man = db.accountMan()+1;
+		woman = db.accountWoman()+1;
+		num = man+woman;
 		
-		JLabel lb_man = new JLabel("");
+		JLabel lb_man = new JLabel(Double.toString(Math.round(man/num*100))+"%");
 		lb_man.setBounds(43, 633, 62, 18);
 		contentPane.add(lb_man);
 		
-		JLabel lb_woman = new JLabel("");
+		JLabel lb_woman = new JLabel(Double.toString(Math.round(woman/num*100))+"%");
 		lb_woman.setBounds(182, 633, 62, 18);
 		contentPane.add(lb_woman);
 
