@@ -46,7 +46,7 @@ public class Join extends JFrame {
 
 	public Join() {
 		setResizable(false);
-		setIconImage(Toolkit.getDefaultToolkit().getImage("rsc\\logo_icon.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(".\\rsc\\logo_icon.png"));
 		setTitle("Join");
 		setBounds(100, 100, 403, 575);
 		contentPane = new JPanel();
@@ -136,7 +136,7 @@ public class Join extends JFrame {
 		 */
 		
 		JButton btn_join = new JButton("");
-		btn_join.setIcon(new ImageIcon("rsc\\icon\\btn_post.PNG"));
+		btn_join.setIcon(new ImageIcon(".\\rsc\\icon\\btn_post.PNG"));
 		btn_join.setBorderPainted(false);
 		btn_join.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -165,7 +165,7 @@ public class Join extends JFrame {
 		contentPane.add(cb_pwQuestion);
 
 		try {
-			JLabel lb_background = new JLabel(new ImageIcon(ImageIO.read(new File("rsc\\join.png"))));
+			JLabel lb_background = new JLabel(new ImageIcon(ImageIO.read(new File(".\\rsc\\join.png"))));
 			lb_background.setBackground(Color.WHITE);
 			lb_background.setBounds(0, 0, 400, 550);
 			contentPane.add(lb_background);

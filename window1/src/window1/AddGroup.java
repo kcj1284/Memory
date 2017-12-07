@@ -17,7 +17,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
 
 /**
- * @author 김찬중 Home에서 그룹을 추가하는 Class
+ * @author 김찬중 
+ * Home에서 그룹을 추가하는 Class
  */
 public class AddGroup extends JFrame {
 
@@ -26,13 +27,10 @@ public class AddGroup extends JFrame {
 
 	private String groupadd;
 
-	/**
-	 * Create the frame.
-	 */
 	public AddGroup() {
 
 		setResizable(false);
-		setIconImage(Toolkit.getDefaultToolkit().getImage("rsc\\logo_icon.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(".\\rsc\\logo_icon.png"));
 		setTitle("AddGroup");
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -48,7 +46,7 @@ public class AddGroup extends JFrame {
 
 		JButton btn_Add = new JButton("");
 		btn_Add.setBorderPainted(false);
-		btn_Add.setIcon(new ImageIcon("rsc\\icon\\btn_add.png"));
+		btn_Add.setIcon(new ImageIcon(".\\rsc\\icon\\btn_add.png"));
 		btn_Add.setBounds(186, 276, 116, 45);
 		btn_Add.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -60,7 +58,7 @@ public class AddGroup extends JFrame {
 		contentPane.setLayout(null);
 		contentPane.add(btn_Add);
 
-		JLabel lb_background = new JLabel(new ImageIcon("rsc\\Addgroup.png"));
+		JLabel lb_background = new JLabel(new ImageIcon(".\\rsc\\Addgroup.png"));
 		lb_background.setBackground(Color.WHITE);
 		lb_background.setBounds(0, 0, 500, 373);
 		contentPane.add(lb_background);

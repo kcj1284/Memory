@@ -54,7 +54,7 @@ public class Login extends JFrame {
 	public Login() {
 		setTitle("Login");
 		setResizable(false);
-		setIconImage(Toolkit.getDefaultToolkit().getImage("rsc\\logo_icon.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(".\\rsc\\logo_icon.png"));
 		setBackground(Color.WHITE);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(50, 30, 1303, 829);
@@ -73,13 +73,13 @@ public class Login extends JFrame {
 
 		JButton btn_login = new JButton("");
 		btn_login.setBorderPainted(false);
-		btn_login.setIcon(new ImageIcon("rsc\\icon\\btn_login.png"));
+		btn_login.setIcon(new ImageIcon(".\\rsc\\icon\\btn_login.png"));
 		btn_login.setBounds(425, 442, 97, 97);
 		contentPane.add(btn_login);
 
 		JButton btn_join = new JButton("");
 		btn_join.setBorderPainted(false);
-		btn_join.setIcon(new ImageIcon("rsc\\icon\\btn_join.png"));
+		btn_join.setIcon(new ImageIcon(".\\rsc\\icon\\btn_join.png"));
 		btn_join.setBounds(170, 551, 170, 50);
 		btn_join.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -91,7 +91,7 @@ public class Login extends JFrame {
 
 		JButton btn_find = new JButton("");
 		btn_find.setBorderPainted(false);
-		btn_find.setIcon(new ImageIcon("rsc\\icon\\btn_IDPW.png"));
+		btn_find.setIcon(new ImageIcon(".\\rsc\\icon\\btn_IDPW.png"));
 		btn_find.setBounds(352, 551, 170, 50);
 		btn_find.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -128,7 +128,7 @@ public class Login extends JFrame {
 		tf_id.addActionListener(listener);
 		tf_pw.addActionListener(listener);
 
-		JLabel lb_background = new JLabel(new ImageIcon("rsc\\Login.png"));
+		JLabel lb_background = new JLabel(new ImageIcon(".\\rsc\\Login.png"));
 		lb_background.setBackground(Color.WHITE);
 		lb_background.setBounds(0, 0, 1300, 800);
 		contentPane.add(lb_background);
@@ -136,6 +136,7 @@ public class Login extends JFrame {
 
 	/**
 	 * @author 김찬중 유저 정보를 불러와서 이에 해당하는 계정이 있으면 로그인을 하는 메소드
+	 * 
 	 */
 
 	private void login() {
@@ -154,7 +155,7 @@ public class Login extends JFrame {
 		if ((index = db.isPWCorrect(id, pw)) != -1) {
 			Data.userIndex = index;
 			Frame.frame_home.setVisible(true);
-			Frame.frame_popup.setVisible(true);
+			Frame.frame_calendars.setVisible(true);
 			tf_id.setText("");
 			tf_pw.setText("");
 			Frame.frame_login.setVisible(false);

@@ -29,7 +29,7 @@ public class ChangePW extends JFrame {
 	public ChangePW() {
 		setResizable(false);
 		setTitle("비밀번호 변경");
-		setIconImage(Toolkit.getDefaultToolkit().getImage("rsc\\logo_icon.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(".\\rsc\\logo_icon.png"));
 		setBounds(100, 100, 410, 316);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -66,7 +66,7 @@ public class ChangePW extends JFrame {
 			}
 		});
 
-		btn_change.setIcon(new ImageIcon("rsc\\icon\\btn_change.PNG"));
+		btn_change.setIcon(new ImageIcon(".\\rsc\\icon\\btn_change.PNG"));
 		btn_change.setBounds(123, 203, 165, 33);
 		btn_change.setBorderPainted(false);
 		contentPane.add(btn_change);
@@ -88,7 +88,7 @@ public class ChangePW extends JFrame {
 				contentPane.add(tf_pw);
 
 		JLabel lb_background = new JLabel();
-		lb_background.setIcon(new ImageIcon("rsc\\PWChange.png"));
+		lb_background.setIcon(new ImageIcon(".\\rsc\\PWChange.png"));
 		lb_background.setBounds(0, 0, 400, 277);
 		contentPane.add(lb_background);
 	}

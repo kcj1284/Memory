@@ -35,7 +35,7 @@ public class FindIDPW extends JFrame {
 		
 		setResizable(false);
 		setTitle("아이디/비밀번호 찾기");
-		setIconImage(Toolkit.getDefaultToolkit().getImage("rsc\\logo_icon.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(".\\rsc\\logo_icon.png"));
 		setBounds(100, 100, 403, 561);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -82,7 +82,7 @@ public class FindIDPW extends JFrame {
 				findID(email, name);
 			}
 		});
-		btn_findID.setIcon(new ImageIcon("rsc\\icon\\btn_find.PNG"));
+		btn_findID.setIcon(new ImageIcon(".\\rsc\\icon\\btn_find.PNG"));
 		btn_findID.setBorderPainted(false);
 		btn_findID.setBounds(127, 196, 165, 35);
 		contentPane.add(btn_findID);
@@ -95,12 +95,12 @@ public class FindIDPW extends JFrame {
 				findPW(id, email);
 			}
 		});
-		btn_findPW.setIcon(new ImageIcon("rsc\\icon\\btn_find.PNG"));
+		btn_findPW.setIcon(new ImageIcon(".\\rsc\\icon\\btn_find.PNG"));
 		btn_findPW.setBorderPainted(false);
 		btn_findPW.setBounds(127, 450, 165, 35);
 		contentPane.add(btn_findPW);
 		
-		JLabel lb_background = new JLabel(new ImageIcon("rsc\\Find.png"));
+		JLabel lb_background = new JLabel(new ImageIcon(".\\rsc\\Find.png"));
 		lb_background.setBounds(0, 0, 400, 526);
 		contentPane.add(lb_background);
 		setContentPane(contentPane);

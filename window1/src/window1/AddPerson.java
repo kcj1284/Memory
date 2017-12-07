@@ -43,7 +43,7 @@ public class AddPerson extends JFrame {
 	public AddPerson() {
 
 		setResizable(false);
-		setIconImage(Toolkit.getDefaultToolkit().getImage("rsc\\logo_icon.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(".\\rsc\\logo_icon.png"));
 		setTitle("AddPerson");
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -232,7 +232,7 @@ public class AddPerson extends JFrame {
 		
 		JButton btn_close = new JButton("");
 		btn_close.setBorderPainted(false);
-		btn_close.setIcon(new ImageIcon("rsc\\icon\\btn_close.png"));
+		btn_close.setIcon(new ImageIcon(".\\rsc\\icon\\btn_close.png"));
 		btn_close.setBounds(275, 690, 110, 46);
 		btn_close.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -250,20 +250,21 @@ public class AddPerson extends JFrame {
 		
 		JButton btn_save = new JButton("");
 		btn_save.setBorderPainted(false);
-		btn_save.setIcon(new ImageIcon("rsc\\icon\\btn_save.png"));
+		btn_save.setIcon(new ImageIcon(".\\rsc\\icon\\btn_save.png"));
 		btn_save.setBounds(162, 690, 110, 46);
 		btn_save.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
+				//if()
+				//db.deleteAddress(data.rowid);
 				AddPerson();
-				db.deleteAddress(data.rowid);
 			}
 		});
 
 		contentPane.setLayout(null);
 		contentPane.add(btn_save);
 		
-		JButton btn_del = new JButton(new ImageIcon("rsc\\icon\\btn_delete.png"));
+		JButton btn_del = new JButton(new ImageIcon(".\\rsc\\icon\\btn_delete.png"));
 		btn_del.setBounds(5, 690, 110, 46);
 		btn_del.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -273,7 +274,7 @@ public class AddPerson extends JFrame {
 		contentPane.setLayout(null);
 		contentPane.add(btn_del);
 
-		JLabel lb_background = new JLabel(new ImageIcon("rsc\\Addperson.png"));
+		JLabel lb_background = new JLabel(new ImageIcon(".\\rsc\\Addperson.png"));
 		lb_background.setBackground(Color.WHITE);
 		lb_background.setBounds(5, 5, 382, 730);
 		contentPane.add(lb_background);
