@@ -254,7 +254,6 @@ public class AddPerson extends JFrame {
 		btn_save.setIcon(new ImageIcon(".\\rsc\\icon\\btn_save.png"));
 		btn_save.setBounds(162, 690, 110, 46);
 		btn_save.addActionListener(new ActionListener() {
-				
 				public void actionPerformed(ActionEvent arg0) {
 		            try{
 		               db.deleteAddress(data.rowid);
@@ -264,8 +263,10 @@ public class AddPerson extends JFrame {
 		               AddPerson();
 		               Frame.frame_addperson.setVisible(false);
 		            }
+		            reset();
 
 			}
+				
 		});
 
 		contentPane.setLayout(null);

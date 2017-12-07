@@ -43,7 +43,7 @@ import javax.swing.*;
  	JButton next_m = new JButton(">");
  	JButton previous_y = new JButton("<<");
  	JButton previous_m = new JButton("<");
- 	JButton btn_td = new JButton("today : " + year + "  " + month + "  " + day);
+ 	JButton btn_td = new JButton("today : " + year + " - " + month + " - " + day);
  	//////// Áß¾Ó ÆÐ³Î /////////
  	JPanel pl_day = new JPanel();
  	JLabel lb_day[] = new JLabel[7];
