@@ -502,7 +502,6 @@ public class DB {
 			while (rs.next()) { // result set이 더 있을 경우
 				i++;
 			}
-			System.out.println(i);
 
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -523,7 +522,6 @@ public class DB {
 			while (rs.next()) { // result set이 더 있을 경우
 				i++;
 			}
-			System.out.println(i);
 
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());

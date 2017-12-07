@@ -468,7 +468,6 @@ public class Home extends JFrame {
 
 		public Group_model() {
 			db.group();
-			System.out.println(Data.groupname_vector.get(1));
 			list = Data.groupname_vector;
 		}
 
