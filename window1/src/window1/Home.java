@@ -39,6 +39,7 @@ import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
+import javax.swing.border.LineBorder;
 
 /**
  * @author 김찬중 프로그램의 메인화면
@@ -55,7 +56,9 @@ public class Home extends JFrame {
 	Table_model model;
 	Group_model model2;
 	private JTable table_group;
-
+	private int man;
+	private int woman;
+	
 	public Home() {
 
 		DB db = new DB();
@@ -155,26 +158,31 @@ public class Home extends JFrame {
 					db.searchname(tf_search.getText());
 					model.addPageInfo(Data.address_vector);
 					model.fireTableDataChanged();
+					model2.fireTableDataChanged();
 					break;
 				case 1:
 					db.searchcode(tf_search.getText());
 					model.addPageInfo(Data.address_vector);
 					model.fireTableDataChanged();
+					model2.fireTableDataChanged();
 					break;
 				case 2:
 					db.searchmajor(tf_search.getText());
 					model.addPageInfo(Data.address_vector);
 					model.fireTableDataChanged();
+					model2.fireTableDataChanged();
 					break;
 				case 3:
 					db.searchphone(tf_search.getText());
 					model.addPageInfo(Data.address_vector);
 					model.fireTableDataChanged();
+					model2.fireTableDataChanged();
 					break;
 				case 4:
 					db.searchHash(tf_search.getText());
 					model.addPageInfo(Data.address_vector);
 					model.fireTableDataChanged();
+					model2.fireTableDataChanged();
 					break;
 				}
 
@@ -202,7 +210,54 @@ public class Home extends JFrame {
 				Frame.frame_popup.setVisible(false);
 			}
 		});
+		
+		JButton btn_refresh = new JButton("");
+		btn_refresh.setIcon(new ImageIcon(".\\rsc\\icon\\btn_refresh.png"));
+		btn_refresh.setBounds(1245, 12, 123, 42);
+		contentPane.add(btn_refresh);
+		btn_refresh.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				tf_search.setText("");
+				model2.fireTableDataChanged();
+				
 
+					switch (cb_type.getSelectedIndex()) {
+					case 0:
+						db.searchname(tf_search.getText());
+						model.addPageInfo(Data.address_vector);
+						model.fireTableDataChanged();
+						model2.fireTableDataChanged();
+						break;
+					case 1:
+						db.searchcode(tf_search.getText());
+						model.addPageInfo(Data.address_vector);
+						model.fireTableDataChanged();
+						model2.fireTableDataChanged();
+						break;
+					case 2:
+						db.searchmajor(tf_search.getText());
+						model.addPageInfo(Data.address_vector);
+						model.fireTableDataChanged();
+						model2.fireTableDataChanged();
+						break;
+					case 3:
+						db.searchphone(tf_search.getText());
+						model.addPageInfo(Data.address_vector);
+						model.fireTableDataChanged();
+						model2.fireTableDataChanged();
+						break;
+					case 4:
+						db.searchHash(tf_search.getText());
+						model.addPageInfo(Data.address_vector);
+						model.fireTableDataChanged();
+						model2.fireTableDataChanged();
+						break;
+					}
+
+				
+			}
+		});
+		
 		/**
 		 * @author 김찬중 
 		 * DB에서 가져온 자료를 table에 넣는 함수들
@@ -299,6 +354,7 @@ public class Home extends JFrame {
 		columnModel2.addColumn(column1);
 
 		table_group = new JTable(model2, columnModel2);
+		table_group.setBorder(new LineBorder(new Color(0, 0, 0)));
 		table_group.setOpaque(false);
 		table_group.setRowHeight(30);
 		table_group.setBounds(60, 181, 180, 219);
@@ -328,6 +384,17 @@ public class Home extends JFrame {
 			}
 		});
 		contentPane.add(table_group);
+		
+		/*man = db.accountMan();
+		acountwoMan();*/
+		
+		JLabel lb_man = new JLabel("");
+		lb_man.setBounds(43, 633, 62, 18);
+		contentPane.add(lb_man);
+		
+		JLabel lb_woman = new JLabel("");
+		lb_woman.setBounds(182, 633, 62, 18);
+		contentPane.add(lb_woman);
 
 		JLabel lb_background = new JLabel(new ImageIcon(".\\rsc\\Home.png"));
 		lb_background.setBackground(Color.WHITE);
