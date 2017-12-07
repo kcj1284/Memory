@@ -41,7 +41,7 @@ public class AddPerson extends JFrame {
 	DB db = new DB();
 	
 	public AddPerson() {
-
+		
 		setResizable(false);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(".\\rsc\\logo_icon.png"));
 		setTitle("AddPerson");
@@ -173,7 +173,8 @@ public class AddPerson extends JFrame {
 		tf_hash.setColumns(10);
 		tf_hash.setBounds(170, 600, 200, 40);
 		contentPane.add(tf_hash);
-
+		
+		
 		/**
 		 * @author 김찬중
 		 * 생일의 월을 선택하는 콤보박스
@@ -253,11 +254,17 @@ public class AddPerson extends JFrame {
 		btn_save.setIcon(new ImageIcon(".\\rsc\\icon\\btn_save.png"));
 		btn_save.setBounds(162, 690, 110, 46);
 		btn_save.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
 				
-				//if()
-				//db.deleteAddress(data.rowid);
-				AddPerson();
+				public void actionPerformed(ActionEvent arg0) {
+		            try{
+		               db.deleteAddress(data.rowid);
+		               AddPerson();
+		               Frame.frame_addperson.setVisible(false);
+		            }catch(NullPointerException e){
+		               AddPerson();
+		               Frame.frame_addperson.setVisible(false);
+		            }
+
 			}
 		});
 

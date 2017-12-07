@@ -43,7 +43,12 @@ public class AddGroup extends JFrame {
 		tf_groupadd.setColumns(10);
 		tf_groupadd.setBounds(167, 162, 170, 35);
 		contentPane.add(tf_groupadd);
-
+		
+		/**
+		 * @author 김찬중
+		 * 텍스트 필드의 값을 DB로 전송해주는 기능
+		 */
+		
 		JButton btn_Add = new JButton("");
 		btn_Add.setBorderPainted(false);
 		btn_Add.setIcon(new ImageIcon(".\\rsc\\icon\\btn_add.png"));
@@ -69,7 +74,7 @@ public class AddGroup extends JFrame {
 	public void AddGroup() {
 
 		DB db = new DB();
-
+		
 		groupadd = tf_groupadd.getText();
 		db.insertgroup(groupadd);
 		JOptionPane.showMessageDialog(Frame.frame_addgroup, "그룹이 정상적으로 추가 되었습니다.", "그룹추가 완료",
