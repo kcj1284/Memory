@@ -75,7 +75,7 @@ public class FindPW extends JFrame {
 	 * 본인확인 질문에 대한 답이 맞는 경우 비밀번호 변경창을 띄워주는 메소드
 	 * 
 	 * @param id
-	 *            비밀번호를 변경할 id
+	 * 비밀번호를 변경할 id
 	 */
 
 	void findPW2(String id) {

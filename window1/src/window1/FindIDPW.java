@@ -16,7 +16,8 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 /**
- * @author 김찬중 아이디 또는 비밀번호를 찾는 Class
+ * @author 김찬중 
+ * 아이디 또는 비밀번호를 찾는 Class
  */
 @SuppressWarnings("serial")
 public class FindIDPW extends JFrame {

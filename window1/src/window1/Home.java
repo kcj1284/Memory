@@ -291,7 +291,12 @@ public class Home extends JFrame {
 		column.setCellRenderer(center);
 		columnModel.addColumn(column);
 		columnModel.setColumnSelectionAllowed(false);
-
+		
+		/**
+		 * @author 김찬중
+		 * DB에서 가져온 데이터를 테이블에 넣어주는 함수
+		 */
+		
 		table_view = new JTable(model, columnModel);
 		table_view.setFont(new Font("굴림", Font.PLAIN, 25));
 		table_view.setRowHeight(50);
@@ -321,11 +326,21 @@ public class Home extends JFrame {
 		scrollPane.setViewportView(table_view);
 		scrollPane.getViewport().setBackground(Color.WHITE);
 
+		/**
+		 * @author 김찬중
+		 * 테이블의 헤더를 만들어주는 함수
+		 */
+		
 		JTableHeader header = table_view.getTableHeader();
 		header.setPreferredSize(new Dimension(10, 50));
 		header.setFont(new Font("굴림", Font.BOLD, 30));
 		header.setBackground(Color.WHITE);
 
+		/**
+		 * @author 김찬중
+		 * 그룹 테이블을 만들어주는 함수
+		 */
+		
 		model2 = new Group_model();
 		TableColumnModel columnModel2 = new DefaultTableColumnModel();
 
@@ -370,16 +385,23 @@ public class Home extends JFrame {
 		});
 		contentPane.add(table_group);
 
+		/**
+		 * @author 김찬중
+		 * db에 있는 남자와 여자의 수를 받아오는 함수
+		 */
+		
 		man = db.accountMan() + 1;
 		woman = db.accountWoman() + 1;
 		num = man + woman;
 
 		JLabel lb_man = new JLabel(Double.toString(Math.round(man / num * 100)) + "%");
-		lb_man.setBounds(43, 633, 62, 18);
+		lb_man.setFont(new Font("굴림", Font.BOLD, 20));
+		lb_man.setBounds(57, 633, 62, 18);
 		contentPane.add(lb_man);
 
 		JLabel lb_woman = new JLabel(Double.toString(Math.round(woman / num * 100)) + "%");
-		lb_woman.setBounds(182, 633, 62, 18);
+		lb_woman.setFont(new Font("굴림", Font.BOLD, 20));
+		lb_woman.setBounds(170, 633, 62, 18);
 		contentPane.add(lb_woman);
 
 		JLabel lb_background = new JLabel(new ImageIcon(".\\rsc\\Home.png"));
@@ -388,7 +410,11 @@ public class Home extends JFrame {
 		contentPane.add(lb_background);
 
 	}
-
+	/**
+	 * @author 김찬중
+	 * 테이블에 db의 자료를 불러오는 함수
+	 */
+	
 	class Table_model extends AbstractTableModel {
 
 		private Vector<AddressInfo> pages;
@@ -430,6 +456,11 @@ public class Home extends JFrame {
 		}
 	}
 
+	/**
+	 * @author 김찬중
+	 * 테이블에 그룹명을 불러오는 함수
+	 */
+	
 	class Group_model extends AbstractTableModel {
 		DB db = new DB();
 
