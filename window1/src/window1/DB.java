@@ -1,6 +1,5 @@
 package window1;
 
-
 import java.sql.*;
 import java.util.Vector;
 
