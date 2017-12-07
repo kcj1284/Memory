@@ -5,6 +5,12 @@ import javax.swing.*;
  import java.awt.*;
  import java.util.*;
  
+ /**
+  * 캘린더 
+  * 
+  * @author 이수연
+  *
+  */
  public class Calendar_3 extends JPanel {
  	Color mainWhite = new Color(0xF5F4F3);
  	Color mainGreen = new Color(0x3B895E);
@@ -261,13 +267,13 @@ import javax.swing.*;
  			}
  			if (tmp_bt.equals(previous_m)) { // 이전 월 눌렀을 시
  				if (tmp_month == 0) {
- 					tmp_month = 11;
+ 					tmp_month += 11;
  					tmp_year--;
  					setapi(tmp_year);
  				} else
- 					tmp_month = 1;
+ 					tmp_month -= 1;
  			} else if (tmp_bt.equals(previous_y)) {
- 				tmp_year = 1;
+ 				tmp_year -= 1;
  				setapi(tmp_year);
  			} else if (tmp_bt.equals(btn_td)) { // today 버튼 눌렀을 때
  				tmp_year = year; // 변수를 현재 년도와 달로 변경

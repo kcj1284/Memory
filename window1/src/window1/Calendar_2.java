@@ -4,6 +4,12 @@ import javax.swing.*;
  import java.awt.*;
  import java.util.*;
  
+ /**
+  * 월 바꾸는 Class
+  * 
+  * @author 이수연
+  *
+  */
  public class Calendar_2 extends JPanel{
  	Color mainWhite = new Color(0xF5F4F3);
  	Calendar cal = Calendar.getInstance();

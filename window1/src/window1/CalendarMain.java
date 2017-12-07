@@ -4,6 +4,13 @@ import javax.swing.*;
  import java.awt.*;
  import java.util.*;
  
+ 
+ /**
+  * 캘린더 메인 프레임
+  * 
+  * @author 이수연
+  *
+  */
  public class CalendarMain extends JFrame {
  	Calendar cal = Calendar.getInstance();
  	CardLayout cd = new CardLayout();
