@@ -4,7 +4,7 @@ import java.sql.*;
 import java.util.Vector;
 
 /**
- * SQLite로 DB를 관리하는 대표 method
+ * SQLite로 DB를 관리하는 대표 Class
  * 
  * @author 김강민
  *
@@ -146,7 +146,7 @@ public class DB {
 			stmt.setInt(5, question );
 			stmt.setString(6, answer);
 			stmt.executeUpdate();
-			
+
 			Data.member_vector.addElement(new MemberInfo(id,passwd,email,name,question,answer)); // 벡터에 유저 정보 추가
 			isSuccess = true;
 		} catch (SQLException e) {
