@@ -43,7 +43,7 @@ public class AddPerson extends JFrame {
 	public AddPerson() {
 
 		setResizable(false);
-		setIconImage(Toolkit.getDefaultToolkit().getImage("rsc\\logo_icon.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(".\\rsc\\logo_icon.png"));
 		setTitle("AddPerson");
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -232,8 +232,8 @@ public class AddPerson extends JFrame {
 		
 		JButton btn_close = new JButton("");
 		btn_close.setBorderPainted(false);
-		btn_close.setIcon(new ImageIcon("rsc\\icon\\btn_close.png"));
-		btn_close.setBounds(275, 694, 110, 46);
+		btn_close.setIcon(new ImageIcon(".\\rsc\\icon\\btn_close.png"));
+		btn_close.setBounds(275, 690, 110, 46);
 		btn_close.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				reset();
@@ -250,21 +250,22 @@ public class AddPerson extends JFrame {
 		
 		JButton btn_save = new JButton("");
 		btn_save.setBorderPainted(false);
-		btn_save.setIcon(new ImageIcon("rsc\\icon\\btn_save.png"));
-		btn_save.setBounds(162, 694, 110, 46);
+		btn_save.setIcon(new ImageIcon(".\\rsc\\icon\\btn_save.png"));
+		btn_save.setBounds(162, 690, 110, 46);
 		btn_save.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				db.deleteAddress(data.rowid);
+				
+				//if()
+				//db.deleteAddress(data.rowid);
 				AddPerson();
-				Frame.frame_addperson.setVisible(false);
 			}
 		});
 
 		contentPane.setLayout(null);
 		contentPane.add(btn_save);
 		
-		JButton btn_del = new JButton("");
-		btn_del.setBounds(0, 694, 118, 46);
+		JButton btn_del = new JButton(new ImageIcon(".\\rsc\\icon\\btn_delete.png"));
+		btn_del.setBounds(5, 690, 110, 46);
 		btn_del.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				db.deleteAddress(data.rowid);
@@ -273,7 +274,7 @@ public class AddPerson extends JFrame {
 		contentPane.setLayout(null);
 		contentPane.add(btn_del);
 
-		JLabel lb_background = new JLabel(new ImageIcon("rsc\\Addperson.png"));
+		JLabel lb_background = new JLabel(new ImageIcon(".\\rsc\\Addperson.png"));
 		lb_background.setBackground(Color.WHITE);
 		lb_background.setBounds(5, 5, 382, 730);
 		contentPane.add(lb_background);
@@ -401,8 +402,6 @@ public class AddPerson extends JFrame {
 		tf_group.setText("");
 		tf_sex.setText("");
 		tf_hash.setText("");
-		cb_month.setSelectedIndex(0);
-		cb_day.setSelectedIndex(0);
 
 	}
 }

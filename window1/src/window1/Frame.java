@@ -14,4 +14,5 @@ public class Frame {
 	static ChangePW frame_changePW = new ChangePW();
 	static AddPerson frame_addperson = new AddPerson();
 	static AddGroup frame_addgroup = new AddGroup();
+	static Calendars frame_calendars = new Calendars();
 }

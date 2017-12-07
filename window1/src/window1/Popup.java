@@ -23,13 +23,13 @@ public class Popup extends JFrame {
 	 */
 	public Popup() {
 		setResizable(false);
-		setIconImage(Toolkit.getDefaultToolkit().getImage("rsc\\logo_icon.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(".\\rsc\\logo_icon.png"));
 		setTitle("Popup");
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setBounds(300, 150, 900, 482);
-		JLabel lb_background = new JLabel(new ImageIcon("rsc\\Popup.png"));
+		JLabel lb_background = new JLabel(new ImageIcon(".\\rsc\\Popup.png"));
 		lb_background.setBackground(Color.WHITE);
 		lb_background.setBounds(300, 150, 900, 482);
 		contentPane.add(lb_background);

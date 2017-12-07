@@ -30,7 +30,7 @@ public class FindPW extends JFrame {
 	public FindPW() {
 		setResizable(false);
 		setTitle("비밀번호 찾기");
-		setIconImage(Toolkit.getDefaultToolkit().getImage("rsc\\logo_icon.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(".\\rsc\\logo_icon.png"));
 		setBounds(100, 100, 410, 315);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -52,7 +52,7 @@ public class FindPW extends JFrame {
 						findPW2(Data.member_vector.get(Data.userIndex).id);
 					}
 				});
-				btn_submit.setIcon(new ImageIcon("rsc\\icon\\btn_submit.PNG"));
+				btn_submit.setIcon(new ImageIcon(".\\.\\rsc\\icon\\btn_submit.PNG"));
 				btn_submit.setBounds(124, 197, 166, 33);
 				btn_submit.setBorderPainted(false);
 				contentPane.add(btn_submit);
@@ -65,7 +65,7 @@ public class FindPW extends JFrame {
 		contentPane.add(lb_pwQuestion);
 
 		JLabel lb_background = new JLabel("");
-		lb_background.setIcon(new ImageIcon("rsc\\PWFind.png"));
+		lb_background.setIcon(new ImageIcon(".\\rsc\\PWFind.png"));
 		lb_background.setBounds(0, 0, 400, 276);
 		contentPane.add(lb_background);
 		contentPane.add(lb_background);

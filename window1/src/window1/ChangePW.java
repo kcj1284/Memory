@@ -29,7 +29,7 @@ public class ChangePW extends JFrame {
 	public ChangePW() {
 		setResizable(false);
 		setTitle("비밀번호 변경");
-		setIconImage(Toolkit.getDefaultToolkit().getImage("rsc\\logo_icon.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(".\\rsc\\logo_icon.png"));
 		setBounds(100, 100, 410, 316);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -66,39 +66,32 @@ public class ChangePW extends JFrame {
 			}
 		});
 
-		btn_change.setIcon(new ImageIcon("rsc\\icon\\btn_change.PNG"));
+		btn_change.setIcon(new ImageIcon(".\\rsc\\icon\\btn_change.PNG"));
 		btn_change.setBounds(123, 203, 165, 33);
 		btn_change.setBorderPainted(false);
 		contentPane.add(btn_change);
+		
+				tf_pwCheck = new JPasswordField();
+				tf_pwCheck.setForeground(Color.BLACK);
+				tf_pwCheck.setFont(new Font("굴림", Font.PLAIN, 18));
+				tf_pwCheck.setColumns(10);
+				tf_pwCheck.setOpaque(false);
+				tf_pwCheck.setBounds(123, 149, 165, 24);
+				contentPane.add(tf_pwCheck);
+		
+				tf_pw = new JPasswordField();
+				tf_pw.setForeground(Color.BLACK);
+				tf_pw.setFont(new Font("굴림", Font.PLAIN, 18));
+				tf_pw.setColumns(10);
+				tf_pw.setOpaque(false);
+				tf_pw.setBounds(123, 106, 165, 24);
+				contentPane.add(tf_pw);
 
 		JLabel lb_background = new JLabel();
-		lb_background.setIcon(new ImageIcon("rsc\\PWChange.png"));
+		lb_background.setIcon(new ImageIcon(".\\rsc\\PWChange.png"));
 		lb_background.setBounds(0, 0, 400, 277);
 		contentPane.add(lb_background);
-
-		tf_pwCheck = new JPasswordField();
-		tf_pwCheck.setForeground(Color.WHITE);
-		tf_pwCheck.setFont(new Font("굴림", Font.PLAIN, 18));
-		tf_pwCheck.setColumns(10);
-		tf_pwCheck.setBackground(new Color(102, 211, 222));
-		tf_pwCheck.setBounds(145, 148, 146, 24);
-		contentPane.add(tf_pwCheck);
-
-		tf_pw = new JPasswordField();
-		tf_pw.setForeground(Color.WHITE);
-		tf_pw.setFont(new Font("굴림", Font.PLAIN, 18));
-		tf_pw.setColumns(10);
-		tf_pw.setBackground(new Color(102, 211, 222));
-		tf_pw.setBounds(145, 106, 146, 24);
-		contentPane.add(tf_pw);
 	}
-
-	/**
-	 * 찾기를 시도한 계정의 비밀번호를 변경
-	 * 
-	 * @param pw
-	 *            변경할 비밀번호
-	 */
 
 	private void changePW(String pw) {
 		String id = Data.member_vector.get(Data.userIndex).id;
