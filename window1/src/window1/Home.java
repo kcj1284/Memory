@@ -49,8 +49,8 @@ public class Home extends JFrame {
 	Table_model model;
 	Group_model model2;
 	private JTable table_group;
-	private double man,woman,num =0;
-	
+	private double man, woman, num = 0;
+
 	public Home() {
 
 		DB db = new DB();
@@ -66,8 +66,7 @@ public class Home extends JFrame {
 		contentPane.setLayout(null);
 
 		/**
-		 * @author 김찬중 
-		 * 검색을 할 유형을 고르는 콤보박스
+		 * @author 김찬중 검색을 할 유형을 고르는 콤보박스
 		 */
 
 		String[] element = { "이름", "학번", "학과", "번호", "해쉬태그" };
@@ -83,8 +82,7 @@ public class Home extends JFrame {
 		cb_type.setForeground(Color.WHITE);
 
 		/**
-		 * @author 김찬중
-		 * AddPerson 창을 여는 버튼
+		 * @author 김찬중 AddPerson 창을 여는 버튼
 		 */
 
 		JButton btn_AddPerson = new JButton("");
@@ -128,8 +126,7 @@ public class Home extends JFrame {
 		contentPane.add(c);
 
 		/**
-		 * @author 김찬중 
-		 * 검색할 내용을 입력하는 텍스트필드
+		 * @author 김찬중 검색할 내용을 입력하는 텍스트필드
 		 */
 
 		tf_search = new JTextField();
@@ -184,8 +181,7 @@ public class Home extends JFrame {
 		contentPane.add(btn_search);
 
 		/**
-		 * @author 김찬중 
-		 * 모든 창을 닫고 로그인 화면을 띄워주는 버튼
+		 * @author 김찬중 모든 창을 닫고 로그인 화면을 띄워주는 버튼
 		 */
 
 		JButton btn_logout = new JButton("");
@@ -202,7 +198,7 @@ public class Home extends JFrame {
 				Frame.frame_calendars.setVisible(false);
 			}
 		});
-		
+
 		JButton btn_refresh = new JButton("");
 		btn_refresh.setIcon(new ImageIcon(".\\rsc\\icon\\btn_refresh.png"));
 		btn_refresh.setBounds(1245, 12, 123, 42);
@@ -211,48 +207,45 @@ public class Home extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				tf_search.setText("");
 				model2.fireTableDataChanged();
-				
 
-					switch (cb_type.getSelectedIndex()) {
-					case 0:
-						db.searchname(tf_search.getText());
-						model.addPageInfo(Data.address_vector);
-						model.fireTableDataChanged();
-						model2.fireTableDataChanged();
-						break;
-					case 1:
-						db.searchcode(tf_search.getText());
-						model.addPageInfo(Data.address_vector);
-						model.fireTableDataChanged();
-						model2.fireTableDataChanged();
-						break;
-					case 2:
-						db.searchmajor(tf_search.getText());
-						model.addPageInfo(Data.address_vector);
-						model.fireTableDataChanged();
-						model2.fireTableDataChanged();
-						break;
-					case 3:
-						db.searchphone(tf_search.getText());
-						model.addPageInfo(Data.address_vector);
-						model.fireTableDataChanged();
-						model2.fireTableDataChanged();
-						break;
-					case 4:
-						db.searchHash(tf_search.getText());
-						model.addPageInfo(Data.address_vector);
-						model.fireTableDataChanged();
-						model2.fireTableDataChanged();
-						break;
-					}
+				switch (cb_type.getSelectedIndex()) {
+				case 0:
+					db.searchname(tf_search.getText());
+					model.addPageInfo(Data.address_vector);
+					model.fireTableDataChanged();
+					model2.fireTableDataChanged();
+					break;
+				case 1:
+					db.searchcode(tf_search.getText());
+					model.addPageInfo(Data.address_vector);
+					model.fireTableDataChanged();
+					model2.fireTableDataChanged();
+					break;
+				case 2:
+					db.searchmajor(tf_search.getText());
+					model.addPageInfo(Data.address_vector);
+					model.fireTableDataChanged();
+					model2.fireTableDataChanged();
+					break;
+				case 3:
+					db.searchphone(tf_search.getText());
+					model.addPageInfo(Data.address_vector);
+					model.fireTableDataChanged();
+					model2.fireTableDataChanged();
+					break;
+				case 4:
+					db.searchHash(tf_search.getText());
+					model.addPageInfo(Data.address_vector);
+					model.fireTableDataChanged();
+					model2.fireTableDataChanged();
+					break;
+				}
 
-				
 			}
 		});
-		
+
 		/**
-		 * @author 김찬중 
-		 * DB에서 가져온 자료를 table에 넣는 함수들
+		 * @author 김찬중 DB에서 가져온 자료를 table에 넣는 함수들
 		 */
 
 		JScrollPane scrollPane = new JScrollPane();
@@ -351,7 +344,7 @@ public class Home extends JFrame {
 		table_group.setRowHeight(30);
 		table_group.setBounds(60, 181, 180, 168);
 		table_group.addMouseListener(new MouseListener() {
-			
+
 			public void mouseClicked(MouseEvent e) {
 				JTable j = (JTable) e.getComponent();
 				if (e.getClickCount() == 2) {
@@ -376,16 +369,16 @@ public class Home extends JFrame {
 			}
 		});
 		contentPane.add(table_group);
-		
-		man = db.accountMan()+1;
-		woman = db.accountWoman()+1;
-		num = man+woman;
-		
-		JLabel lb_man = new JLabel(Double.toString(Math.round(man/num*100))+"%");
+
+		man = db.accountMan() + 1;
+		woman = db.accountWoman() + 1;
+		num = man + woman;
+
+		JLabel lb_man = new JLabel(Double.toString(Math.round(man / num * 100)) + "%");
 		lb_man.setBounds(43, 633, 62, 18);
 		contentPane.add(lb_man);
-		
-		JLabel lb_woman = new JLabel(Double.toString(Math.round(woman/num*100))+"%");
+
+		JLabel lb_woman = new JLabel(Double.toString(Math.round(woman / num * 100)) + "%");
 		lb_woman.setBounds(182, 633, 62, 18);
 		contentPane.add(lb_woman);
 

@@ -24,7 +24,6 @@ import javax.swing.*;
  	
  	CalendarMain(){
  		setTitle("Calendar");
- 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
  		
  		makeGUI();
  		
